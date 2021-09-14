@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../inpu.srcs/sources_1/new/inpu.v" \
+"../../../../inpu.srcs/sim_1/new/testInput.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
