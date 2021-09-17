@@ -1,0 +1,5 @@
+Time resolution is 1 ps
+                   0 dato A: 1, dato B: 0, dato Op: 0, DATO:  82, out:   x
+                  20 dato A: 0, dato B: 1, dato Op: 0, DATO: 108, out:   x
+                  40 dato A: 0, dato B: 0, dato Op: 1, DATO:  32, out:   x
+                  55 dato A: 0, dato B: 0, dato Op: 1, DATO:  32, out: 190
