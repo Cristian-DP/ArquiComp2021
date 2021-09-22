@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/synth_1/INPUT.tcl"
+  variable script "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/synth_1/INPUT.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,26 +70,26 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir {C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.cache/wt [current_project]
+set_property parent.project_path C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part_repo_paths {C:/Users/Laudi/AppData/Roaming/Xilinx/Vivado/2021.1/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.1 [current_project]
-set_property ip_output_repo {c:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib {{C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.srcs/sources_1/new/inpu.v}}
+read_verilog -library xil_defaultlib {
+  C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v
+  C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/new/inpu.v
+}
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -99,6 +99,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc
+set_property used_in_implementation false [get_files C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

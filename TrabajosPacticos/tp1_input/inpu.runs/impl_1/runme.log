@@ -10,21 +10,329 @@
     ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 
 source INPUT.tcl -notrace
-Command: open_checkpoint {C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT.dcp}
-
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.076 . Memory (MB): peak = 1136.016 ; gain = 0.000
-CRITICAL WARNING: [Board 49-67] The board_part definition was not found for digilentinc.com:basys3:part0:1.1. This can happen sometimes when you use custom board part. You can resolve this issue by setting 'board.repoPaths' parameter, pointing to the location of custom board files. Valid board_part values can be retrieved with the 'get_board_parts' Tcl command.
-CRITICAL WARNING: [Board 49-67] The board_part definition was not found for digilentinc.com:basys3:part0:1.1. This can happen sometimes when you use custom board part. You can resolve this issue by setting 'board.repoPaths' parameter, pointing to the location of custom board files. Valid board_part values can be retrieved with the 'get_board_parts' Tcl command.
+Command: link_design -top INPUT -part xc7a35tcpg236-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.016 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1143.504 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-479] Netlist was created with Vivado 2021.1
 INFO: [Project 1-570] Preparing netlist for logic optimization
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.016 ; gain = 0.000
+Parsing XDC File [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:7]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:7]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clk'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:8]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:8]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clk'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:9]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports clk]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:9]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'i_a[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:12]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:12]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:13]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:14]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:14]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:15]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:15]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:16]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:16]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:17]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:18]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:18]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:19]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[4]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:20]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[4]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:21]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:21]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[5]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[5]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[6]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[6]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:25]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:25]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[7]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:26]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:26]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_a[7]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:27]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:27]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[8]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:28]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:28]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[8]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:29]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:29]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[9]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:30]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:30]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[9]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:31]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:31]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[10]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:32]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:32]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[10]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:33]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:33]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[11]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:34]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:34]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[11]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:35]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:35]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[12]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:36]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:36]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[12]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:37]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:37]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[13]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:38]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:38]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[13]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:39]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:39]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[14]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:40]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:40]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[14]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:41]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:41]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[15]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:42]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:42]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_b[15]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:47]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:47]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:48]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:48]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:49]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:49]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:50]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:50]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:51]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:51]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:52]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:52]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:53]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:53]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:54]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:54]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[4]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:55]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:55]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[4]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:56]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:56]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[5]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:57]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:57]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[5]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:58]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:58]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[6]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:59]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:59]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[6]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:60]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:60]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[7]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:61]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:61]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[7]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:62]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:62]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[8]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:63]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:63]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[8]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:64]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:64]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[9]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:65]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:65]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[9]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[10]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:67]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:67]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[10]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:68]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:68]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[11]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:69]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:69]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[11]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:70]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:70]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[12]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:71]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:71]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[12]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:72]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:72]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[13]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:73]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:73]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[13]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:74]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:74]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[14]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:75]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:75]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[14]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:76]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:76]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[15]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:77]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:77]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'LED[15]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:78]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:78]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:82]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:82]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:83]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:83]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:84]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:84]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:85]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:85]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:86]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:86]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:87]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:87]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:88]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:88]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:89]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:89]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[4]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:90]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:90]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[4]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:91]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:91]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[5]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:92]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:92]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[5]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:93]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:93]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[6]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:94]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:94]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'seg[6]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:95]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:95]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dp'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:97]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:97]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dp'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:98]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:98]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:100]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:100]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[0]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:101]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:101]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:102]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:102]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[1]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:103]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:103]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:104]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:104]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[2]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:105]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:105]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:106]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:106]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'an[3]'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:107]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:107]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'btnC'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:111]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:111]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'btnC'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:112]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:112]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp6'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:209]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:209]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp6'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:210]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:210]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp14'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:212]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:212]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp14'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:213]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:213]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp7'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:215]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:215]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp7'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:216]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:216]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'vauxp15'. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:218]
+INFO: [Common 17-14] Message 'Vivado 12-584' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:218]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:218]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:219]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+INFO: [Common 17-14] Message 'Common 17-55' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc:219]
+Finished Parsing XDC File [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/constrs_1/new/constraints.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1143.504 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-INFO: [Project 1-604] Checkpoint was created with Vivado v2021.1 (64-bit) build 3247384
-open_checkpoint: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1136.016 ; gain = 0.000
+9 Infos, 100 Warnings, 101 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1143.504 ; gain = 0.000
 Command: opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
@@ -35,54 +343,54 @@ INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Project 1-461] DRC finished with 0 Errors
 INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1136.016 ; gain = 0.000
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1143.504 ; gain = 0.000
 
 Starting Cache Timing Information Task
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Ending Cache Timing Information Task | Checksum: 1943c65e1
+Ending Cache Timing Information Task | Checksum: 12e5fa493
 
-Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1352.027 ; gain = 216.012
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1350.465 ; gain = 206.961
 
 Starting Logic Optimization Task
 
 Phase 1 Retarget
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 1 Retarget | Checksum: 1943c65e1
+Phase 1 Retarget | Checksum: 14fa32b68
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1568.863 ; gain = 0.000
-INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1567.715 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 1 cells
 
 Phase 2 Constant propagation
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Phase 2 Constant propagation | Checksum: 1943c65e1
+Phase 2 Constant propagation | Checksum: 14fa32b68
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.053 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 1567.715 ; gain = 0.000
 INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
 
 Phase 3 Sweep
-Phase 3 Sweep | Checksum: 1943c65e1
+Phase 3 Sweep | Checksum: 17ca83ada
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 1567.715 ; gain = 0.000
 INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
 
 Phase 4 BUFG optimization
-Phase 4 BUFG optimization | Checksum: 1943c65e1
+Phase 4 BUFG optimization | Checksum: 17ca83ada
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.069 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 1567.715 ; gain = 0.000
 INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
 
 Phase 5 Shift Register Optimization
 INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
-Phase 5 Shift Register Optimization | Checksum: 1943c65e1
+Phase 5 Shift Register Optimization | Checksum: 17ca83ada
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 1567.715 ; gain = 0.000
 INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
 
 Phase 6 Post Processing Netlist
-Phase 6 Post Processing Netlist | Checksum: 1943c65e1
+Phase 6 Post Processing Netlist | Checksum: 17ca83ada
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.073 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.066 . Memory (MB): peak = 1567.715 ; gain = 0.000
 INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
 Opt_design Change Summary
 =========================
@@ -91,7 +399,7 @@ Opt_design Change Summary
 -------------------------------------------------------------------------------------------------------------------------
 |  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
 -------------------------------------------------------------------------------------------------------------------------
-|  Retarget                     |               0  |               0  |                                              0  |
+|  Retarget                     |               0  |               1  |                                              0  |
 |  Constant propagation         |               0  |               0  |                                              0  |
 |  Sweep                        |               0  |               0  |                                              0  |
 |  BUFG optimization            |               0  |               0  |                                              0  |
@@ -103,32 +411,33 @@ Opt_design Change Summary
 
 Starting Connectivity Check Task
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1568.863 ; gain = 0.000
-Ending Logic Optimization Task | Checksum: 1943c65e1
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1567.715 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: a235c410
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 1567.715 ; gain = 0.000
 
 Starting Power Optimization Task
 INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
-Ending Power Optimization Task | Checksum: 1943c65e1
+Ending Power Optimization Task | Checksum: a235c410
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1567.715 ; gain = 0.000
 
 Starting Final Cleanup Task
-Ending Final Cleanup Task | Checksum: 1943c65e1
+Ending Final Cleanup Task | Checksum: a235c410
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1567.715 ; gain = 0.000
 
 Starting Netlist Obfuscation Task
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1568.863 ; gain = 0.000
-Ending Netlist Obfuscation Task | Checksum: 1943c65e1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1567.715 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: a235c410
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1568.863 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1567.715 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
-22 Infos, 0 Warnings, 2 Critical Warnings and 0 Errors encountered.
+26 Infos, 100 Warnings, 101 Critical Warnings and 0 Errors encountered.
 opt_design completed successfully
-opt_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1568.863 ; gain = 432.848
-INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_opt.dcp' has been generated.
+opt_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1567.715 ; gain = 424.211
+INFO: [Timing 38-480] Writing timing data to binary archive.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_opt.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_drc -file INPUT_drc_opted.rpt -pb INPUT_drc_opted.pb -rpx INPUT_drc_opted.rpx
 Command: report_drc -file INPUT_drc_opted.rpt -pb INPUT_drc_opted.pb -rpx INPUT_drc_opted.rpx
 INFO: [IP_Flow 19-234] Refreshing IP repositories
@@ -136,7 +445,7 @@ INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/xiling/Vivado/2021.1/data/ip'.
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [DRC 23-27] Running DRC with 2 threads
-INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_drc_opted.rpt.
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_drc_opted.rpt.
 report_drc completed successfully
 Command: place_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
@@ -155,107 +464,107 @@ INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 
 Phase 1 Placer Initialization
 
 Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Phase 1.1 Placer Initialization Netlist Sorting | Checksum: bd59fddb
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 4ee9231c
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1b64441d6
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 12d3309a2
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.430 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.392 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 1.3 Build Placer Netlist Model
-Phase 1.3 Build Placer Netlist Model | Checksum: 2ae4bfdf4
+Phase 1.3 Build Placer Netlist Model | Checksum: 14cdffe32
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.509 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.480 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 1.4 Constrain Clocks/Macros
-Phase 1.4 Constrain Clocks/Macros | Checksum: 2ae4bfdf4
+Phase 1.4 Constrain Clocks/Macros | Checksum: 14cdffe32
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.512 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Phase 1 Placer Initialization | Checksum: 2ae4bfdf4
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.484 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 14cdffe32
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.520 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.493 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 2 Global Placement
 
 Phase 2.1 Floorplanning
-Phase 2.1 Floorplanning | Checksum: 2ae4bfdf4
+Phase 2.1 Floorplanning | Checksum: 14cdffe32
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.535 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.509 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 2.2 Update Timing before SLR Path Opt
-Phase 2.2 Update Timing before SLR Path Opt | Checksum: 2ae4bfdf4
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 14cdffe32
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.536 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.509 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 2.3 Post-Processing in Floorplanning
-Phase 2.3 Post-Processing in Floorplanning | Checksum: 2ae4bfdf4
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 14cdffe32
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.537 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.510 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 2.4 Global Placement Core
 WARNING: [Place 46-29] place_design is not in timing mode. Skip physical synthesis in placer
-Phase 2.4 Global Placement Core | Checksum: 2337e5b74
+Phase 2.4 Global Placement Core | Checksum: 1f0612c1e
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Phase 2 Global Placement | Checksum: 2337e5b74
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 1f0612c1e
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: 2337e5b74
+Phase 3.1 Commit Multi Column Macros | Checksum: 1f0612c1e
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1fc9ccfd2
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 19e72e147
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3.3 Area Swap Optimization
-Phase 3.3 Area Swap Optimization | Checksum: 1cfc653d5
+Phase 3.3 Area Swap Optimization | Checksum: d892cfad
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3.4 Pipeline Register Optimization
-Phase 3.4 Pipeline Register Optimization | Checksum: 1cfc653d5
+Phase 3.4 Pipeline Register Optimization | Checksum: d892cfad
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3.5 Small Shape Detail Placement
-Phase 3.5 Small Shape Detail Placement | Checksum: 134f28f68
+Phase 3.5 Small Shape Detail Placement | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3.6 Re-assign LUT pins
-Phase 3.6 Re-assign LUT pins | Checksum: 134f28f68
+Phase 3.6 Re-assign LUT pins | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 3.7 Pipeline Register Optimization
-Phase 3.7 Pipeline Register Optimization | Checksum: 134f28f68
+Phase 3.7 Pipeline Register Optimization | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Phase 3 Detail Placement | Checksum: 134f28f68
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 4 Post Placement Optimization and Clean-Up
 
 Phase 4.1 Post Commit Optimization
-Phase 4.1 Post Commit Optimization | Checksum: 134f28f68
+Phase 4.1 Post Commit Optimization | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 134f28f68
+Phase 4.2 Post Placement Cleanup | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 4.3 Placer Reporting
 
@@ -274,50 +583,52 @@ INFO: [Place 30-612] Post-Placement Estimated Congestion
 |       West|                1x1|                1x1|
 |___________|___________________|___________________|
 
-Phase 4.3.1 Print Estimated Congestion | Checksum: 134f28f68
+Phase 4.3.1 Print Estimated Congestion | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Phase 4.3 Placer Reporting | Checksum: 134f28f68
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Phase 4.3 Placer Reporting | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
 Phase 4.4 Final Placement Cleanup
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1612.762 ; gain = 0.000
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 134f28f68
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 101c51b60
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
-Ending Placer Task | Checksum: e26b6064
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
+Ending Placer Task | Checksum: 69f5dd92
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1613.852 ; gain = 0.000
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 1612.762 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
-40 Infos, 1 Warnings, 2 Critical Warnings and 0 Errors encountered.
+45 Infos, 101 Warnings, 101 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.144 . Memory (MB): peak = 1613.852 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_placed.dcp' has been generated.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1612.762 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_placed.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_io -file INPUT_io_placed.rpt
-report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1613.852 ; gain = 0.000
+report_io: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.041 . Memory (MB): peak = 1612.762 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file INPUT_utilization_placed.rpt -pb INPUT_utilization_placed.pb
 INFO: [runtcl-4] Executing : report_control_sets -verbose -file INPUT_control_sets_placed.rpt
-report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1613.852 ; gain = 0.000
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1612.762 ; gain = 0.000
 Command: phys_opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
 INFO: [Vivado_Tcl 4-235] No timing constraint found. The netlist was not modified.
 INFO: [Common 17-83] Releasing license: Implementation
-47 Infos, 1 Warnings, 2 Critical Warnings and 0 Errors encountered.
+53 Infos, 101 Warnings, 101 Critical Warnings and 0 Errors encountered.
 phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1613.852 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_physopt.dcp' has been generated.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 1612.762 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_physopt.dcp' has been generated.
 Command: route_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
@@ -329,30 +640,30 @@ INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more in
 
 Starting Routing Task
 INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
-Checksum: PlaceDB: 25116289 ConstDB: 0 ShapeSum: bd59fddb RouteDB: 0
+Checksum: PlaceDB: 1b0cba76 ConstDB: 0 ShapeSum: 4ee9231c RouteDB: 0
 
 Phase 1 Build RT Design
-Phase 1 Build RT Design | Checksum: 1827dcb47
+Phase 1 Build RT Design | Checksum: 85c600e2
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1698.895 ; gain = 75.934
-Post Restoration Checksum: NetGraph: 862478e8 NumContArr: fc59525f Constraints: 0 Timing: 0
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1696.004 ; gain = 77.168
+Post Restoration Checksum: NetGraph: 5e717bf3 NumContArr: 275484ef Constraints: 0 Timing: 0
 
 Phase 2 Router Initialization
 INFO: [Route 35-64] No timing constraints were detected. The router will operate in resource-optimization mode.
 
 Phase 2.1 Fix Topology Constraints
-Phase 2.1 Fix Topology Constraints | Checksum: 1827dcb47
+Phase 2.1 Fix Topology Constraints | Checksum: 85c600e2
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1704.879 ; gain = 81.918
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1701.984 ; gain = 83.148
 
 Phase 2.2 Pre Route Cleanup
-Phase 2.2 Pre Route Cleanup | Checksum: 1827dcb47
+Phase 2.2 Pre Route Cleanup | Checksum: 85c600e2
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 1704.879 ; gain = 81.918
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1701.984 ; gain = 83.148
  Number of Nodes with overlaps = 0
-Phase 2 Router Initialization | Checksum: 82b87210
+Phase 2 Router Initialization | Checksum: a7178c4e
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1709.414 ; gain = 86.453
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1707.254 ; gain = 88.418
 
 Router Utilization Summary
   Global Vertical Routing Utilization    = 0 %
@@ -360,9 +671,9 @@ Router Utilization Summary
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
-  Number of Failed Nets               = 33
+  Number of Failed Nets               = 70
     (Failed Nets is the sum of unrouted and partially routed nets)
-  Number of Unrouted Nets             = 33
+  Number of Unrouted Nets             = 70
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
@@ -370,44 +681,45 @@ Router Utilization Summary
 Phase 3 Initial Routing
 
 Phase 3.1 Global Routing
-Phase 3.1 Global Routing | Checksum: 82b87210
+Phase 3.1 Global Routing | Checksum: a7178c4e
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
-Phase 3 Initial Routing | Checksum: bfc6881c
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
+Phase 3 Initial Routing | Checksum: 1b202ca54
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
 
 Phase 4 Rip-up And Reroute
 
 Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 7
  Number of Nodes with overlaps = 0
-Phase 4.1 Global Iteration 0 | Checksum: 12bcfde41
+Phase 4.1 Global Iteration 0 | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
-Phase 4 Rip-up And Reroute | Checksum: 12bcfde41
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
+Phase 4 Rip-up And Reroute | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
 
 Phase 5 Delay and Skew Optimization
-Phase 5 Delay and Skew Optimization | Checksum: 12bcfde41
+Phase 5 Delay and Skew Optimization | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
 
 Phase 6 Post Hold Fix
 
 Phase 6.1 Hold Fix Iter
-Phase 6.1 Hold Fix Iter | Checksum: 12bcfde41
+Phase 6.1 Hold Fix Iter | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
-Phase 6 Post Hold Fix | Checksum: 12bcfde41
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
+Phase 6 Post Hold Fix | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
 
 Phase 7 Route finalize
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 0.0213665 %
-  Global Horizontal Routing Utilization  = 0.0121031 %
+  Global Vertical Routing Utilization    = 0.0145898 %
+  Global Horizontal Routing Utilization  = 0.0201718 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
@@ -418,10 +730,10 @@ Router Utilization Summary
   Number of Node Overlaps             = 0
 
 Congestion Report
-North Dir 1x1 Area, Max Cong = 1.8018%, No Congested Regions.
-South Dir 1x1 Area, Max Cong = 32.4324%, No Congested Regions.
-East Dir 1x1 Area, Max Cong = 4.41176%, No Congested Regions.
-West Dir 1x1 Area, Max Cong = 16.1765%, No Congested Regions.
+North Dir 1x1 Area, Max Cong = 9.90991%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 27.027%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 19.1176%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 20.5882%, No Congested Regions.
 
 ------------------------------
 Reporting congestion hotspots
@@ -443,47 +755,48 @@ Direction: West
 Congested clusters found at Level 0
 Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
 
-Phase 7 Route finalize | Checksum: 12bcfde41
+Phase 7 Route finalize | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.305 ; gain = 88.344
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1708.660 ; gain = 89.824
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 12bcfde41
+Phase 8 Verifying routed nets | Checksum: 19abf7edb
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.938 ; gain = 88.977
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1709.285 ; gain = 90.449
 
 Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 12bcfde41
+Phase 9 Depositing Routes | Checksum: 1e88d229e
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.938 ; gain = 88.977
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1709.285 ; gain = 90.449
 INFO: [Route 35-16] Router Completed Successfully
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:21 . Memory (MB): peak = 1711.938 ; gain = 88.977
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1709.285 ; gain = 90.449
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
-56 Infos, 1 Warnings, 2 Critical Warnings and 0 Errors encountered.
+63 Infos, 101 Warnings, 101 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:22 . Memory (MB): peak = 1711.938 ; gain = 98.086
+route_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:24 . Memory (MB): peak = 1709.285 ; gain = 96.523
+INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1721.840 ; gain = 9.902
-INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_routed.dcp' has been generated.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.061 . Memory (MB): peak = 1719.172 ; gain = 9.887
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_routed.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_drc -file INPUT_drc_routed.rpt -pb INPUT_drc_routed.pb -rpx INPUT_drc_routed.rpx
 Command: report_drc -file INPUT_drc_routed.rpt -pb INPUT_drc_routed.pb -rpx INPUT_drc_routed.rpx
 INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
-INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_drc_routed.rpt.
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_drc_routed.rpt.
 report_drc completed successfully
 INFO: [runtcl-4] Executing : report_methodology -file INPUT_methodology_drc_routed.rpt -pb INPUT_methodology_drc_routed.pb -rpx INPUT_methodology_drc_routed.rpx
 Command: report_methodology -file INPUT_methodology_drc_routed.rpt -pb INPUT_methodology_drc_routed.pb -rpx INPUT_methodology_drc_routed.rpx
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [DRC 23-133] Running Methodology with 2 threads
-INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/impl_1/INPUT_methodology_drc_routed.rpt.
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT_methodology_drc_routed.rpt.
 report_methodology completed successfully
 INFO: [runtcl-4] Executing : report_power -file INPUT_power_routed.rpt -pb INPUT_power_summary_routed.pb -rpx INPUT_power_routed.rpx
 Command: report_power -file INPUT_power_routed.rpt -pb INPUT_power_summary_routed.pb -rpx INPUT_power_routed.rpx
@@ -493,7 +806,7 @@ Resolution: Please specify clocks using create_clock/create_generated_clock for 
 Running Vector-less Activity Propagation...
 
 Finished Running Vector-less Activity Propagation
-67 Infos, 2 Warnings, 2 Critical Warnings and 0 Errors encountered.
+75 Infos, 102 Warnings, 101 Critical Warnings and 0 Errors encountered.
 report_power completed successfully
 INFO: [runtcl-4] Executing : report_route_status -file INPUT_route_status.rpt -pb INPUT_route_status.pb
 INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file INPUT_timing_summary_routed.rpt -pb INPUT_timing_summary_routed.pb -rpx INPUT_timing_summary_routed.rpx -warn_on_violation 
@@ -506,4 +819,4 @@ INFO: [runtcl-4] Executing : report_clock_utilization -file INPUT_clock_utilizat
 INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file INPUT_bus_skew_routed.rpt -pb INPUT_bus_skew_routed.pb -rpx INPUT_bus_skew_routed.rpx
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
-INFO: [Common 17-206] Exiting Vivado at Thu Sep  9 19:20:49 2021...
+INFO: [Common 17-206] Exiting Vivado at Wed Sep 22 00:26:22 2021...

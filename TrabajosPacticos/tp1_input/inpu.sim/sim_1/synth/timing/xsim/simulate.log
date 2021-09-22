@@ -1,0 +1,86 @@
+Time resolution is 1 ps
+dato A =  16 
+dato B =  21 
+operation 100000 
+Out operation:   0, 00000000
+_____________
+
+dato A =  49 
+dato B =  58 
+operation 100000 
+Out operation:  58, 00111010
+_____________
+
+dato A = 108 
+dato B =  74 
+operation 100010 
+Out operation:  34, 00100010
+_____________
+
+dato A =  68 
+dato B = 123 
+operation 100111 
+Out operation: 128, 10000000
+_____________
+
+dato A =  77 
+dato B = 103 
+operation 100010 
+Out operation: 230, 11100110
+_____________
+
+dato A = 108 
+dato B =  43 
+operation 100101 
+Out operation: 111, 01101111
+_____________
+
+dato A =  69 
+dato B = 120 
+operation 000010 
+Out operation:   0, 00000000
+_____________
+
+dato A = 104 
+dato B = 101 
+operation 100110 
+Out operation:  13, 00001101
+_____________
+
+dato A =   6 
+dato B =  42 
+operation 100000 
+Out operation:  48, 00110000
+_____________
+
+dato A =  11 
+dato B =  19 
+operation 100000 
+Out operation:  30, 00011110
+_____________
+
+dato A =  59 
+dato B =  25 
+operation 100110 
+Out operation:  34, 00100010
+_____________
+
+dato A = 100 
+dato B =  37 
+operation 100000 
+Out operation: 137, 10001001
+_____________
+
+dato A = 113 
+dato B =  96 
+operation 100101 
+Out operation: 113, 01110001
+_____________
+
+dato A =  41 
+dato B =  68 
+operation 000011 
+Out operation:   0, 00000000
+_____________
+
+dato A = 116 

@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Laudi/vivado_projects/ArquiComp2021/Trabajos Pacticos/tp1_input/inpu.runs/synth_1'
+HD_PWD='C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Thu Sep  9 19:20:49 2021
+| Date         : Wed Sep 22 00:26:22 2021
 | Host         : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file INPUT_timing_summary_routed.rpt -pb INPUT_timing_summary_routed.pb -rpx INPUT_timing_summary_routed.rpx -warn_on_violation
 | Design       : INPUT
@@ -56,7 +56,7 @@ Table of Contents
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (44)
 5. checking no_input_delay (11)
-6. checking no_output_delay (22)
+6. checking no_output_delay (8)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -93,9 +93,9 @@ Table of Contents
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (22)
---------------------------------
- There are 22 ports with no output delay specified. (HIGH)
+6. checking no_output_delay (8)
+-------------------------------
+ There are 8 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 

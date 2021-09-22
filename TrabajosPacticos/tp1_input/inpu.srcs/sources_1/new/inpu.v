@@ -27,8 +27,6 @@ module INPUT
 )
 
 (
-    /* ENABLE ALU */
-    input wire en,
     /* DATO */
     input   wire   [NB_DATA - 1:0] DATO,
     /* SELECT */
@@ -46,9 +44,10 @@ module INPUT
     reg [NB_DATA    - 1 :0]      DB_reg;
     reg [5              :0]      OP_reg;
 
-    alu myAlu (.i_a(DA_reg), .i_b(DB_reg), .i_op(OP_reg), .en(en), .o_o(o_alu));
+    alu myAlu (.i_a(DA_reg), .i_b(DB_reg), .i_op(OP_reg), .o_o(o_alu));
     /* Entrada Dato A*/
-    always @(posedge CLOCK) begin : Input_A
+    always @(posedge CLOCK)
+    begin : Input_A
         if (selA) begin
             DA_reg <= DATO;
         end
