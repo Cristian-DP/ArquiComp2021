@@ -2,5 +2,6 @@
 2020.2
 Jun 10 2021
 20:04:57
-C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.sim/sim_1/synth/timing/xsim/testGeneral_time_synth.v,1632281277,verilog,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sim_1/new/testGeneral.v,,INPUT;alu;glbl,,,,,,,,
+C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.sim/sim_1/synth/timing/xsim/aluTest_time_synth.v,1632429449,verilog,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sim_1/new/aluTest.v,,alu;glbl,,,,,,,,
+C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sim_1/new/aluTest.v,1632424558,verilog,,,,aluTest,,,,,,,,
 C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sim_1/new/testGeneral.v,1632280974,verilog,,,,testGeneral,,,,,,,,

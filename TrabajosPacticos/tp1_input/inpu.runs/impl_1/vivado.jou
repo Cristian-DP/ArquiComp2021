@@ -2,11 +2,11 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Wed Sep 22 00:25:18 2021
-# Process ID: 26300
+# Start of session at: Thu Sep 23 17:11:12 2021
+# Process ID: 57156
 # Current directory: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1
-# Command line: vivado.exe -log INPUT.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source INPUT.tcl -notrace
-# Log file: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/INPUT.vdi
+# Command line: vivado.exe -log alu.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source alu.tcl -notrace
+# Log file: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1/alu.vdi
 # Journal file: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
-source INPUT.tcl -notrace
+source alu.tcl -notrace

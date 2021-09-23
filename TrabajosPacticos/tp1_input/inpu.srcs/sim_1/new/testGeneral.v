@@ -1,11 +1,10 @@
 `timescale 1ns / 1ps
 
-
 module testGeneral;
     parameter NB_D = 8;
 
     /* Datos */
-    reg clk;
+    reg CLOCK;
     reg D_A;
     reg D_B;
     reg D_Op;
@@ -15,33 +14,25 @@ module testGeneral;
     reg [5:0] D_Op_sw[7:0];
     
 
-    INPUT myINPUT (.DATO(D_DATO), .selA(D_A), .selB(D_B), .selOp(D_Op) , .CLOCK(clk), .o_alu(out_op));
+    INPUT myINPUT (.DATO(D_DATO), .selA(D_A), .selB(D_B), .selOp(D_Op) , .CLOCK(CLOCK), .o_alu(out_op));
 
     // CLOCK /////////////////////////////////////////////////
     parameter PERIOD = 10;
 
     always begin
-        clk = 1'b0;
-        #(PERIOD/2) clk = 1'b1;
+        CLOCK = 1'b0;
+        #(PERIOD/2) CLOCK = 1'b1;
         #(PERIOD/2);
     end
-    ///////////////////////////////////////////////////////////
 
-    //    always @(posedge clk) begin
-    //        D_DATO = $urandom_range(127,0);
-    //    end
-
-    //    always @(posedge clk) begin
-    //        D_Op = 1;
-    //    end
     reg [2:0]flag = 3'b000;
     reg [2:0]aux = 3'b000;
-    always @(posedge clk) begin
+    always @(posedge CLOCK) begin
 
         if(flag == 0)
         begin
-            D_DATO <= $urandom_range(127,0);
-            D_A <= 1;
+//            D_DATO <= $urandom_range(127,0);
+//            D_A <= 1;
         end
         
         if(flag == 1)
@@ -49,9 +40,9 @@ module testGeneral;
         
         if( flag == 3'b010)
         begin
-            D_A <= 0;
-            D_DATO <= $urandom_range(127,0);
-            D_B <= 1; 
+//            D_A <= 0;
+//            D_DATO <= $urandom_range(127,0);
+//            D_B <= 1; 
         end
         
         if(flag == 3)
@@ -59,11 +50,11 @@ module testGeneral;
         
         if( flag == 3'b100 )
         begin
-            D_A <= 0;
-            D_B <= 0;
-            aux <= $urandom_range(7,0);
-            D_DATO <= D_Op_sw[aux];
-            D_Op <= 1;
+//            D_A <= 0;
+//            D_B <= 0;
+//            aux <= $urandom_range(7,0);
+//            D_DATO <= D_Op_sw[aux];
+//            D_Op <= 1;
             $display ( "operation %b ", D_Op_sw[aux]);
         end
         flag <= flag + 3'b001;
@@ -93,14 +84,30 @@ module testGeneral;
         D_Op_sw [5] <= 6'b100110;
         D_Op_sw [6] <= 6'b000010;
         D_Op_sw [7] <= 6'b100111;
-        //        #10;
-        //        D_DATO = $urandom_range(127,0);
-        //        D_A = 1;
-        //        D_B = 0;
-        //        D_Op = 0;
+        
+        #12;                     //12
+        D_DATO = $urandom_range(127,0);
+        #1
+        D_A = 1;
 
-        //        #12
-        //        D_A = 0;
+        #4;                     //17
+        D_A = 0;                 
+        
+        #5;                     //22
+        D_DATO = $urandom_range(127,0);
+        #1
+        D_B = 1;
+
+        #4;                     //27
+        D_B = 0;
+        
+        #5;                     //32
+        D_DATO = D_Op_sw [$urandom_range(7,0)];
+        #1
+        D_Op = 1;
+        
+        #4;                     //37
+        D_Op = 0;
 
         //        #20;
         //        D_DATO = $urandom_range(127,0);

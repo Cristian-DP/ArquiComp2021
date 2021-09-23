@@ -1,29 +1,26 @@
 Vivado Simulator v2021.1
 Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
-Running: C:/xiling/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 1bf66f083dec48cb9b7511b230b40945 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot testGeneral_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.testGeneral xil_defaultlib.glbl -log elaborate.log 
+Running: C:/xiling/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 1bf66f083dec48cb9b7511b230b40945 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot aluTest_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.aluTest xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
-INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "testGeneral_time_synth.sdf", for root module "testGeneral/myINPUT".
-INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "testGeneral_time_synth.sdf", for root module "testGeneral/myINPUT".
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "aluTest_time_synth.sdf", for root module "aluTest/myAlu".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "aluTest_time_synth.sdf", for root module "aluTest/myAlu".
 Time Resolution for simulation is 1ps
-Compiling module simprims_ver.BUFG
 Compiling module simprims_ver.IBUF
-Compiling module simprims_ver.FDRE_default
+Compiling module simprims_ver.OBUF
+Compiling module simprims_ver.LUT6
+Compiling module simprims_ver.LUT5
 Compiling module simprims_ver.CARRY4
 Compiling module simprims_ver.x_lut3_mux8
 Compiling module simprims_ver.LUT3
 Compiling module simprims_ver.x_lut1_mux2
 Compiling module simprims_ver.LUT1(INIT=2'b10)
-Compiling module simprims_ver.LUT6
-Compiling module simprims_ver.LUT5
-Compiling module xil_defaultlib.alu
-Compiling module simprims_ver.OBUF
 Compiling module simprims_ver.LUT4
-Compiling module xil_defaultlib.INPUT
-Compiling module xil_defaultlib.testGeneral
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.aluTest
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot testGeneral_time_synth
+Built simulation snapshot aluTest_time_synth

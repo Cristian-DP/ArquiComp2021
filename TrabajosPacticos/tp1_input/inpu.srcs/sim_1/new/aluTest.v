@@ -1,116 +1,80 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 15.09.2021 21:09:31
-// Design Name: 
-// Module Name: aluTest
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
+`define assert(signal, operation, value)                                            \
+        if (signal == value) begin                                                  \
+            $display("ASSERTION PASSED in operation: %b , signal %d = value %d"      \
+            ,operation, signal, value );                                             \
+        end                                                                         \
+        else begin                                                                  \
+            $display("ASSERTION FAILED in operation: %b , signal %d != value %d"    \
+            ,operation, signal, value );                                            \
+            //$finish;                                                                \
+        end
+        
 
 module aluTest;
     parameter NB_D = 8;
-
     /* Datos */
-    reg       clk;
-    reg		en;
-    reg       [NB_D - 1:0] D_A;
-    reg       [NB_D - 1:0] D_B;
-    reg       [5:0] D_OP;
-    wire      [NB_D - 1:0] FO;
+    reg       [NB_D - 1:0] i_a;
+    reg       [NB_D - 1:0] i_b;
+    reg       [5:0] i_op;
+    wire      [NB_D - 1:0] o_o;
 
-    alu myAlu (.i_a(D_A), .i_b(D_B), .i_op(D_OP) , .o_o(FO), .en(en));
+    reg [5:0] D_Op_sw[7:0];
+
+    alu myAlu (.i_a(i_a), .i_b(i_b), .i_op(i_op) , .o_o(o_o));
+
+    //////CLOCK/////////////////////
+    reg CLOCK;
+    parameter PERIOD = 10;
+    always begin
+        CLOCK = 1'b0;
+        #(PERIOD/2) CLOCK = 1'b1;
+        #(PERIOD/2);
+    end
+    ///////////////////////////////		
+    
+    reg count = 1'b0;
+    always @(posedge CLOCK) begin
+        if( count == 1'b0 )
+        begin
+            i_a <= $random();
+            i_b <= $random();
+            i_op <= D_Op_sw [$urandom_range(7,0)];
+        end
+        if( count == 1'b1 )
+        begin
+            case(i_op)
+                D_Op_sw [0]: `assert(o_o, i_op , i_a + i_b)
+                D_Op_sw [1]: `assert(o_o, i_op , i_a - i_b)
+                D_Op_sw [2]: `assert(o_o, i_op , i_a & i_b)
+                D_Op_sw [3]: `assert(o_o, i_op , i_a | i_b)
+                D_Op_sw [4]: `assert(o_o, i_op , i_a ^ i_b)
+                D_Op_sw [5]: `assert(o_o, i_op , i_a >>> i_b)
+                D_Op_sw [6]: `assert(o_o, i_op , i_a >> i_b)
+                D_Op_sw [7]: `assert(o_o, i_op , ~(i_a | i_b))
+            endcase
+        end
+        count <= count + 1'b1;     
+    end
+				
     /* Se realiza la operacion deseada */
     initial
     begin
-        en = 0;
-        #5
-        $display("add");
-        en = 1;
-        D_A = 8'b00000000;
-        D_B = 8'b00000001;
-        D_OP = 6'b100000;
-
-        #5
-        en = 0;
-
-        #5
-        $display("sub");
-        en = 1;
-        D_A = 8'b00000110;
-        D_B = 8'b00000101;
-        D_OP = 6'b100010;
-        #5
-        en = 0;
-
-        #5
-        $display("and");
-        en = 1;
-        D_A = 8'b00000111;
-        D_B = 8'b00000101;
-        D_OP = 6'b100100;
-
-        #5
-        en = 0;
-
-        #5
-        $display("xor");
-        en = 1;
-        D_A = 8'b00000111;
-        D_B = 8'b00000101;
-        D_OP = 6'b100110;
-        #5
-        en = 0;
-
-        #5
-        $display("SRA");
-        en = 1;
-        D_A = 8'b10000111;
-        D_B = 8'b00000001;
-        D_OP = 6'b000011;
-        #5
-        en = 0;
-
-        #30
-        $display("SRL");
-        en = 1;
-        D_A = 8'b00000111;
-        D_B = 8'b00000001;
-        D_OP = 6'b000010;
-        #5
-        en = 0;
-
-        #5
-        $display("NOR");
-        en = 1;
-        D_A = 8'b00000111;
-        D_B = 8'b00000101;
-        D_OP = 6'b100111;
-        #5
-        en = 0;
-
-        #5
-        $display("NO PASA NADA");
-        en = 1;
-        D_A = 8'b00000111;
-        D_B = 8'b00000101;
-        D_OP = 6'b111111;
-        #5
-        en = 0;
+        i_a <= 8'b0;
+        i_b <= 8'b0;
+        i_op <= 6'b0;
+        
+        D_Op_sw [0] <= 6'b100000;
+        D_Op_sw [1] <= 6'b100010;
+        D_Op_sw [2] <= 6'b100100;
+        D_Op_sw [3] <= 6'b100101;
+        D_Op_sw [4] <= 6'b100110;
+        D_Op_sw [5] <= 6'b000011;
+        D_Op_sw [6] <= 6'b000010;
+        D_Op_sw [7] <= 6'b100111;
 
     end
 
-    initial $monitor(D_A, D_B, FO);
+    //initial $monitor(D_A, D_B, FO);
 endmodule

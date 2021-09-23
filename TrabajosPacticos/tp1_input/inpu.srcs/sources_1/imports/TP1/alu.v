@@ -58,11 +58,11 @@ module alu
             end
             /* SRA */
             6'b000011: begin
-                o_o = i_a >> i_b;
+                o_o = i_a >>> i_b;
             end
             /* SRL */
             6'b000010: begin
-                o_o = (i_a >> i_b);
+                o_o = i_a >> i_b;
             end
             /* NOR */
             6'b100111: begin
