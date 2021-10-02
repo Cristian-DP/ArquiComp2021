@@ -29,9 +29,9 @@ module alu
     input  wire [ N_BITS - 1 : 0 ] i_a, //input a 
     input  wire [ N_BITS - 1 : 0 ] i_b, //input b 
     input  wire [ 5 : 0 ] i_op, //input operation
-    output reg  [ N_BITS - 1 : 0 ] o_o //output operation
+    output reg  [ N_BITS - 1 : 0 ] o_o//output operation
 );
-
+    
     always @(*) begin //CIRCUITO CONBINACIONAL
         o_o = 8'b0000_0000; //valor por DEFAULT
         case (i_op)

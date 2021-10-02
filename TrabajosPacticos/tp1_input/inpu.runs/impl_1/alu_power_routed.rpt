@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date             : Thu Sep 23 17:12:01 2021
+| Date             : Thu Sep 30 19:33:43 2021
 | Host             : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 | Command          : report_power -file alu_power_routed.rpt -pb alu_power_summary_routed.pb -rpx alu_power_routed.rpx
 | Design           : alu

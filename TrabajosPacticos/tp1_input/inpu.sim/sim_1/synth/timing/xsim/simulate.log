@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+ASSERTION FAILED in operation: 100000 , signal   0 != value  37
+ASSERTION PASSED in operation: 100010 , signal 247 = value 247
+ASSERTION PASSED in operation: 100111 , signal 145 = value 145
+ASSERTION PASSED in operation: 100010 , signal 201 = value 201
+ASSERTION PASSED in operation: 100101 , signal 111 = value 111
+ASSERTION PASSED in operation: 000010 , signal   0 = value   0
+ASSERTION PASSED in operation: 000011 , signal   0 = value   0
+ASSERTION PASSED in operation: 100000 , signal 205 = value 205

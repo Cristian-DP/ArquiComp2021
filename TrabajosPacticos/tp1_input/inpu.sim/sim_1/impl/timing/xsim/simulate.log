@@ -1,0 +1,25 @@
+Time resolution is 1 ps
+ASSERTION PASSED in operation: 100111 , signal   6 = value   6
+ASSERTION PASSED in operation: 100101 , signal 255 = value 255
+ASSERTION PASSED in operation: 100110 , signal  26 = value  26
+ASSERTION PASSED in operation: 000011 , signal   0 = value   0
+ASSERTION PASSED in operation: 100111 , signal 160 = value 160
+ASSERTION PASSED in operation: 100111 , signal  33 = value  33
+ASSERTION PASSED in operation: 100100 , signal 176 = value 176
+ASSERTION PASSED in operation: 100000 , signal  69 = value  69
+ASSERTION PASSED in operation: 100110 , signal 120 = value 120
+ASSERTION PASSED in operation: 100101 , signal 253 = value 253
+ASSERTION PASSED in operation: 100010 , signal  62 = value  62
+ASSERTION PASSED in operation: 100111 , signal  34 = value  34
+ASSERTION PASSED in operation: 100100 , signal   0 = value   0
+ASSERTION PASSED in operation: 000010 , signal   0 = value   0
+ASSERTION PASSED in operation: 100101 , signal 187 = value 187
+ASSERTION PASSED in operation: 000010 , signal   0 = value   0
+ASSERTION PASSED in operation: 100010 , signal 140 = value 140
+ASSERTION PASSED in operation: 000010 , signal   0 = value   0
+ASSERTION PASSED in operation: 100110 , signal 200 = value 200
+ASSERTION PASSED in operation: 000011 , signal   0 = value   0
+ASSERTION PASSED in operation: 100010 , signal 142 = value 142
+ASSERTION PASSED in operation: 100100 , signal 160 = value 160
+ASSERTION PASSED in operation: 000010 , signal   0 = value   0
+ASSERTION PASSED in operation: 100111 , signal 128 = value 128

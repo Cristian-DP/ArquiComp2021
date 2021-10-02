@@ -26,7 +26,7 @@ module aluTest;
 
     //////CLOCK/////////////////////
     reg CLOCK;
-    parameter PERIOD = 10;
+    parameter PERIOD = 15;
     always begin
         CLOCK = 1'b0;
         #(PERIOD/2) CLOCK = 1'b1;
@@ -35,25 +35,27 @@ module aluTest;
     ///////////////////////////////		
     
     reg count = 1'b0;
+    reg [7:0]aux = 8'b0;
     always @(posedge CLOCK) begin
         if( count == 1'b0 )
         begin
-            i_a <= $random();
-            i_b <= $random();
+            i_a <= $urandom_range(255,0);
+            i_b <= $urandom_range(255,0);
             i_op <= D_Op_sw [$urandom_range(7,0)];
         end
         if( count == 1'b1 )
         begin
             case(i_op)
-                D_Op_sw [0]: `assert(o_o, i_op , i_a + i_b)
-                D_Op_sw [1]: `assert(o_o, i_op , i_a - i_b)
-                D_Op_sw [2]: `assert(o_o, i_op , i_a & i_b)
-                D_Op_sw [3]: `assert(o_o, i_op , i_a | i_b)
-                D_Op_sw [4]: `assert(o_o, i_op , i_a ^ i_b)
-                D_Op_sw [5]: `assert(o_o, i_op , i_a >>> i_b)
-                D_Op_sw [6]: `assert(o_o, i_op , i_a >> i_b)
-                D_Op_sw [7]: `assert(o_o, i_op , ~(i_a | i_b))
+                D_Op_sw [0]: aux = i_a + i_b; 
+                D_Op_sw [1]: aux = i_a - i_b; 
+                D_Op_sw [2]: aux = i_a & i_b;
+                D_Op_sw [3]: aux = i_a | i_b;
+                D_Op_sw [4]: aux = i_a ^ i_b;
+                D_Op_sw [5]: aux = i_a >>> i_b;
+                D_Op_sw [6]: aux = i_a >> i_b;
+                D_Op_sw [7]: aux = ~(i_a | i_b);
             endcase
+            `assert(o_o, i_op , aux[7:0])
         end
         count <= count + 1'b1;     
     end

@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"aluTest_time_impl.v" \
+"../../../../../inpu.srcs/sim_1/new/aluTest.v" \
+"../../../../../inpu.srcs/sim_1/new/testInput.v" \
+"../../../../../inpu.srcs/sim_1/new/testGeneral.v" \
+
+# Do not sort compile order
+nosort
