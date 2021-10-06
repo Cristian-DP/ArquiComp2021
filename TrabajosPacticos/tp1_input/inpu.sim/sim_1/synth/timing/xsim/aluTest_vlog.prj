@@ -1,6 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"testGeneral_time_synth.v" \
+"aluTest_time_synth.v" \
 "../../../../../inpu.srcs/sim_1/new/aluTest.v" \
 "../../../../../inpu.srcs/sim_1/new/testInput.v" \
 "../../../../../inpu.srcs/sim_1/new/testGeneral.v" \
