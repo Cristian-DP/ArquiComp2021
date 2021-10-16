@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module state_machine
+module state_machine_rx
 #(
     parameter   NB_STATE    = 1   
 )
