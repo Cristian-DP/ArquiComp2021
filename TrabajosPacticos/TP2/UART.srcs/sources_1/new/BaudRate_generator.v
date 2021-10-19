@@ -2,11 +2,10 @@
 
 module BaudRate_generatormodule
 #(
-    parameter   CLOCK_FREQ       = 50000000,
-    parameter   BAUD_RATE        = 19200,
+    parameter   CLOCK_FREQ       = 50000000, //50Mhz
+    parameter   BAUD_RATE        = 19200,    //19,2Khz
     parameter   DIVISION         = 16,
-    parameter   N_CLOCKS         = CLOCK_FREQ/(BAUD_RATE*DIVISION),
-    parameter   INITIAL_N_CLOCKS = N_CLOCKS/2
+    parameter   N_CLOCKS         = CLOCK_FREQ/(BAUD_RATE*DIVISION)
 )
 (
     // OUTPUTS
@@ -16,18 +15,14 @@ module BaudRate_generatormodule
     // Memory 
     reg [7: 0]  ticks,
 );
-    reg initial_aux     = 1'b1;
-    reg [7:0]n_clocks   = INITIAL_N_CLOCKS;
+
     always @(posedge CLOCK) begin
-        if (!initial_aux)
-            n_clocks <= N_CLOCKS;
-            
-        if (ticks == n_clocks) begin
+        if (ticks == N_CLOCKS) begin
             s_tick <= 1;
             ticks  <= 0;
-            initial_aux <= 0;
         end
         else begin
+            s_tick <= 0;
             ticks = ticks + 1;
         end
     end

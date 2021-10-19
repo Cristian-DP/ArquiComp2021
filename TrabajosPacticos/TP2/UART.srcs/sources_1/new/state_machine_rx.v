@@ -2,189 +2,107 @@
 
 module state_machine_rx
 #(
-    parameter   NB_STATE    = 1   
+    parameter   NB_STATE        = 4,
+    parameter   N_DATA          = 8,
+    parameter   START_VALUE     = 0,
+    parameter   STARTS_TICKS    = 7,
+    parameter   DATA_TICKS      = 15,  
 )
 (
     // OUTPUTS
-    output wire [NB_STATE -1:0] o_state,
-    output wire o_waiting,
-    output wire o_sending,
-    
+    output wire [7:0] o_data,
+    output wire rx_done_tick,
     // INPUTS
-    input wire  i_valid,
-    input wire  i_start_posedge,
-    input wire  i_negedde,
-    
-    // CLOCK Y RESET
-    input wire  i_reset,
-    input wire  i_clock    
+    input wire  rx,
+    input wire  i_tick
 );
+    // TICKS CONTROL
+    reg [3:0] count_ticks;
+    // DATA CONTROL
+    reg [8:0] reg_data;
+    reg [3:0] count_data;
+    reg is_valid = 1;
+    // STATES
+    parameter STATE_IDLE  = 4'b0001;
+    parameter STATE_START = 4'b0010;
+    parameter STATE_DATA  = 4'b0100;
+    parameter STATE_STOP  = 4'b1000;
 
-    localparam  [NB_STATE -1: 0]    STATE_WAITING = 1'd0;
-    localparam  [NB_STATE -1: 0]    STATE_WAITING = 1'd1;
-    
-    
-   parameter <state1>  = 16'b0000000000000001;
-   parameter <state2>  = 16'b0000000000000010;
-   parameter <state3>  = 16'b0000000000000100;
-   parameter <state4>  = 16'b0000000000001000;
-   parameter <state5>  = 16'b0000000000010000;
-   parameter <state6>  = 16'b0000000000100000;
-   parameter <state7>  = 16'b0000000001000000;
-   parameter <state8>  = 16'b0000000010000000;
-   parameter <state9>  = 16'b0000000100000000;
-   parameter <state10> = 16'b0000001000000000;
-   parameter <state11> = 16'b0000010000000000;
-   parameter <state12> = 16'b0000100000000000;
-   parameter <state13> = 16'b0001000000000000;
-   parameter <state14> = 16'b0010000000000000;
-   parameter <state15> = 16'b0100000000000000;
-   parameter <state16> = 16'b1000000000000000;
+    reg [NB_STATE - 1:0] current_state = STATE_IDLE;
+    reg [NB_STATE - 1:0] next_state = STATE_START;
 
-   reg [15:0] <state> = <state1>;
-
-   always @(posedge <clock>)
-      if (<reset>)
-         <state> <= <state1>;
-      else
-         case (state)
-            <state1> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
+    always @(*) begin: state_logic
+        case (current_state)
+            STATE_IDLE : begin
+                case(rx)
+                    1'b0   :   next_state = STATE_START;
+                    default:   next_state = STATE_IDLE;
+                endcase
             end
-            <state2> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
+            STATE_START : begin
+                if (i_tick) begin
+                    count_ticks = count_ticks + 1;
+                    case(count_ticks)
+                            STARTS_TICKS:   begin 
+                                                count_ticks     = 0;
+                                                next_state      = STATE_DATA;                                                    
+                                            end
+                            default:        next_state  = STATE_START;   
+                    endcase
+                end
             end
-            <state3> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
+            STATE_DATA : begin
+                if (i_tick) begin
+                    count_ticks = count_ticks + 1;
+                    case(count_ticks)
+                            DATA_TICKS:     begin
+                                                count_ticks     = 0;
+                                                count_data      = count_data + 1;
+                                                reg_data        = {rx , reg_data[8 : 1]};
+                                                if(count_data == N_DATA) begin
+                                                    // implementar analisis de bit de paridad
+                                                    /////////////////////////////////////////
+                                                    count_data  = 0;
+                                                    next_state  = STATE_STOP;
+                                                end
+                                                else next_state  = STATE_DATA;                                                
+                                            end
+                            default:        next_state  = STATE_DATA;   
+                    endcase
+                end
             end
-            <state4> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state5> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state6> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state7> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state8> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state9> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state10> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state11> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state12> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state13> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state14> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state15> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            <state16> : begin
-               if (<condition>)
-                  <state> <= <next_state>;
-               else if (<condition>)
-                  <state> <= <next_state>;
-               else
-                  <state> <= <next_state>;
-            end
-            default : begin  // Fault Recovery
-               <state> <= <state1>;
+            STATE_STOP : begin
+                if (i_tick) begin
+                    count_ticks <= count_ticks + 1;
+                    case(count_ticks)
+                            DATA_TICKS:     begin
+                                                count_ticks     = 0;
+                                                if(rx) begin
+                                                    rx_done_tick    = 1'b1;
+                                                    next_state      = STATE_IDLE;  
+                                                end
+                                                else is_valid = 0;                                        
+                                            end
+                            default:        next_state  = STATE_STOP;   
+                    endcase
+                end
             end
          endcase
+    end
 
-   assign <output1> = <logic_equation_based_on_states_and_inputs>;
-   assign <output2> = <logic_equation_based_on_states_and_inputs>;
-   // Add other output equations as necessary
-							
+//    always @(posedge i_tick, posedge reset)
+//        if(i_reset) begin
+//          state <= STATE_IDLE;
+//          s_reg <= 0;
+//          n_reg <= 0;
+//          b_reg <= 0;
+//        else if(is_valid)
+//          state <= next_state;
+//          s_reg <= s_next;
+//          n_reg <= n_next;
+//          b_reg <= b_next;
 
-
+   assign o_data    = reg_data [7:0];
+   //assign o_status  = <logic_equation_based_on_states_and_inputs>;
+	
 endmodule
