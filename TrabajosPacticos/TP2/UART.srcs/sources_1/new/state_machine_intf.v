@@ -2,25 +2,32 @@
 
 module state_machine_intf
 #(
-    parameter   NB_STATE    = 1   
+    parameter   DATA_LEGHT  = 8
 )
 (
     // OUTPUTS
-    output wire [NB_STATE -1:0] o_state,
-    output wire o_waiting,
-    output wire o_sending,
+    output wire [DATA_LEGHT -1:0] o_data_A,
+    output wire [DATA_LEGHT -1:0] o_data_B,
+    output wire [DATA_LEGHT -1:0] o_data_Op,
     
     // INPUTS
-    input wire  i_valid,
-    input wire  i_start_posedge,
+    input wire  [DATA_LEGHT - 1:0]i_data,
+    input wire  i_ready_flag,
     input wire  i_negedde,
     
+    // AUX REGS
+    reg new_op = 0
     // CLOCK Y RESET
-    input wire  i_reset,
-    input wire  i_clock    
+//    input wire  i_reset,
+//    input wire  i_clock    
 );
 
-    localparam  [NB_STATE -1: 0]    STATE_WAITING = 1'd0;
-    localparam  [NB_STATE -1: 0]    STATE_WAITING = 1'd1;
+    parameter DATA_WAITING  = 6'b000001;
+    parameter SAVE_DATA_A   = 4'b000010;
+    parameter SAVE_DATA_B   = 4'b000100;
+    parameter SAVE_DATA_OP  = 4'b001000;
+    parameter OP_WAITING    = 4'b010000;
+    parameter OP_SAVE       = 4'b100000;
+    
 
 endmodule

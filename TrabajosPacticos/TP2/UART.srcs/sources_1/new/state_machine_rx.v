@@ -6,7 +6,7 @@ module state_machine_rx
     parameter   N_DATA          = 8,
     parameter   START_VALUE     = 0,
     parameter   STARTS_TICKS    = 7,
-    parameter   DATA_TICKS      = 15,  
+    parameter   DATA_TICKS      = 15 
 )
 (
     // OUTPUTS
@@ -29,7 +29,7 @@ module state_machine_rx
     parameter STATE_STOP  = 4'b1000;
 
     reg [NB_STATE - 1:0] current_state = STATE_IDLE;
-    reg [NB_STATE - 1:0] next_state = STATE_START;
+    reg [NB_STATE - 1:0] next_state = STATE_IDLE;
 
     always @(*) begin: state_logic
         case (current_state)
@@ -90,19 +90,14 @@ module state_machine_rx
          endcase
     end
 
-//    always @(posedge i_tick, posedge reset)
-//        if(i_reset) begin
-//          state <= STATE_IDLE;
-//          s_reg <= 0;
-//          n_reg <= 0;
-//          b_reg <= 0;
-//        else if(is_valid)
-//          state <= next_state;
-//          s_reg <= s_next;
-//          n_reg <= n_next;
-//          b_reg <= b_next;
+    always @(posedge i_tick, posedge reset) begin
+        if(i_reset)
+          state <= STATE_IDLE;
+        else if(is_valid)
+          current_state <= next_state;
+    end
+
 
    assign o_data    = reg_data [7:0];
-   //assign o_status  = <logic_equation_based_on_states_and_inputs>;
 	
 endmodule
