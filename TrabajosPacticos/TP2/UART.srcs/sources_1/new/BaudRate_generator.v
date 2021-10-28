@@ -13,7 +13,7 @@ module BaudRate_generatormodule
     // INPUTS
     input wire  clock,
     // Memory 
-    reg [7: 0]  ticks,
+    reg [7: 0]  ticks
 );
 
     always @(posedge CLOCK) begin
