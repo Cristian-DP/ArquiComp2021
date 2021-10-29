@@ -14,7 +14,8 @@ module state_machine_rx
     output wire rx_done_tick,
     // INPUTS
     input wire  rx,
-    input wire  i_tick
+    input wire  i_tick,
+    input wire clock
 );
     // TICKS CONTROL
     reg [3:0] count_ticks;
@@ -23,10 +24,10 @@ module state_machine_rx
     reg [3:0] count_data;
     reg is_valid = 1;
     // STATES
-    parameter STATE_IDLE  = 4'b0001;
-    parameter STATE_START = 4'b0010;
-    parameter STATE_DATA  = 4'b0100;
-    parameter STATE_STOP  = 4'b1000;
+    localparam STATE_IDLE  = 4'b0001;
+    localparam STATE_START = 4'b0010;
+    localparam STATE_DATA  = 4'b0100;
+    localparam STATE_STOP  = 4'b1000;
 
     reg [NB_STATE - 1:0] current_state = STATE_IDLE;
     reg [NB_STATE - 1:0] next_state = STATE_IDLE;
@@ -40,61 +41,56 @@ module state_machine_rx
                 endcase
             end
             STATE_START : begin
-                if (i_tick) begin
-                    count_ticks = count_ticks + 1;
-                    case(count_ticks)
-                            STARTS_TICKS:   begin 
-                                                count_ticks     = 0;
-                                                next_state      = STATE_DATA;                                                    
-                                            end
-                            default:        next_state  = STATE_START;   
-                    endcase
-                end
+                case(count_ticks)
+                    STARTS_TICKS:   begin 
+                        count_ticks     = 0;
+                        next_state      = STATE_DATA;                                                    
+                    end
+                    default:        next_state  = STATE_START;   
+                endcase
             end
             STATE_DATA : begin
-                if (i_tick) begin
-                    count_ticks = count_ticks + 1;
-                    case(count_ticks)
-                            DATA_TICKS:     begin
-                                                count_ticks     = 0;
-                                                count_data      = count_data + 1;
-                                                reg_data        = {rx , reg_data[8 : 1]};
-                                                if(count_data == N_DATA) begin
-                                                    // implementar analisis de bit de paridad
-                                                    /////////////////////////////////////////
-                                                    count_data  = 0;
-                                                    next_state  = STATE_STOP;
-                                                end
-                                                else next_state  = STATE_DATA;                                                
-                                            end
-                            default:        next_state  = STATE_DATA;   
-                    endcase
-                end
+                case(count_ticks)
+                    DATA_TICKS:     begin
+                        count_ticks     = 0;
+                        reg_data        = {rx , reg_data[8 : 1]};
+                        if(count_data == N_DATA) begin
+                        // implementar analisis de bit de paridad
+                        /////////////////////////////////////////
+                            count_data  = 0;
+                            next_state  = STATE_STOP;
+                        end
+                        else    next_state  = STATE_DATA;                                                
+                    end
+                    default:
+                        next_state  = STATE_DATA;   
+                endcase
             end
             STATE_STOP : begin
-                if (i_tick) begin
-                    count_ticks <= count_ticks + 1;
-                    case(count_ticks)
-                            DATA_TICKS:     begin
-                                                count_ticks     = 0;
-                                                if(rx) begin
-                                                    rx_done_tick    = 1'b1;
-                                                    next_state      = STATE_IDLE;  
-                                                end
-                                                else is_valid = 0;                                        
-                                            end
-                            default:        next_state  = STATE_STOP;   
-                    endcase
-                end
+                case(count_ticks)
+                    DATA_TICKS:     begin
+                        count_ticks         = 0;
+                        if(rx) begin
+                            rx_done_tick    = 1'b1;
+                            next_state      = STATE_IDLE;  
+                        end
+                        else is_valid = 0;                                        
+                    end
+                    default:    next_state  = STATE_STOP;   
+                endcase
             end
          endcase
     end
 
-    always @(posedge i_tick, posedge reset) begin
+    always @(posedge clock) begin
         if(i_reset)
           state <= STATE_IDLE;
-        else if(is_valid)
-          current_state <= next_state;
+        else if(is_valid) begin
+            if(i_tick) begin
+                count_data = count_data + 1;
+            end  
+            current_state <= next_state;
+        end
     end
 
 
