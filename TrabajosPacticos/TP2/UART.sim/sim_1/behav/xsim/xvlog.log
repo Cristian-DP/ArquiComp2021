@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sources_1/new/BaudRate_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BaudRate_generatormodule
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TestBaudRateGenerator

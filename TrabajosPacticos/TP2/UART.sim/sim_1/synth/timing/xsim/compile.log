@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.sim/sim_1/synth/timing/xsim/TestBaudRateGenerator_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module TestBaudRateGenerator

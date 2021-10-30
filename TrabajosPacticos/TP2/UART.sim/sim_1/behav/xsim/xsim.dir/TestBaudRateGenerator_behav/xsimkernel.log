@@ -1,0 +1,7 @@
+Running: xsim.dir/TestBaudRateGenerator_behav/xsimk.exe -simmode gui -wdb TestBaudRateGenerator_behav.wdb -simrunnum 0 -socket 58670
+Design successfully loaded
+Design Loading Memory Usage: 6220 KB (Peak: 6220 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 6876 KB (Peak: 6876 KB)
+Simulation CPU Usage: 93 ms

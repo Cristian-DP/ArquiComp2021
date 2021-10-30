@@ -9,21 +9,21 @@ module BaudRate_generatormodule
 )
 (
     // OUTPUTS
-    output wire s_tick,
+    output reg s_tick,
     // INPUTS
-    input wire  clock,
-    // Memory 
-    reg [7: 0]  ticks
+    input wire  clock
 );
+    // Memory 
+    reg [7: 0]  ticks = 0;
 
-    always @(posedge CLOCK) begin
+    always @(posedge clock) begin
+        ticks  <= ticks + 1'b1;
         if (ticks == N_CLOCKS) begin
-            s_tick <= 1;
+            s_tick <= 1'b1;
             ticks  <= 0;
         end
         else begin
-            s_tick <= 0;
-            ticks = ticks + 1;
+            s_tick <= 1'b0;
         end
     end
 

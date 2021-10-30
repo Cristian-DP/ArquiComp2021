@@ -1,28 +1,28 @@
 `timescale 1ns / 1ps
 
-module aluTest;
-    parameter   PERIOD = 15; // debe dar 50 Mh
+module TestBaudRateGenerator;
+    parameter   PERIOD = 10; // debe dar 50 Mh
     
-    reg         clk;
-    reg         s_tick;
-    reg [7:0]   tick;
-
+    reg         clock;
+    wire        s_tick;
+    
+    
     BaudRate_generatormodule myBaudRate_generatormodule(
-        .clk(clk), .s_tick(s_tick), .tick(tick)
+        .clock(clock), .s_tick(s_tick)
     );
 
  
     always begin
-        #(PERIOD/2) clk = ~clk;
+        #(PERIOD/2) clock = ~clock;
         #(PERIOD/2);
     end
 
+    //assign clk = clock;
+
 initial
     begin
-        clk       =   1'b0;
-        s_tick    =   1'b0;
-        tick      =   8'b0;
+        clock     =   1'b0;
     end
 
-    initial $monitor($time, clk, s_tick, tick);
+    initial $monitor(s_tick);
 endmodule

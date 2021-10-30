@@ -1,0 +1,14 @@
+Vivado Simulator v2021.1
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: C:/xiling/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 43132fedb0a24f9bafa2532ab0d50b07 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot TestBaudRateGenerator_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.TestBaudRateGenerator xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.BaudRate_generatormodule_default
+Compiling module xil_defaultlib.TestBaudRateGenerator
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot TestBaudRateGenerator_time_synth
