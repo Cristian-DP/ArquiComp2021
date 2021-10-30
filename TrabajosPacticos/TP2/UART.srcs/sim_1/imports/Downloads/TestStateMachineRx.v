@@ -8,13 +8,13 @@ module testRx;
     parameter   [2:0]   p       = 3'b0; // puntero a data_rx
 
     // _________ Baud Rate Generator _______________ //
-    reg         clk;
-    reg         s_tick;
-    reg [7:0]   tick;
+//    reg         clk;
+//    reg         s_tick;
+//    reg [7:0]   tick;
 
-    BaudRate_generatormodule myBaudRate_generatormodule(
-        .clk(clk), .s_tick(s_tick), .tick(tick)
-    );
+//    BaudRate_generatormodule myBaudRate_generatormodule(
+//        .clk(clk), .s_tick(s_tick), .tick(tick)
+//    );
     // _____________________________________________ //
     // _____________________ rx ____________________ //
     reg         i_tick;

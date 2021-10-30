@@ -11,9 +11,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=C:/xiling/Vivado/2021.1/ids_lite/ISE/bin/nt64;C:/xiling/Vivado/2021.1/ids_lite/ISE/lib/nt64:C:/xiling/Vivado/2021.1/bin
+  PATH=D:/Vivado/2021.2/ids_lite/ISE/bin/nt64;D:/Vivado/2021.2/ids_lite/ISE/lib/nt64:D:/Vivado/2021.2/bin
 else
-  PATH=C:/xiling/Vivado/2021.1/ids_lite/ISE/bin/nt64;C:/xiling/Vivado/2021.1/ids_lite/ISE/lib/nt64:C:/xiling/Vivado/2021.1/bin:$PATH
+  PATH=D:/Vivado/2021.2/ids_lite/ISE/bin/nt64;D:/Vivado/2021.2/ids_lite/ISE/lib/nt64:D:/Vivado/2021.2/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1'
+HD_PWD='C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -42,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log alu.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source alu.tcl -notrace
+EAStep vivado -log BaudRate_generatormodule.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source BaudRate_generatormodule.tcl -notrace
 
 

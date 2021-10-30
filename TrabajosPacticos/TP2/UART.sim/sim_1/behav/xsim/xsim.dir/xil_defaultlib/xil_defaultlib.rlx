@@ -1,7 +1,7 @@
 0.7
 2020.2
-Jun 10 2021
-20:04:57
-C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,,,,,,,
-C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v,1635552574,verilog,,,,TestBaudRateGenerator,,,,,,,,
-C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sources_1/new/BaudRate_generator.v,1635552838,verilog,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v,,BaudRate_generatormodule,,,,,,,,
+Oct 19 2021
+03:16:22
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.sim/sim_1/behav/xsim/glbl.v,1635613442,verilog,,,,glbl,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v,1635619052,verilog,,,,TestBaudRateGenerator,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sources_1/new/BaudRate_generator.v,1635618589,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v,,BaudRate_generatormodule,,,,,,,,

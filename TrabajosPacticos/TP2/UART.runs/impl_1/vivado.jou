@@ -1,12 +1,13 @@
 #-----------------------------------------------------------
-# Vivado v2021.1 (64-bit)
-# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
-# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Fri Oct 29 21:25:04 2021
-# Process ID: 1740
-# Current directory: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1
-# Command line: vivado.exe -log alu.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source alu.tcl -notrace
-# Log file: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1/alu.vdi
-# Journal file: C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1\vivado.jou
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Sat Oct 30 15:34:57 2021
+# Process ID: 9136
+# Current directory: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1
+# Command line: vivado.exe -log BaudRate_generatormodule.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source BaudRate_generatormodule.tcl -notrace
+# Log file: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1/BaudRate_generatormodule.vdi
+# Journal file: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/TP2/UART.runs/impl_1\vivado.jou
+# Running On: DESKTOP-05TNCFU, OS: Windows, CPU Frequency: 3693 MHz, CPU Physical cores: 8, Host memory: 14957 MB
 #-----------------------------------------------------------
-source alu.tcl -notrace
+source BaudRate_generatormodule.tcl -notrace
