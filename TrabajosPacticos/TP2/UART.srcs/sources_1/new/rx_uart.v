@@ -26,13 +26,13 @@ module rx_uart
     input   wire        clock
 );
     // contador de tick
-    reg [3:0]           count_ticks;
+    reg [3:0]           count_ticks     = 0;
     // registro de los datos leidos en rx
-    reg [N_DATA-1:0]    reg_data;
+    reg [N_DATA-1:0]    reg_data        = 0;
     // contador de datos leidos en rx
-    reg [3:0]           count_data;
+    reg [3:0]           count_data      = 0;
     // bit para .....
-    reg is_valid = 1;
+    reg is_valid                        = 1;
     
     // estados de la fsm
     localparam [ NB_STATE -1:0]
@@ -48,21 +48,24 @@ module rx_uart
     /**
         Logica de cambio de estado
     **/
-    always @(posedge clock)
-        if(is_valid) begin
+    always @(posedge clock) 
+        begin
             if (s_tick) begin
                 count_ticks <= count_ticks + 1;
             end
-            
-            current_state <= next_state;
-        end 
+            current_state   <= next_state;
+            rx_done_tick    <= 1'b0;
+        end
         
     always @(*) begin: state_logic
+         
          case (current_state)
             STATE_IDLE : begin
                 case(rx)
                     1'b0   :   next_state = STATE_START;
-                    default:   next_state = STATE_IDLE;
+                    default:   begin
+                        next_state = STATE_IDLE;
+                    end
                 endcase
             end
             // -------------------------------------------------------------------------- //
@@ -83,7 +86,11 @@ module rx_uart
                         begin
                             count_ticks     = 0;
                             count_data      = count_data + 1;
+                            // 0  0 0 0 0 0 0 0
+                            // rx(i) 0 0 0 0 0 0 0 
+                            // rx(i+1) rx(i) 0 0 0 0 0 
                             reg_data        = {rx , reg_data[7 : 1]};
+                            //reg_data        = rx;
                             if(count_data == N_DATA) begin
                                 count_data  = 0;
                                 next_state  = STATE_PAR;
@@ -99,7 +106,7 @@ module rx_uart
                     DATA_TICKS:     
                     begin
                         count_ticks     = 0;
-                        next_state  = STATE_DATA;                                                
+                        next_state  = STATE_STOP;                                                
                     end
                     default:   next_state  = STATE_PAR;   
                 endcase
@@ -114,7 +121,11 @@ module rx_uart
                             rx_done_tick    = 1'b1;
                             next_state      = STATE_IDLE;  
                         end
-                        else is_valid = 0;                                        
+                        else 
+                        begin
+                            is_valid = 0;
+                            next_state = STATE_IDLE;
+                        end                                        
                     end
                     default: next_state  = STATE_STOP;   
                 endcase
