@@ -1,7 +1,7 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../UART.srcs/sources_1/new/BaudRate_generator.v" \
-"../../../../UART.srcs/sim_1/imports/Downloads/TestBaudRateGenerate.v" \
+"../../../../UART.srcs/sources_1/new/rx_edit.v" \
+"../../../../../../../../testRxUart.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

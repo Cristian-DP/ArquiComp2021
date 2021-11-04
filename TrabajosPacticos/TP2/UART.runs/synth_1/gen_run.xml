@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1635618806">
   <File Type="PA-TCL" Name="BaudRate_generatormodule.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="BaudRate_generatormodule_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="BaudRate_generatormodule_reports.tcl"/>
   <File Type="RDS-RDS" Name="BaudRate_generatormodule.vds"/>
-  <File Type="RDS-UTIL" Name="BaudRate_generatormodule_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="BaudRate_generatormodule_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="BaudRate_generatormodule.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="BaudRate_generatormodule_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="BaudRate_generatormodule_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/BaudRate_generator.v">
