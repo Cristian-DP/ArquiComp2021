@@ -50,8 +50,10 @@ module rx_uart
     **/
     always @(posedge clock) 
         begin
-            if (s_tick) begin
-                count_ticks <= count_ticks + 1;
+            if( current_state > STATE_IDLE  ) begin
+                if (s_tick) begin
+                    count_ticks <= count_ticks + 1;
+                end
             end
             current_state   <= next_state;
             rx_done_tick    <= 1'b0;

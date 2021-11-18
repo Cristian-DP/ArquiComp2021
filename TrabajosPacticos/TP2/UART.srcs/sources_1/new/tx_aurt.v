@@ -111,7 +111,6 @@ module tx_uart
                     begin
                         count_ticks     = 0;        
                         next_state = STATE_IDLE;
-                    end                                        
                     end
                     default: next_state  = STATE_STOP;   
                 endcase

@@ -25,7 +25,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log BaudRate_generatormodule.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source BaudRate_generatormodule.tcl -notrace" );
+         "-log testRxUart.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source testRxUart.tcl -notrace" );
 
 
 

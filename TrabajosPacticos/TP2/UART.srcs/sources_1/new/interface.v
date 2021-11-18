@@ -33,18 +33,17 @@ module interface
         STATE_DATA_A    = 4'b00001,
         STATE_DATA_B    = 4'b00010,
         STATE_DATA_OP   = 4'b00100,
-        STATE_ALU       = 4'b01000;
+        STATE_TX   = 4'b01000;
 
     reg [NB_STATE - 1:0] current_state  = STATE_DATA_A;
     reg [NB_STATE - 1:0] next_state     = STATE_DATA_A;
-    
-   alu myAlu (.i_a(DA_reg), .i_b(DB_reg), .i_op(OP_reg), .o_o(o_alu));
    
-   always @(posedge CLOCK, posedge wr) begin
+   
+   always @(posedge CLOCK) 
         current_state   <= next_state;
    
-//   always @(*)
-//   begin
+   always @(*)
+   begin
         case (current_state)
             STATE_DATA_A:
                 begin
@@ -62,7 +61,7 @@ module interface
             begin
                 if(wr) begin
                         DB_reg = DATO;
-                        count_data = 1;
+                        count_data = 2;
                         next_state = STATE_DATA_OP;
                     end 
                     else begin
@@ -74,15 +73,15 @@ module interface
             begin
                 if(wr) begin
                         OP_reg = DATO;
-                        count_data = 1;
-                        next_state = STATE_ALU;
+                        count_data = 3;
+                        next_state = STATE_TX;
                     end 
                     else begin
                         next_state = STATE_DATA_OP;
                     end
             end
             // -------------------------------------------------------------------------- //
-            STATE_ALU:
+            STATE_TX:
             begin
                 next_state = STATE_DATA_A;
                 count_data = 0;
@@ -92,7 +91,7 @@ module interface
    
    end
 
-assign o_data_A     = DA_reg;
-assign o_data_B     = DB_reg;
-assign o_data_Op    = OP_reg;
+    assign o_data_A     = DA_reg;
+    assign o_data_B     = DB_reg;
+    assign o_data_Op    = OP_reg;
 endmodule

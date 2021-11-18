@@ -1,40 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1635618889">
-  <File Type="PA-TCL" Name="BaudRate_generatormodule.tcl"/>
-  <File Type="REPORTS-TCL" Name="BaudRate_generatormodule_reports.tcl"/>
-  <File Type="BITSTR-MSK" Name="BaudRate_generatormodule.msk"/>
-  <File Type="RDI-RDI" Name="BaudRate_generatormodule.vdi"/>
-  <File Type="BG-BIT" Name="BaudRate_generatormodule.bit"/>
-  <File Type="BG-DRC" Name="BaudRate_generatormodule.drc"/>
-  <File Type="BG-BGN" Name="BaudRate_generatormodule.bgn"/>
-  <File Type="BG-BIN" Name="BaudRate_generatormodule.bin"/>
-  <File Type="BITSTR-RBT" Name="BaudRate_generatormodule.rbt"/>
-  <File Type="BITSTR-NKY" Name="BaudRate_generatormodule.nky"/>
-  <File Type="BITSTR-BMM" Name="BaudRate_generatormodule_bd.bmm"/>
-  <File Type="BITSTR-MMI" Name="BaudRate_generatormodule.mmi"/>
-  <File Type="BITSTR-SYSDEF" Name="BaudRate_generatormodule.sysdef"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1637263428">
+  <File Type="ROUTE-PWR" Name="testRxUart_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="testRxUart.tcl"/>
+  <File Type="BITSTR-MMI" Name="testRxUart.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="testRxUart_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="testRxUart_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="testRxUart_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="testRxUart_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="testRxUart_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="testRxUart_opt.dcp"/>
+  <File Type="OPT-DRC" Name="testRxUart_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="testRxUart.hwdef"/>
+  <File Type="PWROPT-DCP" Name="testRxUart_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="testRxUart_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="testRxUart_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="testRxUart_placed.dcp"/>
+  <File Type="PLACE-IO" Name="testRxUart_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="testRxUart_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="testRxUart_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="testRxUart_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="testRxUart_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="testRxUart_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="testRxUart_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="testRxUart.bin"/>
+  <File Type="PLACE-TIMING" Name="testRxUart_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="testRxUart_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="testRxUart.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="testRxUart_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="testRxUart_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="testRxUart_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="testRxUart.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="testRxUart_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="testRxUart_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="testRxUart_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="testRxUart_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="testRxUart_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="testRxUart_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="testRxUart_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="testRxUart_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="testRxUart_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="testRxUart_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="testRxUart_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="testRxUart_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="testRxUart_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="testRxUart_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="testRxUart_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="testRxUart_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="testRxUart_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="testRxUart_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="testRxUart_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="testRxUart_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="testRxUart_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="testRxUart_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="testRxUart_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="testRxUart_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="testRxUart_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="testRxUart_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="testRxUart_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="testRxUart.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="testRxUart_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="testRxUart_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="testRxUart.nky"/>
+  <File Type="BITSTR-BMM" Name="testRxUart_bd.bmm"/>
+  <File Type="PDI-FILE" Name="testRxUart.pdi"/>
+  <File Type="RCFI_FILE" Name="testRxUart.rcfi"/>
+  <File Type="CFI_FILE" Name="testRxUart.cfi"/>
+  <File Type="RNPI_FILE" Name="testRxUart.rnpi"/>
+  <File Type="NPI_FILE" Name="testRxUart.npi"/>
+  <File Type="RBD_FILE" Name="testRxUart.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="BaudRate_generatormodule.ltx"/>
+  <File Type="BITSTR-LTX" Name="testRxUart.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="testRxUart.sysdef"/>
+  <File Type="BG-BGN" Name="testRxUart.bgn"/>
+  <File Type="BG-DRC" Name="testRxUart.drc"/>
+  <File Type="RDI-RDI" Name="testRxUart.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="OPT-HWDEF" Name="BaudRate_generatormodule.hwdef"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="BaudRate_generatormodule_incremental_reuse_pre_placed.rpt"/>
-  <File Type="ROUTE-DCP" Name="BaudRate_generatormodule_routed.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="BaudRate_generatormodule_routed_error.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="BaudRate_generatormodule_routed_bb.dcp"/>
-  <File Type="ROUTE-TIMING-PB" Name="BaudRate_generatormodule_timing_summary_routed.pb"/>
-  <File Type="OPT-DCP" Name="BaudRate_generatormodule_opt.dcp"/>
-  <File Type="PLACE-DCP" Name="BaudRate_generatormodule_placed.dcp"/>
-  <File Type="PWROPT-DCP" Name="BaudRate_generatormodule_pwropt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="BaudRate_generatormodule_postplace_pwropt.dcp"/>
-  <File Type="PHYSOPT-DCP" Name="BaudRate_generatormodule_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="BaudRate_generatormodule_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="BaudRate_generatormodule_postroute_physopt_bb.dcp"/>
-  <File Type="PDI-FILE" Name="BaudRate_generatormodule.pdi"/>
-  <File Type="RCFI_FILE" Name="BaudRate_generatormodule.rcfi"/>
-  <File Type="CFI_FILE" Name="BaudRate_generatormodule.cfi"/>
-  <File Type="RNPI_FILE" Name="BaudRate_generatormodule.rnpi"/>
-  <File Type="NPI_FILE" Name="BaudRate_generatormodule.npi"/>
-  <File Type="RBD_FILE" Name="BaudRate_generatormodule.rbd"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/BaudRate_generator.v">
@@ -46,9 +86,37 @@
     </File>
     <File Path="$PSRCDIR/sources_1/imports/TP1/alu.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/../tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v"/>
         <Attr Name="ImportTime" Val="1633033933"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/interface.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rx_uart.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../../testRxUart.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/test_interface_Rx.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -62,15 +130,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/state_machine_rx.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/state_machine_tx.v">
+    <File Path="$PSRCDIR/sources_1/new/tx_aurt.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -80,7 +140,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="BaudRate_generatormodule"/>
+      <Option Name="TopModule" Val="testRxUart"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -106,6 +166,5 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

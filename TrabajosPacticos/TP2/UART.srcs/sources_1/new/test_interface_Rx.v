@@ -22,11 +22,17 @@ module test_interface_Rx;
                             .o_data_A(o_data_A), .o_data_B(o_data_B),
                             .o_data_Op(o_data_Op) , .o_alu(o_alu));
                             
+    alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu));
     initial
         begin
             CLOCK   = 0;
             wr      = 0;
             count   = 1;
+            DATO = 0;
+//            o_data_A = 0;
+//            o_data_B = 0;
+//            o_data_Op = 0;
+//            o_alu;
         end
         
     always begin

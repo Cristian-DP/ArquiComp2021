@@ -42,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log BaudRate_generatormodule.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source BaudRate_generatormodule.tcl -notrace
+EAStep vivado -log testRxUart.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source testRxUart.tcl -notrace
 
 

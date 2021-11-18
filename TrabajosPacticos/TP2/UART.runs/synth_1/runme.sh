@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log BaudRate_generatormodule.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BaudRate_generatormodule.tcl
+EAStep vivado -log testRxUart.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source testRxUart.tcl
