@@ -1,7 +1,0 @@
-Running: xsim.dir/testRxUart_behav/xsimk.exe -simmode gui -wdb testRxUart_behav.wdb -simrunnum 0 -socket 50207
-Design successfully loaded
-Design Loading Memory Usage: 6908 KB (Peak: 6908 KB)
-Design Loading CPU Usage: 31 ms
-Simulation completed
-Simulation Memory Usage: 12700 KB (Peak: 12700 KB)
-Simulation CPU Usage: 421 ms
