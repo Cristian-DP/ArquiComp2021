@@ -24,10 +24,10 @@ module interface_uart
     input wire CLOCK
 );
 
-  reg    [NB_DATA - 1:0] DA_reg;
-  reg    [NB_DATA - 1:0] DB_reg;
-  reg    [5          :0] OP_reg;
-  reg    [2:0]           count_data;
+  reg    [NB_DATA - 1:0] DA_reg = 0;
+  reg    [NB_DATA - 1:0] DB_reg = 0;
+  reg    [5          :0] OP_reg = 0;
+  reg    [2:0]           count_data = 0;
   // estados de la fsm
   localparam [NB_STATE-1 :0]
         STATE_DATA_A    = 4'b00001,
