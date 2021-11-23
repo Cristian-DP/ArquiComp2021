@@ -29,6 +29,12 @@ module interface_uart
   reg    [2:0]           count_data  = 0;            // registro del contador de datos
   reg                    read_alu    = 0;            // registro del contador de datos
   reg                    empty_reg   = 1;            // registro de aviso para que rx lea el dato 
+
+  reg    [NB_DATA - 1:0] DA_reg = 0;
+  reg    [NB_DATA - 1:0] DB_reg = 0;
+  reg    [5          :0] OP_reg = 0;
+  reg    [2:0]           count_data = 0;
+>>>>>>> bd63eed0690a231ed595b69f27c4e4ee474ae6b6
   // estados de la fsm
   localparam [NB_STATE-1 :0]
         STATE_DATA_A    = 4'b00001,
