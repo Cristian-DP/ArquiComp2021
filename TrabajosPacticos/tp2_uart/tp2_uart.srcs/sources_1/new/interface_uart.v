@@ -1,5 +1,11 @@
 `timescale 1ns / 1ps
 
+/**
+    a Fixear:
+    
+    a Reveer:
+        posible agregado de estado nuevo entre A-B y B-OP debido a que wr dura un ciclo 
+*/
 
 module interface_uart
 #(
@@ -30,11 +36,6 @@ module interface_uart
   reg                    read_alu    = 0;            // registro del contador de datos
   reg                    empty_reg   = 1;            // registro de aviso para que rx lea el dato 
 
-  reg    [NB_DATA - 1:0] DA_reg = 0;
-  reg    [NB_DATA - 1:0] DB_reg = 0;
-  reg    [5          :0] OP_reg = 0;
-  reg    [2:0]           count_data = 0;
-
   // estados de la fsm
   localparam [NB_STATE-1 :0]
         STATE_DATA_A    = 4'b00001,
@@ -50,7 +51,7 @@ module interface_uart
    begin
         current_state   <= next_state;
         if (empty_reg == 0) empty_reg = 1;
-        else  empty_reg = 0;
+        else  empty_reg = 1;
         
    end
    
@@ -70,7 +71,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_DATA_B:
             begin
-                if(wr) begin
+                if(wr && (DA_reg != in_rx)) begin
                         DB_reg = in_rx;
                         next_state = STATE_DATA_OP;
                     end 
@@ -81,7 +82,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_DATA_OP:
             begin
-                if(wr) begin
+                if(wr&& (DB_reg != in_rx)) begin
                         OP_reg = in_rx[5:0];
                         next_state = STATE_TX;
                         in_alu_reg  = in_alu;
@@ -93,7 +94,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_TX:
             begin
-                empty       = 0;
+                empty_reg       = 0;
                 next_state  = STATE_DATA_A;
             end  
             

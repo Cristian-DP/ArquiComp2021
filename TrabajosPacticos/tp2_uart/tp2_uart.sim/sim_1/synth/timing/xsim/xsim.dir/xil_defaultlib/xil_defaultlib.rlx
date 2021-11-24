@@ -2,8 +2,9 @@
 2020.2
 Jun 10 2021
 20:04:57
-C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v,1637619381,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testInterfaceAlu.v,,alu,,,,,,,,
-C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testInterfaceAlu_time_synth.v,1637687709,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v,,glbl;interface_uart,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v,1637619381,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v,,alu,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testSystem_time_synth.v,1637776773,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/BaudRateGenerator.v,,glbl;rx_uart,,,,,,,,
 C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testInterfaceAlu.v,1637681335,verilog,,,,testInterfaceAlu,,,,,,,,
-C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,1637619680,verilog,,,,testSystem,,,,,,,,
-C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/rx_uart.v,1637619162,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,,rx_uart,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,1637696150,verilog,,,,testSystem,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/BaudRateGenerator.v,1637618825,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v,,BaudRateGenerator,,,,,,,,
+C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v,1637696461,verilog,,C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,,interface_uart,,,,,,,,

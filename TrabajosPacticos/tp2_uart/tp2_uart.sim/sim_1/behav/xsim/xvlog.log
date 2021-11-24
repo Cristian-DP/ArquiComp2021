@@ -1,8 +1,10 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/BaudRateGenerator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BaudRateGenerator
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module alu
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module interface_uart
-ERROR: [VRFC 10-1280] procedural assignment to a non-register empty is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v:46]
-ERROR: [VRFC 10-1280] procedural assignment to a non-register empty is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v:47]
-ERROR: [VRFC 10-1280] procedural assignment to a non-register empty is not permitted, left-hand side should be reg/integer/time/genvar [C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v:90]
-ERROR: [VRFC 10-2865] module 'interface_uart' ignored due to previous errors [C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v:4]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/rx_uart.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rx_uart
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module testSystem
