@@ -1,8 +1,8 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Nov 24 14:58:41 2021
-| Host         : DESKTOP-05TNCFU running 64-bit major release  (build 9200)
+| Date         : Wed Nov 24 17:16:20 2021
+| Host         : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 | Command      : report_drc -file rx_uart_drc_opted.rpt -pb rx_uart_drc_opted.pb -rpx rx_uart_drc_opted.rpx
 | Design       : rx_uart
 | Device       : xc7a35tcpg236-1

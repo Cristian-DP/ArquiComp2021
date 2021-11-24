@@ -28,12 +28,19 @@ module interface_uart
     input wire CLOCK                                // clock que alimenta el sistema
 );
 
-  reg    [NB_DATA - 1:0] DA_reg      = 0;            // registro del dato A
-  reg    [NB_DATA - 1:0] DB_reg      = 0;            // registro del dato B
-  reg    [5          :0] OP_reg      = 0;            // registro del dato OP
+  reg    [NB_DATA - 1:0] DA_reg      = 0;           // registro del dato A
+  reg    [NB_DATA - 1:0] DA_reg_next = 0;           // para evitar pisar el dato A
+  
+  reg    [NB_DATA - 1:0] DB_reg      = 0;           // registro del dato B
+  reg    [NB_DATA - 1:0] DB_reg_next = 0;           // para evitar pisar el dato B  
+  
+  reg    [5          :0] OP_reg      = 0;           // registro del dato OP
+  reg    [5          :0] OP_reg_next = 0;           // para evitar pisar el dato OP
+
   reg    [NB_DATA - 1:0] in_alu_reg  = 0;           // registro del dato provisto por la salidad de la alu
-  reg    [2:0]           count_data  = 0;            // registro del contador de datos
-  reg                    read_alu    = 0;            // registro del contador de datos
+  
+//  reg    [2:0]           count_data  = 0;            // registro del contador de datos
+//  reg                    read_alu    = 0;            // registro del contador de datos
   reg                    empty_reg   = 1;            // registro de aviso para que rx lea el dato 
 
   // estados de la fsm
@@ -50,18 +57,24 @@ module interface_uart
    always @(posedge CLOCK) 
    begin
         current_state   <= next_state;
+        DA_reg          <= DA_reg_next;
+        DB_reg          <= DB_reg_next;
+        OP_reg          <= OP_reg_next;
         if (empty_reg == 0) empty_reg = 1;
         else  empty_reg = 1;
-        
    end
    
    always @(*)
    begin
+        next_state  = current_state;
+        DA_reg_next = DA_reg;
+        DB_reg_next = DB_reg;
+        OP_reg_next = OP_reg;
         case (current_state)
             STATE_DATA_A:
                 begin
                     if(wr) begin
-                        DA_reg = in_rx;
+                        DA_reg_next = in_rx;
                         next_state = STATE_DATA_B;
                     end 
                     else begin
@@ -72,7 +85,7 @@ module interface_uart
             STATE_DATA_B:
             begin
                 if(wr && (DA_reg != in_rx)) begin
-                        DB_reg = in_rx;
+                        DB_reg_next = in_rx;
                         next_state = STATE_DATA_OP;
                     end 
                     else begin
@@ -83,7 +96,7 @@ module interface_uart
             STATE_DATA_OP:
             begin
                 if(wr&& (DB_reg != in_rx)) begin
-                        OP_reg = in_rx[5:0];
+                        OP_reg_next = in_rx[5:0];
                         next_state = STATE_TX;
                         in_alu_reg  = in_alu;
                     end 

@@ -11,9 +11,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/bin/nt64;F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/lib/nt64:F:/Vivado2021.1/Vivado/2021.1/bin
+  PATH=C:/xiling/Vivado/2021.1/ids_lite/ISE/bin/nt64;C:/xiling/Vivado/2021.1/ids_lite/ISE/lib/nt64:C:/xiling/Vivado/2021.1/bin
 else
-  PATH=F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/bin/nt64;F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/lib/nt64:F:/Vivado2021.1/Vivado/2021.1/bin:$PATH
+  PATH=C:/xiling/Vivado/2021.1/ids_lite/ISE/bin/nt64;C:/xiling/Vivado/2021.1/ids_lite/ISE/lib/nt64:C:/xiling/Vivado/2021.1/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.runs/synth_1'
+HD_PWD='C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

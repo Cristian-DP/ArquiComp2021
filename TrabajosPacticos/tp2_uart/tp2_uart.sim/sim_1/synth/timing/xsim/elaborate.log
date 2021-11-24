@@ -1,6 +1,6 @@
 Vivado Simulator v2021.1
 Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
-Running: F:/Vivado2021.1/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto dc3c71e43c1c46d8a2e201a40436c290 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot testSystem_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.testSystem xil_defaultlib.glbl -log elaborate.log 
+Running: C:/xiling/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto dc3c71e43c1c46d8a2e201a40436c290 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot testSystem_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.testSystem xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -13,18 +13,14 @@ Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.BaudRateGenerator_default
 Compiling module simprims_ver.BUFG
 Compiling module simprims_ver.IBUF
-Compiling module simprims_ver.latchsre_ldce
-Compiling module simprims_ver.LDCE
+Compiling module simprims_ver.LUT6
+Compiling module simprims_ver.FDRE_default
 Compiling module simprims_ver.LUT5
+Compiling module simprims_ver.x_lut2_mux4
+Compiling module simprims_ver.LUT2
 Compiling module simprims_ver.x_lut3_mux8
 Compiling module simprims_ver.LUT3
 Compiling module simprims_ver.LUT4
-Compiling module simprims_ver.FDRE_default
-Compiling module simprims_ver.x_lut1_mux2
-Compiling module simprims_ver.LUT1(INIT=2'b01)
-Compiling module simprims_ver.x_lut2_mux4
-Compiling module simprims_ver.LUT2
-Compiling module simprims_ver.LUT6
 Compiling module simprims_ver.OBUF
 Compiling module xil_defaultlib.rx_uart
 Compiling module xil_defaultlib.interface_uart

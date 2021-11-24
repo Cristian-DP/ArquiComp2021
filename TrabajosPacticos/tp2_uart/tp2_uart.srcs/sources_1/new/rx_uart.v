@@ -15,7 +15,7 @@ module rx_uart
     parameter   N_DATA          = 8,    // cantidad de datos a recibir
     parameter   START_VALUE     = 0,    // Bit de start
     parameter   STOP_VALUE      = 1,     // Bit de stop
-    parameter   STARTS_TICKS    = 7,    // cantidad de bit para colcarse al centro del bit de start
+    parameter   STARTS_TICKS    = 8,    // cantidad de bit para colcarse al centro del bit de start
     parameter   DATA_TICKS      = 15   // cantidad de bit para colcarse al centro del bit de dato
 )
 (
@@ -30,16 +30,18 @@ module rx_uart
    * clock:     Para cambio de estado 
    **/
     output  wire [7:0]  dout,          
-    output  reg         rx_done_tick,       
+    output  wire        rx_done_tick,  //cambie     
     input   wire        rx,s_tick,                   
     input   wire        clock
 );
+    reg     rx_done_tick_reg = 0; //cambie
+    reg     rx_done_tick_next = 0;//cambie
     // contador de tick
     reg [3:0]           count_ticks_reg     = 0;
     reg [3:0]           count_ticks_next     = 0;
     // registro de los datos leidos en rx
-    reg [N_DATA-1:0]    reg_data        = 0;
-    reg [N_DATA-1:0]    reg_data_next   = 0;
+    reg [N_DATA - 1:0]    reg_data        = 0;
+    reg [N_DATA - 1:0]    reg_data_next   = 0;
     // contador de datos leidos en rx
     reg [3:0]           count_data      = 0;
     reg [3:0]           count_data_next = 0;
@@ -61,6 +63,7 @@ module rx_uart
     **/
     always @(posedge clock) 
         begin
+            rx_done_tick_reg<= rx_done_tick_next;//cambie
             current_state   <= next_state;
             count_ticks_reg <= count_ticks_next;
             count_data      <= count_data_next;
@@ -68,9 +71,16 @@ module rx_uart
         end
         
     always @(*) begin: state_logic
-         rx_done_tick = 1'b0;
+         rx_done_tick_next= rx_done_tick_reg;//cambie
+         next_state       = current_state;
+         count_ticks_next = count_ticks_reg;
+         count_data_next  = count_data;
+         
+         reg_data_next    = reg_data;
+         
          case (current_state)
             STATE_IDLE : begin
+                rx_done_tick_next = 1'b0; //cambie
                 case(rx)
                     1'b0   :   next_state = STATE_START;
                     default:   next_state = STATE_IDLE;
@@ -105,7 +115,7 @@ module rx_uart
                             reg_data_next        = {rx , reg_data[7 : 1]};
                             
                             count_data_next      = count_data + 1;
-                            if(count_data == N_DATA) begin
+                            if(count_data == N_DATA - 1) begin   //modificado aca, el -1
                                 count_data_next = 0;
                                 next_state      = STATE_PAR;
                             end
@@ -144,8 +154,8 @@ module rx_uart
                     begin
                         count_ticks_next     = 0;
                         if(rx) begin
-                            rx_done_tick    = 1'b1;
-                            next_state      = STATE_IDLE;  
+                            rx_done_tick_next = 1'b1;
+                            next_state        = STATE_IDLE;  
                         end
                         else  next_state = STATE_IDLE;             
                     end
@@ -164,5 +174,7 @@ module rx_uart
          endcase
     end
 
-   assign dout    = reg_data [7:0];
+   assign dout          = reg_data [7:0];
+   assign rx_done_tick  = rx_done_tick_reg;//cambie
+    
 endmodule

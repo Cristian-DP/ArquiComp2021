@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1637776689">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1637784946">
   <File Type="ROUTE-PWR" Name="rx_uart_power_routed.rpt"/>
   <File Type="PA-TCL" Name="rx_uart.tcl"/>
   <File Type="BITSTR-MMI" Name="rx_uart.mmi"/>

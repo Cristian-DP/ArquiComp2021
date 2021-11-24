@@ -1,8 +1,8 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Nov 24 14:59:03 2021
-| Host         : DESKTOP-05TNCFU running 64-bit major release  (build 9200)
+| Date         : Wed Nov 24 17:16:44 2021
+| Host         : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 | Command      : report_drc -file rx_uart_drc_routed.rpt -pb rx_uart_drc_routed.pb -rpx rx_uart_drc_routed.rpx
 | Design       : rx_uart
 | Device       : xc7a35tcpg236-1
@@ -24,14 +24,13 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 6
+             Violations found: 3
 +----------+------------------+-----------------------------------------------------+------------+
 | Rule     | Severity         | Description                                         | Violations |
 +----------+------------------+-----------------------------------------------------+------------+
 | NSTD-1   | Critical Warning | Unspecified I/O Standard                            | 1          |
 | UCIO-1   | Critical Warning | Unconstrained Logical Port                          | 1          |
 | CFGBVS-1 | Warning          | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153 | Warning          | Gated clock check                                   | 3          |
 +----------+------------------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -57,21 +56,6 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
-Related violations: <none>
-
-PDRC-153#1 Warning
-Gated clock check  
-Net count_data_next__0 is a gated clock net sourced by a combinational pin count_data_next_reg[3]_i_2/O, cell count_data_next_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#2 Warning
-Gated clock check  
-Net count_ticks_next__0 is a gated clock net sourced by a combinational pin count_ticks_next_reg[3]_i_2/O, cell count_ticks_next_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#3 Warning
-Gated clock check  
-Net reg_data_next__0 is a gated clock net sourced by a combinational pin reg_data_next_reg[7]_i_1/O, cell reg_data_next_reg[7]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

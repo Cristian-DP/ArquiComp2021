@@ -1,8 +1,8 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Wed Nov 24 14:57:31 2021
-| Host         : DESKTOP-05TNCFU running 64-bit major release  (build 9200)
+| Date         : Wed Nov 24 17:15:18 2021
+| Host         : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 | Command      : report_utilization -file rx_uart_utilization_synth.rpt -pb rx_uart_utilization_synth.pb
 | Design       : rx_uart
 | Device       : 7a35tcpg236-1
@@ -30,12 +30,12 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |   19 |     0 |          0 |     20800 |  0.09 |
-|   LUT as Logic          |   19 |     0 |          0 |     20800 |  0.09 |
+| Slice LUTs*             |   21 |     0 |          0 |     20800 |  0.10 |
+|   LUT as Logic          |   21 |     0 |          0 |     20800 |  0.10 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         |   37 |     0 |          0 |     41600 |  0.09 |
+| Slice Registers         |   21 |     0 |          0 |     41600 |  0.05 |
 |   Register as Flip Flop |   21 |     0 |          0 |     41600 |  0.05 |
-|   Register as Latch     |   16 |     0 |          0 |     41600 |  0.04 |
+|   Register as Latch     |    0 |     0 |          0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
 +-------------------------+------+-------+------------+-----------+-------+
@@ -55,7 +55,7 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
-| 16    |          Yes |           - |        Reset |
+| 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
 | 21    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -150,15 +150,13 @@ Table of Contents
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | FDRE     |   21 |        Flop & Latch |
-| LDCE     |   16 |        Flop & Latch |
+| LUT6     |   10 |                 LUT |
 | OBUF     |    9 |                  IO |
 | LUT5     |    8 |                 LUT |
-| LUT6     |    7 |                 LUT |
-| LUT4     |    4 |                 LUT |
-| LUT3     |    4 |                 LUT |
+| LUT2     |    4 |                 LUT |
+| LUT4     |    3 |                 LUT |
+| LUT3     |    3 |                 LUT |
 | IBUF     |    3 |                  IO |
-| LUT2     |    2 |                 LUT |
-| LUT1     |    1 |                 LUT |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 
