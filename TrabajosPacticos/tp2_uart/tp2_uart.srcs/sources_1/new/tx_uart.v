@@ -16,8 +16,8 @@ module tx_uart
     input   wire                clock,
     input   wire                reset
 );
-    reg     tx_done_tick_reg = 0;               //cambie
-    reg     tx_done_tick_next = 0;              //cambie
+    reg     tx_done_tick_reg ;               //cambie
+    reg     tx_done_tick_next;              //cambie
     // contador de tick
     reg [3:0]           count_ticks_reg     ;
     reg [3:0]           count_ticks_next    ;    //cambie
@@ -39,8 +39,8 @@ module tx_uart
         STATE_PAR   = 5'b01000,
         STATE_STOP  = 5'b10000;
 
-    reg [NB_STATE - 1:0] current_state  = STATE_IDLE;
-    reg [NB_STATE - 1:0] next_state     = STATE_IDLE;
+    reg [NB_STATE - 1:0] current_state  ;
+    reg [NB_STATE - 1:0] next_state     ;
     
     /**
         Logica de cambio de estado
@@ -48,18 +48,18 @@ module tx_uart
     always @(posedge clock) 
         begin
             if (reset) begin
-                din_reg          <= 0; 
-                din_next          <= 0;
-                count_data_reg   <= 0;
-                count_data_next   <= 0;
-                count_ticks_reg  <= 0;
-                count_ticks_next  <= 0;
-                tx_done_tick_reg <= 0;
-                tx_done_tick_next <= 0;
-                tx_reg           <= 1;
-                tx_next           <= 1;
-                current_state    <= 0; 
-                next_state          <= 0;
+                din_reg             <= 0; 
+                din_next            <= 0;
+                count_data_reg      <= 0;
+                count_data_next     <= 0;
+                count_ticks_reg     <= 0;
+                count_ticks_next    <= 0;
+                tx_done_tick_reg    <= 0;
+                tx_done_tick_next   <= 0;
+                tx_reg              <= 1;
+                tx_next             <= 1;
+                current_state       <= STATE_IDLE; 
+                next_state          <= STATE_IDLE;
             end
             else begin
                 din_reg          <= din_next; 

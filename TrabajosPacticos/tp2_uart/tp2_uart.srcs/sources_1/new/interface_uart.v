@@ -23,22 +23,20 @@ module interface_uart
     input   wire                    reset
 );
 
-  reg    [NB_DATA - 1:0] DA_reg      = 0;           // registro del dato A
-  reg    [NB_DATA - 1:0] DA_reg_next = 0;           // para evitar pisar el dato A
+  reg    [NB_DATA - 1:0] DA_reg      ;           // registro del dato A
+  reg    [NB_DATA - 1:0] DA_reg_next ;           // para evitar pisar el dato A
   
-  reg    [NB_DATA - 1:0] DB_reg      = 0;           // registro del dato B
-  reg    [NB_DATA - 1:0] DB_reg_next = 0;           // para evitar pisar el dato B  
+  reg    [NB_DATA - 1:0] DB_reg      ;           // registro del dato B
+  reg    [NB_DATA - 1:0] DB_reg_next ;           // para evitar pisar el dato B  
   
-  reg    [5          :0] OP_reg      = 0;           // registro del dato OP
-  reg    [5          :0] OP_reg_next = 0;           // para evitar pisar el dato OP
+  reg    [5          :0] OP_reg      ;           // registro del dato OP
+  reg    [5          :0] OP_reg_next ;           // para evitar pisar el dato OP
 
-  reg    [NB_DATA - 1:0] in_alu_reg  = 0;           // registro del dato provisto por la salidad de la alu
-  reg    [NB_DATA - 1:0] in_alu_next  = 0;           // registro del dato provisto por la salidad de la alu
+  reg    [NB_DATA - 1:0] in_alu_reg ;           // registro del dato provisto por la salidad de la alu
+  reg    [NB_DATA - 1:0] in_alu_next  ;           // registro del dato provisto por la salidad de la alu
   
-//  reg    [2:0]           count_data  = 0;            // registro del contador de datos
-//  reg                    read_alu    = 0;            // registro del contador de datos
-  reg                    empty_reg    = 1;            // registro de aviso para que rx lea el dato 
-  reg                    empty_next    = 1;            // registro de aviso para que rx lea el dato 
+  reg                    empty_reg    ;            // registro de aviso para que rx lea el dato 
+  reg                    empty_next    ;            // registro de aviso para que rx lea el dato 
 
   // estados de la fsm
   localparam [NB_STATE-1 :0]
@@ -47,23 +45,23 @@ module interface_uart
         STATE_DATA_OP   = 4'b00100,
         STATE_TX        = 4'b01000;
 
-    reg [NB_STATE - 1:0] current_state  = STATE_DATA_A;
-    reg [NB_STATE - 1:0] next_state     = STATE_DATA_A;
+    reg [NB_STATE - 1:0] current_state  ;
+    reg [NB_STATE - 1:0] next_state     ;
    
    
    always @(posedge CLOCK) 
    begin
         if (reset) begin
-            current_state   <= 0;
+            current_state   <= STATE_DATA_A;
+            next_state      <= STATE_DATA_A;
             DA_reg          <= 0;
             DB_reg          <= 0;
             OP_reg          <= 0;
             empty_reg       <= 1;
             in_alu_reg      <= 0;
-            next_state      <= 0;
-            DA_reg_next          <= 0;
-            DB_reg_next          <= 0;
-            OP_reg_next          <= 0;
+            DA_reg_next     <= 0;
+            DB_reg_next     <= 0;
+            OP_reg_next      <= 0;
             empty_next       <= 1;
             in_alu_next      <= 0;
         

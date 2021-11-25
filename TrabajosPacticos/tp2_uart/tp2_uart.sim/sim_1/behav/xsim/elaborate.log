@@ -10,9 +10,10 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.BaudRateGenerator_default
 Compiling module xil_defaultlib.rx_uart
+Compiling module xil_defaultlib.tx_uart
 Compiling module xil_defaultlib.interface_uart
 Compiling module xil_defaultlib.alu
-Compiling module xil_defaultlib.tx_uart
+Compiling module xil_defaultlib.top
 Compiling module xil_defaultlib.testSystem
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot testSystem_behav

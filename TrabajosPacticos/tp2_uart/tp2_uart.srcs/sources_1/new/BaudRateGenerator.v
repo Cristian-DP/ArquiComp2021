@@ -12,10 +12,11 @@ module BaudRateGenerator
     // OUTPUTS
     output reg tick,
     // INPUTS
-    input wire clock
+    input wire clock,
+    input wire reset
 );    
     // counter ticks
-    reg [7: 0]  counTicks = 8'b0;
+    reg [7: 0]  counTicks;
     
     /**
     * Lista de Sensibilidades : 
@@ -27,13 +28,19 @@ module BaudRateGenerator
         a tick
     **/
     always @(posedge clock) begin
-        counTicks  <= counTicks + 1'b1;
-        if (counTicks == N_CLOCKS) begin
-            tick <= 1'b1;
-            counTicks  <= 0;
+        if (reset) begin
+            tick        <= 1'b0;
+            counTicks   <= 1'b0;
         end
         else begin
-            tick <= 1'b0;
+            counTicks  <= counTicks + 1'b1;
+            if (counTicks == N_CLOCKS) begin
+                tick        <= 1'b1;
+                counTicks   <= 1'b0;
+            end
+            else begin
+                tick <= 1'b0;
+            end
         end
     end
 

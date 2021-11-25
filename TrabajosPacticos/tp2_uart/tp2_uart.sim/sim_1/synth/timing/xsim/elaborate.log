@@ -7,26 +7,12 @@ Pass Through NonSizing Optimizer
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
-INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "testSystem_time_synth.sdf", for root module "testSystem/mytx_uart".
-INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "testSystem_time_synth.sdf", for root module "testSystem/mytx_uart".
+INFO: [XSIM 43-3451] SDF backannotation process started with SDF file "testSystem_time_synth.sdf", for root module "testSystem/mytop".
+INFO: [XSIM 43-3452] SDF backannotation was successful for SDF file "testSystem_time_synth.sdf", for root module "testSystem/mytop".
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.BaudRateGenerator_default
-Compiling module xil_defaultlib.rx_uart
-Compiling module simprims_ver.BUFG
-Compiling module simprims_ver.IBUF
-Compiling module simprims_ver.LUT6
-Compiling module simprims_ver.LUT5
-Compiling module simprims_ver.x_lut2_mux4
-Compiling module simprims_ver.LUT2(INIT=4'b1000)
-Compiling module simprims_ver.LUT4
-Compiling module simprims_ver.FDRE_default
-Compiling module simprims_ver.FDSE_default
-Compiling module simprims_ver.x_lut3_mux8
-Compiling module simprims_ver.LUT3(INIT=8'b01111111)
 Compiling module simprims_ver.OBUF
-Compiling module xil_defaultlib.tx_uart
-Compiling module xil_defaultlib.interface_uart
-Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.BaudRateGenerator_default
 Compiling module xil_defaultlib.testSystem
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot testSystem_time_synth
