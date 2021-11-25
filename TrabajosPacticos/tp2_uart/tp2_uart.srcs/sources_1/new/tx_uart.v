@@ -6,22 +6,29 @@ module tx_uart
     parameter   N_DATA          = 8,    // cantidad de datos a recibir
     parameter   START_VALUE     = 0,    // Bit de start
     parameter   STOP_VALUE      = 1,     // Bit de stop
-    parameter   N_TICKS         = 7
+    parameter   DATA_TICKS         = 15    // cantidad de bit para colcarse al centro del bit de dato // agrege
 )
 (
-    output  wire        dout,      
-    input   wire        [7:0]din,
-    input   wire        op_done , s_tick,                   
-    input   wire        clock
+    output  wire                tx,      
+    input   wire        [7:0]   din,
+    input   wire                tx_start , s_tick,
+    input   wire                tx_done_tick,                   
+    input   wire                clock
 );
+    reg     tx_done_tick_reg = 0;               //cambie
+    reg     tx_done_tick_next = 0;              //cambie
     // contador de tick
-    reg [3:0]           count_ticks     = 0;
+    reg [3:0]           count_ticks_reg     = 0;
+    reg [3:0]           count_ticks_next    = 0;    //cambie
     // registro conteo de los datos de envio 
-    reg [3:0]           count_data      = 0;
+    reg [3:0]           count_data_reg      = 0;
+    reg [3:0]           count_data_next     = 0;    //cambie
     // registro de guardado de la operacion de la alu
-    reg [7:0]           op_reg          = 0;
+    reg [N_DATA - 1:0]           din_reg      = 0;
+    reg [N_DATA - 1:0]           din_next      = 0;
     // registro asociado a la salida
-    reg                 out_reg         = 1;
+    reg                 tx_reg         = 1;
+    reg                 tx_next        = 1;
     
     // estados de la fsm
     localparam [ NB_STATE -1:0]
@@ -39,86 +46,117 @@ module tx_uart
     **/
     always @(posedge clock) 
         begin
-            if( current_state > STATE_IDLE ) begin
-                if (s_tick) begin
-                    count_ticks <= count_ticks + 1;
-                end
-            end
-            current_state   <= next_state;
+            current_state    <= next_state;
+            count_data_reg   <= count_data_next;
+            count_ticks_reg  <= count_ticks_next;
+            tx_done_tick_reg <= tx_done_tick_next;
+            tx_reg           <= tx_next;
+            din_reg          <= din_next; 
         end
         
     always @(*) begin: state_logic
-         
+         next_state         = current_state;
+         count_data_next    = count_data_reg;
+         count_ticks_next   = count_ticks_reg;
+         tx_done_tick_next  = 0;
+         tx_next            = tx_reg;
+         din_next           = din_reg;
          case (current_state)
             STATE_IDLE : begin
-                case(op_done)
+                tx_next = 1'b1;             // bit de conexion activa
+                case(tx_start)
                     1'b0   :
                     begin
-                        reg_data    = din;
-                        next_state  = STATE_START;
+                        din_next            = din;
+                        count_ticks_next    = 0;
+                        next_state          = STATE_START;
                     end
-                    default:   begin
-                        next_state = STATE_IDLE;
-                    end
+                    default: next_state = STATE_IDLE;
                 endcase
             end
             // -------------------------------------------------------------------------- //
             STATE_START : begin
-                out_reg = 0;        // bit de start
-                case(count_ticks)
-                    N_TICKS:   
+                tx_next = 1'b0;             // bit de start
+                case(count_ticks_reg)
+                    DATA_TICKS:   
                     begin 
-                        count_ticks     = 0;
-                        next_state      = STATE_DATA;                                                    
+                        count_ticks_next    = 0;
+                        count_data_next     = 0;
+                        next_state          = STATE_DATA;                                                    
                     end
-                    default:  next_state  = STATE_START;   
+                    default: begin
+                        next_state  = STATE_START;   
+                        if (s_tick) begin
+                            count_ticks_next = count_ticks_reg + 1;
+                        end
+                    end
                 endcase
             end
             // -------------------------------------------------------------------------- // 
             STATE_DATA : begin
-                out_reg = op_reg[count_data];
-                case(count_ticks)
+                tx_next = din_reg[count_data_reg];
+                case(count_ticks_reg)
                     DATA_TICKS:     
                         begin
-                            count_ticks     = 0;
-                            count_data      = count_data + 1;
-                            if(count_data == N_DATA) begin
-                                count_data  = 0;
+                            count_ticks_next     = 0;
+                            count_data_next      = count_data_reg + 1;
+                            if(count_data_reg == N_DATA-1) begin        //modificado aca, el -1
+                                count_data_next  = 0;
                                 next_state  = STATE_PAR;
                             end
                             else next_state  = STATE_DATA;                                                
                         end
-                    default: next_state  = STATE_DATA;   
+                    default: begin
+                        next_state  = STATE_DATA;
+                        if (s_tick) begin
+                            count_ticks_next = count_ticks_reg + 1;
+                        end
+                    end
                 endcase
             end
             // ---------------CALCULO OPCIONAL DEL BIT DE PARIDAD----------------------- //
             STATE_PAR: begin
-                out_reg = 0; // valor 0 por ahora, luego hay que hacer el calculo de paridad
-                case(count_ticks)
+                tx_next = 0; // valor 0 por ahora, luego hay que hacer el calculo de paridad
+                case(count_ticks_reg)
                     DATA_TICKS:     
                     begin
-                        count_ticks     = 0;
+                        count_ticks_next     = 0;
                         next_state  = STATE_STOP;                                                
                     end
-                    default:   next_state  = STATE_PAR;   
+                    default:   begin
+                        next_state  = STATE_PAR;   
+                        if (s_tick) begin
+                            count_ticks_next = count_ticks_reg + 1;
+                        end
+                    end
                 endcase
             end
             // -------------------------------------------------------------------------- //
             STATE_STOP : begin
-                out_reg = 1;
-                case(count_ticks)
+                tx_next = 1'b1;
+                case(count_ticks_reg)
                     DATA_TICKS:     
                     begin
-                        count_ticks     = 0;        
+                        count_ticks_next     = 0;  
+                        tx_done_tick_next    = 1'b1;    
                         next_state = STATE_IDLE;
                     end
-                    default: next_state  = STATE_STOP;   
+                    default: begin
+                        next_state  = STATE_STOP;   
+                        if (s_tick) begin
+                            count_ticks_next = count_ticks_reg + 1;
+                        end
+                    end
                 endcase
             end
         // -----------------------------------------------------------------------// 
+         default: begin
+            next_state = STATE_IDLE;
+         end
          endcase
     end
 
-   assign dout    = out_reg;
+   assign tx            = tx_reg;
+   assign tx_done_tick  = tx_done_tick_reg;//cambie
    
 endmodule

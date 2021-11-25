@@ -32,11 +32,19 @@ module testSystem;
     reg         rx;
     wire        rx_done_tick;
     wire [7:0]  dout;
+    wire [7:0]  o_tx;
     //reg         tick;
+    wire         empty;
     wire         tick;
-    reg         clock;
+    reg          clock;
     reg   [2:0] counter_t;
     
+    // ______________________ BRG ____________ //
+    BaudRateGenerator myBRG (
+        .tick(tick),
+        .clock (clock)
+    );
+    // ____________________ Rx   ____________________ //
     rx_uart myrx_uart(
         .s_tick(tick), 
         .rx(rx),
@@ -44,24 +52,35 @@ module testSystem;
         .dout(dout),
         .clock(clock)
     );
-    // ______________________ BRG ____________ //
-    BaudRateGenerator myBRG (
-        .tick(tick),
-        .clock (clock)
-    );
     // ______________________ interface  ____________ //
     interface_uart myinterface_uart (
-        .DATO(dout), 
+        .in_rx(dout), 
         .wr(rx_done_tick), 
         .CLOCK(clock), 
-        .o_alu(o_alu),
+        .in_alu(o_alu),
         .o_data_A (o_data_A), 
         .o_data_B(o_data_B), 
-        .o_data_Op(o_data_Op)
+        .o_data_Op(o_data_Op),
+        .o_tx(o_tx),
+        .empty (empty),
+        .rd(tx_done_tick)
+        
     );
     // ______________________ alu   ____________ //
     alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu));
     
+    // ______________________ Tx ____________ //
+    wire tx_done_tick; 
+    wire tx;
+    
+    tx_uart mytx_uart(
+        .s_tick(tick), 
+        .tx(tx),
+        .tx_done_tick(tx_done_tick), 
+        .tx_start(empty),
+        .din(o_tx),
+        .clock(clock)
+    );
     initial
         begin
             //s_tick           = 0;
