@@ -1,7 +1,7 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-// Date        : Thu Nov 25 17:03:51 2021
+// Date        : Thu Nov 25 18:26:02 2021
 // Host        : DESKTOP-05TNCFU running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testSystem_time_synth.v
@@ -29,7 +29,7 @@ module tx_uart
   input [7:0]din;
   input tx_start;
   input s_tick;
-  input tx_done_tick;
+  output tx_done_tick;
   input clock;
 
   wire clock;
@@ -47,9 +47,10 @@ module tx_uart
   wire \count_ticks_reg[0]_i_1_n_0 ;
   wire \count_ticks_reg[1]_i_1_n_0 ;
   wire \count_ticks_reg[2]_i_1_n_0 ;
-  wire \count_ticks_reg[3]_i_2_n_0 ;
+  wire \count_ticks_reg[3]_i_1_n_0 ;
   wire \count_ticks_reg[3]_i_3_n_0 ;
   wire \count_ticks_reg[3]_i_4_n_0 ;
+  wire \count_ticks_reg[3]_i_5_n_0 ;
   wire [4:0]current_state;
   wire \current_state[3]_i_2_n_0 ;
   wire \current_state[3]_i_3_n_0 ;
@@ -65,6 +66,9 @@ module tx_uart
   wire s_tick_IBUF;
   wire tx;
   wire tx_OBUF;
+  wire tx_done_tick;
+  wire tx_done_tick_OBUF;
+  wire tx_done_tick_next;
   wire tx_next;
   wire tx_reg_i_1_n_0;
   wire tx_reg_i_3_n_0;
@@ -82,11 +86,11 @@ end
        (.I(clock),
         .O(clock_IBUF));
   LUT6 #(
-    .INIT(64'hFFFFFFEB00000004)) 
+    .INIT(64'hFFFFFFF900000002)) 
     \count_data_reg[0]_i_1 
-       (.I0(current_state[0]),
-        .I1(current_state[2]),
-        .I2(current_state[1]),
+       (.I0(current_state[2]),
+        .I1(current_state[1]),
+        .I2(current_state[0]),
         .I3(current_state[4]),
         .I4(\count_data_reg[0]_i_2_n_0 ),
         .I5(count_data_reg[0]),
@@ -96,10 +100,10 @@ end
     .INIT(32'hBFFFFFFF)) 
     \count_data_reg[0]_i_2 
        (.I0(current_state[3]),
-        .I1(count_ticks_reg[2]),
-        .I2(count_ticks_reg[0]),
-        .I3(count_ticks_reg[1]),
-        .I4(count_ticks_reg[3]),
+        .I1(count_ticks_reg[3]),
+        .I2(count_ticks_reg[2]),
+        .I3(count_ticks_reg[0]),
+        .I4(count_ticks_reg[1]),
         .O(\count_data_reg[0]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFF4F00000080)) 
@@ -121,21 +125,20 @@ end
         .I4(current_state[3]),
         .I5(count_data_reg[2]),
         .O(\count_data_reg[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \count_data_reg[2]_i_2 
        (.I0(count_data_reg[0]),
         .I1(count_data_reg[1]),
         .O(\count_data_reg[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
-    .INIT(16'h0014)) 
+    .INIT(16'h0110)) 
     \count_data_reg[2]_i_3 
        (.I0(current_state[4]),
-        .I1(current_state[1]),
-        .I2(current_state[2]),
-        .I3(current_state[0]),
+        .I1(current_state[0]),
+        .I2(current_state[1]),
+        .I3(current_state[2]),
         .O(\count_data_reg[2]_i_3_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -161,103 +164,113 @@ end
         .D(\count_data_reg[2]_i_1_n_0 ),
         .Q(count_data_reg[2]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
-  LUT3 #(
-    .INIT(8'hC5)) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h55555554)) 
     \count_ticks_reg[0]_i_1 
        (.I0(count_ticks_reg[0]),
-        .I1(tx_start_IBUF),
-        .I2(current_state[0]),
+        .I1(current_state[4]),
+        .I2(current_state[1]),
+        .I3(current_state[2]),
+        .I4(current_state[3]),
         .O(\count_ticks_reg[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'h8BB8)) 
+  LUT6 #(
+    .INIT(64'h6666666666666660)) 
     \count_ticks_reg[1]_i_1 
-       (.I0(tx_start_IBUF),
-        .I1(current_state[0]),
-        .I2(count_ticks_reg[1]),
-        .I3(count_ticks_reg[0]),
+       (.I0(count_ticks_reg[0]),
+        .I1(count_ticks_reg[1]),
+        .I2(current_state[4]),
+        .I3(current_state[1]),
+        .I4(current_state[2]),
+        .I5(current_state[3]),
         .O(\count_ticks_reg[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h8BB8B8B8)) 
+  LUT4 #(
+    .INIT(16'h1540)) 
     \count_ticks_reg[2]_i_1 
-       (.I0(tx_start_IBUF),
-        .I1(current_state[0]),
-        .I2(count_ticks_reg[2]),
-        .I3(count_ticks_reg[1]),
-        .I4(count_ticks_reg[0]),
+       (.I0(\count_ticks_reg[3]_i_5_n_0 ),
+        .I1(count_ticks_reg[1]),
+        .I2(count_ticks_reg[0]),
+        .I3(count_ticks_reg[2]),
         .O(\count_ticks_reg[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h1F1010101F101F10)) 
+    .INIT(64'h8880808088808880)) 
     \count_ticks_reg[3]_i_1 
-       (.I0(tx_start_IBUF),
-        .I1(\count_ticks_reg[3]_i_3_n_0 ),
-        .I2(current_state[0]),
+       (.I0(current_state[0]),
+        .I1(tx_start_IBUF),
+        .I2(\din_reg[7]_i_1_n_0 ),
         .I3(\count_ticks_reg[3]_i_4_n_0 ),
         .I4(s_tick_IBUF),
         .I5(\current_state[4]_i_2_n_0 ),
-        .O(count_ticks_next));
-  LUT6 #(
-    .INIT(64'h8BB8B8B8B8B8B8B8)) 
-    \count_ticks_reg[3]_i_2 
-       (.I0(tx_start_IBUF),
-        .I1(current_state[0]),
-        .I2(count_ticks_reg[3]),
-        .I3(count_ticks_reg[1]),
-        .I4(count_ticks_reg[0]),
-        .I5(count_ticks_reg[2]),
-        .O(\count_ticks_reg[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+        .O(\count_ticks_reg[3]_i_1_n_0 ));
   LUT4 #(
-    .INIT(16'hFFFE)) 
+    .INIT(16'hFFD0)) 
+    \count_ticks_reg[3]_i_2 
+       (.I0(\current_state[4]_i_2_n_0 ),
+        .I1(s_tick_IBUF),
+        .I2(\count_ticks_reg[3]_i_4_n_0 ),
+        .I3(\din_reg[7]_i_1_n_0 ),
+        .O(count_ticks_next));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h00006AAA)) 
     \count_ticks_reg[3]_i_3 
-       (.I0(current_state[1]),
-        .I1(current_state[2]),
-        .I2(current_state[4]),
-        .I3(current_state[3]),
+       (.I0(count_ticks_reg[3]),
+        .I1(count_ticks_reg[2]),
+        .I2(count_ticks_reg[0]),
+        .I3(count_ticks_reg[1]),
+        .I4(\count_ticks_reg[3]_i_5_n_0 ),
         .O(\count_ticks_reg[3]_i_3_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'h0116)) 
+  LUT5 #(
+    .INIT(32'h00000116)) 
     \count_ticks_reg[3]_i_4 
        (.I0(current_state[1]),
-        .I1(current_state[2]),
-        .I2(current_state[4]),
-        .I3(current_state[3]),
+        .I1(current_state[4]),
+        .I2(current_state[3]),
+        .I3(current_state[2]),
+        .I4(current_state[0]),
         .O(\count_ticks_reg[3]_i_4_n_0 ));
-  FDRE #(
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \count_ticks_reg[3]_i_5 
+       (.I0(current_state[3]),
+        .I1(current_state[2]),
+        .I2(current_state[1]),
+        .I3(current_state[4]),
+        .O(\count_ticks_reg[3]_i_5_n_0 ));
+  FDSE #(
     .INIT(1'b0)) 
     \count_ticks_reg_reg[0] 
        (.C(clock_IBUF_BUFG),
         .CE(count_ticks_next),
         .D(\count_ticks_reg[0]_i_1_n_0 ),
         .Q(count_ticks_reg[0]),
-        .R(1'b0));
-  FDRE #(
+        .S(\count_ticks_reg[3]_i_1_n_0 ));
+  FDSE #(
     .INIT(1'b0)) 
     \count_ticks_reg_reg[1] 
        (.C(clock_IBUF_BUFG),
         .CE(count_ticks_next),
         .D(\count_ticks_reg[1]_i_1_n_0 ),
         .Q(count_ticks_reg[1]),
-        .R(1'b0));
-  FDRE #(
+        .S(\count_ticks_reg[3]_i_1_n_0 ));
+  FDSE #(
     .INIT(1'b0)) 
     \count_ticks_reg_reg[2] 
        (.C(clock_IBUF_BUFG),
         .CE(count_ticks_next),
         .D(\count_ticks_reg[2]_i_1_n_0 ),
         .Q(count_ticks_reg[2]),
-        .R(1'b0));
-  FDRE #(
+        .S(\count_ticks_reg[3]_i_1_n_0 ));
+  FDSE #(
     .INIT(1'b0)) 
     \count_ticks_reg_reg[3] 
        (.C(clock_IBUF_BUFG),
         .CE(count_ticks_next),
-        .D(\count_ticks_reg[3]_i_2_n_0 ),
+        .D(\count_ticks_reg[3]_i_3_n_0 ),
         .Q(count_ticks_reg[3]),
-        .R(1'b0));
+        .S(\count_ticks_reg[3]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hFF4F4F4F)) 
     \current_state[0]_i_1 
@@ -296,15 +309,15 @@ end
         .I4(current_state[3]),
         .I5(\current_state[4]_i_2_n_0 ),
         .O(next_state[3]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \current_state[3]_i_2 
-       (.I0(count_ticks_reg[0]),
-        .I1(count_ticks_reg[1]),
-        .I2(count_ticks_reg[2]),
+       (.I0(count_ticks_reg[2]),
+        .I1(count_ticks_reg[0]),
+        .I2(count_ticks_reg[1]),
         .O(\current_state[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     \current_state[3]_i_3 
@@ -321,14 +334,14 @@ end
         .I2(current_state[4]),
         .I3(\current_state[4]_i_3_n_0 ),
         .O(\current_state[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'h7FFF)) 
     \current_state[4]_i_2 
-       (.I0(count_ticks_reg[3]),
-        .I1(count_ticks_reg[1]),
-        .I2(count_ticks_reg[0]),
-        .I3(count_ticks_reg[2]),
+       (.I0(count_ticks_reg[1]),
+        .I1(count_ticks_reg[0]),
+        .I2(count_ticks_reg[2]),
+        .I3(count_ticks_reg[3]),
         .O(\current_state[4]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
@@ -410,14 +423,14 @@ end
        (.I(din[7]),
         .O(din_IBUF[7]));
   LUT6 #(
-    .INIT(64'h0000000000010000)) 
+    .INIT(64'h0000000100000000)) 
     \din_reg[7]_i_1 
-       (.I0(current_state[1]),
-        .I1(current_state[2]),
-        .I2(current_state[4]),
-        .I3(current_state[3]),
-        .I4(current_state[0]),
-        .I5(tx_start_IBUF),
+       (.I0(tx_start_IBUF),
+        .I1(current_state[3]),
+        .I2(current_state[2]),
+        .I3(current_state[1]),
+        .I4(current_state[4]),
+        .I5(current_state[0]),
         .O(\din_reg[7]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -489,14 +502,35 @@ end
   OBUF tx_OBUF_inst
        (.I(tx_OBUF),
         .O(tx));
+  OBUF tx_done_tick_OBUF_inst
+       (.I(tx_done_tick_OBUF),
+        .O(tx_done_tick));
+  LUT6 #(
+    .INIT(64'h0000000000000004)) 
+    tx_done_tick_reg_i_1
+       (.I0(\current_state[4]_i_2_n_0 ),
+        .I1(current_state[4]),
+        .I2(current_state[0]),
+        .I3(current_state[1]),
+        .I4(current_state[2]),
+        .I5(current_state[3]),
+        .O(tx_done_tick_next));
+  FDRE #(
+    .INIT(1'b0)) 
+    tx_done_tick_reg_reg
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
+        .D(tx_done_tick_next),
+        .Q(tx_done_tick_OBUF),
+        .R(1'b0));
   LUT5 #(
     .INIT(32'h00010116)) 
     tx_reg_i_1
-       (.I0(current_state[0]),
-        .I1(current_state[1]),
-        .I2(current_state[2]),
+       (.I0(current_state[3]),
+        .I1(current_state[2]),
+        .I2(current_state[1]),
         .I3(current_state[4]),
-        .I4(current_state[3]),
+        .I4(current_state[0]),
         .O(tx_reg_i_1_n_0));
   LUT6 #(
     .INIT(64'h000000000000DFD5)) 

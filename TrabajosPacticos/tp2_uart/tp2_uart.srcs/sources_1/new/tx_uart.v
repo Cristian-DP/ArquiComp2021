@@ -12,23 +12,24 @@ module tx_uart
     output  wire                tx,      
     input   wire        [7:0]   din,
     input   wire                tx_start , s_tick,
-    input   wire                tx_done_tick,                   
-    input   wire                clock
+    output  wire                tx_done_tick,                   
+    input   wire                clock,
+    input   wire                reset
 );
     reg     tx_done_tick_reg = 0;               //cambie
     reg     tx_done_tick_next = 0;              //cambie
     // contador de tick
-    reg [3:0]           count_ticks_reg     = 0;
-    reg [3:0]           count_ticks_next    = 0;    //cambie
+    reg [3:0]           count_ticks_reg     ;
+    reg [3:0]           count_ticks_next    ;    //cambie
     // registro conteo de los datos de envio 
-    reg [3:0]           count_data_reg      = 0;
-    reg [3:0]           count_data_next     = 0;    //cambie
+    reg [3:0]           count_data_reg      ;
+    reg [3:0]           count_data_next     ;    //cambie
     // registro de guardado de la operacion de la alu
-    reg [N_DATA - 1:0]           din_reg      = 0;
-    reg [N_DATA - 1:0]           din_next      = 0;
+    reg [N_DATA - 1:0]           din_reg      ;
+    reg [N_DATA - 1:0]           din_next      ;
     // registro asociado a la salida
-    reg                 tx_reg         = 1;
-    reg                 tx_next        = 1;
+    reg                 tx_reg         ;
+    reg                 tx_next        ;
     
     // estados de la fsm
     localparam [ NB_STATE -1:0]
@@ -46,12 +47,28 @@ module tx_uart
     **/
     always @(posedge clock) 
         begin
-            current_state    <= next_state;
-            count_data_reg   <= count_data_next;
-            count_ticks_reg  <= count_ticks_next;
-            tx_done_tick_reg <= tx_done_tick_next;
-            tx_reg           <= tx_next;
-            din_reg          <= din_next; 
+            if (reset) begin
+                din_reg          <= 0; 
+                din_next          <= 0;
+                count_data_reg   <= 0;
+                count_data_next   <= 0;
+                count_ticks_reg  <= 0;
+                count_ticks_next  <= 0;
+                tx_done_tick_reg <= 0;
+                tx_done_tick_next <= 0;
+                tx_reg           <= 1;
+                tx_next           <= 1;
+                current_state    <= 0; 
+                next_state          <= 0;
+            end
+            else begin
+                din_reg          <= din_next; 
+                count_data_reg   <= count_data_next;
+                count_ticks_reg  <= count_ticks_next;
+                tx_done_tick_reg <= tx_done_tick_next;
+                tx_reg           <= tx_next;
+                current_state    <= next_state;
+            end
         end
         
     always @(*) begin: state_logic

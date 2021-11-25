@@ -19,7 +19,8 @@ module interface_uart
     output  wire    [NB_DATA - 1:0] o_tx,           // Se presenta el resutlado a tx
     output  wire                    empty,           // bit para avisar a tx que puede leer
     /* CLOCK */
-    input wire CLOCK                                // clock que alimenta el sistema
+    input wire                      CLOCK,                                // clock que alimenta el sistema,
+    input   wire                    reset
 );
 
   reg    [NB_DATA - 1:0] DA_reg      = 0;           // registro del dato A
@@ -52,12 +53,29 @@ module interface_uart
    
    always @(posedge CLOCK) 
    begin
-        current_state   <= next_state;
-        DA_reg          <= DA_reg_next;
-        DB_reg          <= DB_reg_next;
-        OP_reg          <= OP_reg_next;
-        empty_reg       <= empty_next;
-        in_alu_reg      <= in_alu_next;
+        if (reset) begin
+            current_state   <= 0;
+            DA_reg          <= 0;
+            DB_reg          <= 0;
+            OP_reg          <= 0;
+            empty_reg       <= 1;
+            in_alu_reg      <= 0;
+            next_state      <= 0;
+            DA_reg_next          <= 0;
+            DB_reg_next          <= 0;
+            OP_reg_next          <= 0;
+            empty_next       <= 1;
+            in_alu_next      <= 0;
+        
+        end
+        else begin
+            current_state   <= next_state;
+            DA_reg          <= DA_reg_next;
+            DB_reg          <= DB_reg_next;
+            OP_reg          <= OP_reg_next;
+            empty_reg       <= empty_next;
+            in_alu_reg      <= in_alu_next;
+        end
    end
    
    always @(*)

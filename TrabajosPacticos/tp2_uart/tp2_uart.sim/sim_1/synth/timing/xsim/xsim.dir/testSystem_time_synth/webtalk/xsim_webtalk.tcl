@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Thu Nov 25 17:09:12 2021" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Thu Nov 25 19:21:35 2021" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2021.1 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "3247384" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "3d36a444-89f4-453b-af76-8f6bbf0ce407" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "dc3c71e43c1c46d8a2e201a40436c290" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "76" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "92" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Windows Server 2016 or Windows 10" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "AMD Ryzen 5 3400G with Radeon Vega Graphics    " -context "user_environment"
@@ -26,9 +26,9 @@ webtalk_add_data -client xsim -key runall -value "true" -context "xsim\\command_
 webtalk_add_data -client xsim -key runall -value "true" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
-webtalk_add_data -client xsim -key runtime -value "14688782401 ps" -context "xsim\\usage"
-webtalk_add_data -client xsim -key iteration -value "1" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Time -value "5.53_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Memory -value "16316_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1336585311 -regid "" -xml C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key runtime -value "18229860922 ps" -context "xsim\\usage"
+webtalk_add_data -client xsim -key iteration -value "0" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Time -value "7.22_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Memory -value "16388_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 3566173087 -regid "" -xml C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/xsim.dir/testSystem_time_synth/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

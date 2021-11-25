@@ -36,9 +36,10 @@ module testSystem;
     wire         tick;
     reg          clock;
     reg   [2:0] counter_t;
-    wire tx_done_tick; 
-    wire tx;
+    wire        tx_done_tick; 
+    wire        tx;
     
+    // ______________________________________________________________________________ //
     // ______________________ BRG ____________ //
     BaudRateGenerator myBRG (
         .tick(tick),
@@ -50,6 +51,15 @@ module testSystem;
         .rx(rx),
         .rx_done_tick(rx_done_tick), 
         .dout(dout),
+        .clock(clock)
+    );
+    // ______________________ Tx ____________ //
+    tx_uart mytx_uart(
+        .s_tick(tick), 
+        .tx(tx),
+        .tx_done_tick(tx_done_tick), 
+        .tx_start(empty),
+        .din(o_tx),
         .clock(clock)
     );
     // ______________________ interface  ____________ //
@@ -69,16 +79,8 @@ module testSystem;
     // ______________________ alu   ____________ //
     alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu));
     
-    // ______________________ Tx ____________ //
+    // ______________________________________________________________________________ //
     
-    tx_uart mytx_uart(
-        .s_tick(tick), 
-        .tx(tx),
-        .tx_done_tick(tx_done_tick), 
-        .tx_start(empty),
-        .din(o_tx),
-        .clock(clock)
-    );
     initial
         begin
             //s_tick           = 0;

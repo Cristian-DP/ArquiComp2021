@@ -23,19 +23,27 @@ module rx_uart
     output  wire [7:0]  dout,          
     output  wire        rx_done_tick,  //cambie     
     input   wire        rx,s_tick,                   
-    input   wire        clock
+    input   wire        clock,
+    input   wire        reset
 );
-    reg     rx_done_tick_reg = 0; //cambie
-    reg     rx_done_tick_next = 0;//cambie
+    /**
+    No podemos inicializar los reg
+    Es aceptable que comience con X o Z
+    */
+    /**
+    El reset es el incializado donde todo comienza
+    */
+    reg     rx_done_tick_reg ; //cambie
+    reg     rx_done_tick_next ;//cambie
     // contador de tick
-    reg [3:0]           count_ticks_reg     = 0;
-    reg [3:0]           count_ticks_next     = 0;
+    reg [3:0]           count_ticks_reg     ;
+    reg [3:0]           count_ticks_next     ;
     // registro de los datos leidos en rx
-    reg [N_DATA - 1:0]    reg_data        = 0;
-    reg [N_DATA - 1:0]    reg_data_next   = 0;
+    reg [N_DATA - 1:0]    reg_data        ;
+    reg [N_DATA - 1:0]    reg_data_next   ;
     // contador de datos leidos en rx
-    reg [3:0]           count_data      = 0;
-    reg [3:0]           count_data_next = 0;
+    reg [3:0]           count_data      ;
+    reg [3:0]           count_data_next ;
     // bit para .....
     reg is_valid                        = 1;
     // estados de la fsm
@@ -54,11 +62,26 @@ module rx_uart
     **/
     always @(posedge clock) 
         begin
-            rx_done_tick_reg<= rx_done_tick_next;//cambie
-            current_state   <= next_state;
-            count_ticks_reg <= count_ticks_next;
-            count_data      <= count_data_next;
-            reg_data        <= reg_data_next;
+            if (reset) begin
+                rx_done_tick_reg    <= 0;//cambie
+                current_state       <= 0;
+                count_ticks_reg     <= 0;
+                count_data          <= 0;
+                reg_data            <= 0;   
+                rx_done_tick_next   <= 0;//cambie
+                next_state          <= 0;
+                count_ticks_next    <= 0;
+                count_data_next     <= 0;
+                reg_data_next       <= 0;             
+            end
+            else begin
+                rx_done_tick_reg    <= rx_done_tick_next;//cambie
+                current_state       <= next_state;
+                count_ticks_reg     <= count_ticks_next;
+                count_data          <= count_data_next;
+                reg_data            <= reg_data_next;
+            end
+           
         end
         
     always @(*) begin: state_logic
@@ -77,7 +100,7 @@ module rx_uart
                     default:   next_state = STATE_IDLE;
                 endcase
             end
-            // -------------------------------------------------------------------------- //
+            // -------------------------------------------------------------------------- // leer entradas, cambair estado, fijar salidas
             STATE_START : begin
                 case(count_ticks_reg)
                     STARTS_TICKS:   
