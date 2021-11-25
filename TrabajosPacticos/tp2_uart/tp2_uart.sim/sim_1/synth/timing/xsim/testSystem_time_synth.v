@@ -1,11 +1,11 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-// Date        : Thu Nov 25 14:04:54 2021
+// Date        : Thu Nov 25 17:03:51 2021
 // Host        : DESKTOP-05TNCFU running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testSystem_time_synth.v
-// Design      : interface_uart
+// Design      : tx_uart
 // Purpose     : This verilog netlist is a timing simulation representation of the design and should not be modified or
 //               synthesized. Please ensure that this netlist is used with the corresponding SDF file.
 // Device      : xc7a35tcpg236-1
@@ -13,669 +13,532 @@
 `timescale 1 ps / 1 ps
 `define XIL_TIMING
 
-(* NB_DATA = "8" *) (* NB_STATE = "4" *) (* STATE_DATA_A = "4'b0001" *) 
-(* STATE_DATA_B = "4'b0010" *) (* STATE_DATA_OP = "4'b0100" *) (* STATE_TX = "4'b1000" *) 
+(* DATA_TICKS = "15" *) (* NB_STATE = "5" *) (* N_DATA = "8" *) 
+(* START_VALUE = "0" *) (* STATE_DATA = "5'b00100" *) (* STATE_IDLE = "5'b00001" *) 
+(* STATE_PAR = "5'b01000" *) (* STATE_START = "5'b00010" *) (* STATE_STOP = "5'b10000" *) 
+(* STOP_VALUE = "1" *) 
 (* NotValidForBitStream *)
-module interface_uart
-   (wr,
-    rd,
-    in_rx,
-    in_alu,
-    o_data_A,
-    o_data_B,
-    o_data_Op,
-    o_tx,
-    empty,
-    CLOCK);
-  input wr;
-  input rd;
-  input [7:0]in_rx;
-  input [7:0]in_alu;
-  output [7:0]o_data_A;
-  output [7:0]o_data_B;
-  output [7:0]o_data_Op;
-  output [7:0]o_tx;
-  output empty;
-  input CLOCK;
+module tx_uart
+   (tx,
+    din,
+    tx_start,
+    s_tick,
+    tx_done_tick,
+    clock);
+  output tx;
+  input [7:0]din;
+  input tx_start;
+  input s_tick;
+  input tx_done_tick;
+  input clock;
 
-  wire CLOCK;
-  wire CLOCK_IBUF;
-  wire CLOCK_IBUF_BUFG;
-  wire \DA_reg[7]_i_1_n_0 ;
-  wire DB_reg_next;
-  wire [3:0]current_state;
-  wire \current_state[2]_i_3_n_0 ;
-  wire \current_state[2]_i_4_n_0 ;
-  wire \current_state[2]_i_5_n_0 ;
-  wire \current_state[3]_i_1_n_0 ;
-  wire \current_state[3]_i_4_n_0 ;
-  wire \current_state[3]_i_5_n_0 ;
-  wire \current_state[3]_i_6_n_0 ;
-  wire empty;
-  wire empty_OBUF;
-  wire empty_reg_i_1_n_0;
-  wire [7:0]in_alu;
-  wire [7:0]in_alu_IBUF;
-  wire \in_alu_reg_reg[7]_i_1_n_0 ;
-  wire [7:0]in_rx;
-  wire [7:0]in_rx_IBUF;
+  wire clock;
+  wire clock_IBUF;
+  wire clock_IBUF_BUFG;
+  wire [2:0]count_data_reg;
+  wire \count_data_reg[0]_i_1_n_0 ;
+  wire \count_data_reg[0]_i_2_n_0 ;
+  wire \count_data_reg[1]_i_1_n_0 ;
+  wire \count_data_reg[2]_i_1_n_0 ;
+  wire \count_data_reg[2]_i_2_n_0 ;
+  wire \count_data_reg[2]_i_3_n_0 ;
+  wire count_ticks_next;
+  wire [3:0]count_ticks_reg;
+  wire \count_ticks_reg[0]_i_1_n_0 ;
+  wire \count_ticks_reg[1]_i_1_n_0 ;
+  wire \count_ticks_reg[2]_i_1_n_0 ;
+  wire \count_ticks_reg[3]_i_2_n_0 ;
+  wire \count_ticks_reg[3]_i_3_n_0 ;
+  wire \count_ticks_reg[3]_i_4_n_0 ;
+  wire [4:0]current_state;
+  wire \current_state[3]_i_2_n_0 ;
+  wire \current_state[3]_i_3_n_0 ;
+  wire \current_state[4]_i_1_n_0 ;
+  wire \current_state[4]_i_2_n_0 ;
+  wire \current_state[4]_i_3_n_0 ;
+  wire [7:0]din;
+  wire [7:0]din_IBUF;
+  wire [7:0]din_reg;
+  wire \din_reg[7]_i_1_n_0 ;
   wire [3:0]next_state;
-  wire next_state1;
-  wire next_state11_out;
-  wire [7:0]o_data_A;
-  wire [7:0]o_data_A_OBUF;
-  wire [7:0]o_data_B;
-  wire [7:0]o_data_B_OBUF;
-  wire [7:0]o_data_Op;
-  wire [5:0]o_data_Op_OBUF;
-  wire [7:0]o_tx;
-  wire [7:0]o_tx_OBUF;
-  wire rd;
-  wire rd_IBUF;
-  wire wr;
-  wire wr_IBUF;
+  wire s_tick;
+  wire s_tick_IBUF;
+  wire tx;
+  wire tx_OBUF;
+  wire tx_next;
+  wire tx_reg_i_1_n_0;
+  wire tx_reg_i_3_n_0;
+  wire tx_reg_i_4_n_0;
+  wire tx_start;
+  wire tx_start_IBUF;
 
 initial begin
  $sdf_annotate("testSystem_time_synth.sdf",,,,"tool_control");
 end
-  BUFG CLOCK_IBUF_BUFG_inst
-       (.I(CLOCK_IBUF),
-        .O(CLOCK_IBUF_BUFG));
-  IBUF CLOCK_IBUF_inst
-       (.I(CLOCK),
-        .O(CLOCK_IBUF));
-  LUT5 #(
-    .INIT(32'h00000020)) 
-    \DA_reg[7]_i_1 
+  BUFG clock_IBUF_BUFG_inst
+       (.I(clock_IBUF),
+        .O(clock_IBUF_BUFG));
+  IBUF clock_IBUF_inst
+       (.I(clock),
+        .O(clock_IBUF));
+  LUT6 #(
+    .INIT(64'hFFFFFFEB00000004)) 
+    \count_data_reg[0]_i_1 
        (.I0(current_state[0]),
         .I1(current_state[2]),
-        .I2(wr_IBUF),
-        .I3(current_state[3]),
-        .I4(current_state[1]),
-        .O(\DA_reg[7]_i_1_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[0] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[0]),
-        .Q(o_data_A_OBUF[0]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[1] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[1]),
-        .Q(o_data_A_OBUF[1]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[2] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[2]),
-        .Q(o_data_A_OBUF[2]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[3] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[3]),
-        .Q(o_data_A_OBUF[3]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[4] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[4]),
-        .Q(o_data_A_OBUF[4]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[5] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[5]),
-        .Q(o_data_A_OBUF[5]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[6] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[6]),
-        .Q(o_data_A_OBUF[6]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DA_reg_reg[7] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\DA_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[7]),
-        .Q(o_data_A_OBUF[7]),
-        .R(1'b0));
+        .I2(current_state[1]),
+        .I3(current_state[4]),
+        .I4(\count_data_reg[0]_i_2_n_0 ),
+        .I5(count_data_reg[0]),
+        .O(\count_data_reg[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'h00000020)) 
-    \DB_reg[7]_i_1 
+    .INIT(32'hBFFFFFFF)) 
+    \count_data_reg[0]_i_2 
+       (.I0(current_state[3]),
+        .I1(count_ticks_reg[2]),
+        .I2(count_ticks_reg[0]),
+        .I3(count_ticks_reg[1]),
+        .I4(count_ticks_reg[3]),
+        .O(\count_data_reg[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFF4F00000080)) 
+    \count_data_reg[1]_i_1 
+       (.I0(count_data_reg[0]),
+        .I1(current_state[2]),
+        .I2(\count_data_reg[2]_i_3_n_0 ),
+        .I3(\current_state[4]_i_2_n_0 ),
+        .I4(current_state[3]),
+        .I5(count_data_reg[1]),
+        .O(\count_data_reg[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFF4F00000080)) 
+    \count_data_reg[2]_i_1 
+       (.I0(\count_data_reg[2]_i_2_n_0 ),
+        .I1(current_state[2]),
+        .I2(\count_data_reg[2]_i_3_n_0 ),
+        .I3(\current_state[4]_i_2_n_0 ),
+        .I4(current_state[3]),
+        .I5(count_data_reg[2]),
+        .O(\count_data_reg[2]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \count_data_reg[2]_i_2 
+       (.I0(count_data_reg[0]),
+        .I1(count_data_reg[1]),
+        .O(\count_data_reg[2]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'h0014)) 
+    \count_data_reg[2]_i_3 
+       (.I0(current_state[4]),
+        .I1(current_state[1]),
+        .I2(current_state[2]),
+        .I3(current_state[0]),
+        .O(\count_data_reg[2]_i_3_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_data_reg_reg[0] 
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
+        .D(\count_data_reg[0]_i_1_n_0 ),
+        .Q(count_data_reg[0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_data_reg_reg[1] 
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
+        .D(\count_data_reg[1]_i_1_n_0 ),
+        .Q(count_data_reg[1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_data_reg_reg[2] 
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
+        .D(\count_data_reg[2]_i_1_n_0 ),
+        .Q(count_data_reg[2]),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT3 #(
+    .INIT(8'hC5)) 
+    \count_ticks_reg[0]_i_1 
+       (.I0(count_ticks_reg[0]),
+        .I1(tx_start_IBUF),
+        .I2(current_state[0]),
+        .O(\count_ticks_reg[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'h8BB8)) 
+    \count_ticks_reg[1]_i_1 
+       (.I0(tx_start_IBUF),
+        .I1(current_state[0]),
+        .I2(count_ticks_reg[1]),
+        .I3(count_ticks_reg[0]),
+        .O(\count_ticks_reg[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h8BB8B8B8)) 
+    \count_ticks_reg[2]_i_1 
+       (.I0(tx_start_IBUF),
+        .I1(current_state[0]),
+        .I2(count_ticks_reg[2]),
+        .I3(count_ticks_reg[1]),
+        .I4(count_ticks_reg[0]),
+        .O(\count_ticks_reg[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h1F1010101F101F10)) 
+    \count_ticks_reg[3]_i_1 
+       (.I0(tx_start_IBUF),
+        .I1(\count_ticks_reg[3]_i_3_n_0 ),
+        .I2(current_state[0]),
+        .I3(\count_ticks_reg[3]_i_4_n_0 ),
+        .I4(s_tick_IBUF),
+        .I5(\current_state[4]_i_2_n_0 ),
+        .O(count_ticks_next));
+  LUT6 #(
+    .INIT(64'h8BB8B8B8B8B8B8B8)) 
+    \count_ticks_reg[3]_i_2 
+       (.I0(tx_start_IBUF),
+        .I1(current_state[0]),
+        .I2(count_ticks_reg[3]),
+        .I3(count_ticks_reg[1]),
+        .I4(count_ticks_reg[0]),
+        .I5(count_ticks_reg[2]),
+        .O(\count_ticks_reg[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \count_ticks_reg[3]_i_3 
        (.I0(current_state[1]),
         .I1(current_state[2]),
-        .I2(next_state11_out),
+        .I2(current_state[4]),
         .I3(current_state[3]),
-        .I4(current_state[0]),
-        .O(DB_reg_next));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[0] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[0]),
-        .Q(o_data_B_OBUF[0]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[1] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[1]),
-        .Q(o_data_B_OBUF[1]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[2] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[2]),
-        .Q(o_data_B_OBUF[2]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[3] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[3]),
-        .Q(o_data_B_OBUF[3]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[4] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[4]),
-        .Q(o_data_B_OBUF[4]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[5] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[5]),
-        .Q(o_data_B_OBUF[5]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[6] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[6]),
-        .Q(o_data_B_OBUF[6]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \DB_reg_reg[7] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(DB_reg_next),
-        .D(in_rx_IBUF[7]),
-        .Q(o_data_B_OBUF[7]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \OP_reg_reg[0] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[0]),
-        .Q(o_data_Op_OBUF[0]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \OP_reg_reg[1] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[1]),
-        .Q(o_data_Op_OBUF[1]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \OP_reg_reg[2] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[2]),
-        .Q(o_data_Op_OBUF[2]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \OP_reg_reg[3] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[3]),
-        .Q(o_data_Op_OBUF[3]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \OP_reg_reg[4] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[4]),
-        .Q(o_data_Op_OBUF[4]),
-        .R(1'b0));
-  FDRE #(
-    .INIT(1'b0)) 
-    \OP_reg_reg[5] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .D(in_rx_IBUF[5]),
-        .Q(o_data_Op_OBUF[5]),
-        .R(1'b0));
-  LUT4 #(
-    .INIT(16'hF444)) 
-    \current_state[0]_i_1 
-       (.I0(wr_IBUF),
-        .I1(current_state[0]),
-        .I2(rd_IBUF),
-        .I3(current_state[3]),
-        .O(next_state[0]));
-  LUT4 #(
-    .INIT(16'h8F88)) 
-    \current_state[1]_i_1 
-       (.I0(wr_IBUF),
-        .I1(current_state[0]),
-        .I2(next_state11_out),
-        .I3(current_state[1]),
-        .O(next_state[1]));
-  LUT4 #(
-    .INIT(16'h8F88)) 
-    \current_state[2]_i_1 
-       (.I0(next_state11_out),
-        .I1(current_state[1]),
-        .I2(next_state1),
-        .I3(current_state[2]),
-        .O(next_state[2]));
-  LUT4 #(
-    .INIT(16'hAAA8)) 
-    \current_state[2]_i_2 
-       (.I0(wr_IBUF),
-        .I1(\current_state[2]_i_3_n_0 ),
-        .I2(\current_state[2]_i_4_n_0 ),
-        .I3(\current_state[2]_i_5_n_0 ),
-        .O(next_state11_out));
-  LUT6 #(
-    .INIT(64'h6FF6FFFFFFFF6FF6)) 
-    \current_state[2]_i_3 
-       (.I0(o_data_A_OBUF[0]),
-        .I1(in_rx_IBUF[0]),
-        .I2(in_rx_IBUF[2]),
-        .I3(o_data_A_OBUF[2]),
-        .I4(in_rx_IBUF[1]),
-        .I5(o_data_A_OBUF[1]),
-        .O(\current_state[2]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h6FF6FFFFFFFF6FF6)) 
-    \current_state[2]_i_4 
-       (.I0(o_data_A_OBUF[3]),
-        .I1(in_rx_IBUF[3]),
-        .I2(in_rx_IBUF[5]),
-        .I3(o_data_A_OBUF[5]),
-        .I4(in_rx_IBUF[4]),
-        .I5(o_data_A_OBUF[4]),
-        .O(\current_state[2]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'h6FF6)) 
-    \current_state[2]_i_5 
-       (.I0(o_data_A_OBUF[6]),
-        .I1(in_rx_IBUF[6]),
-        .I2(o_data_A_OBUF[7]),
-        .I3(in_rx_IBUF[7]),
-        .O(\current_state[2]_i_5_n_0 ));
+        .O(\count_ticks_reg[3]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h0116)) 
+    \count_ticks_reg[3]_i_4 
+       (.I0(current_state[1]),
+        .I1(current_state[2]),
+        .I2(current_state[4]),
+        .I3(current_state[3]),
+        .O(\count_ticks_reg[3]_i_4_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_ticks_reg_reg[0] 
+       (.C(clock_IBUF_BUFG),
+        .CE(count_ticks_next),
+        .D(\count_ticks_reg[0]_i_1_n_0 ),
+        .Q(count_ticks_reg[0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_ticks_reg_reg[1] 
+       (.C(clock_IBUF_BUFG),
+        .CE(count_ticks_next),
+        .D(\count_ticks_reg[1]_i_1_n_0 ),
+        .Q(count_ticks_reg[1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_ticks_reg_reg[2] 
+       (.C(clock_IBUF_BUFG),
+        .CE(count_ticks_next),
+        .D(\count_ticks_reg[2]_i_1_n_0 ),
+        .Q(count_ticks_reg[2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \count_ticks_reg_reg[3] 
+       (.C(clock_IBUF_BUFG),
+        .CE(count_ticks_next),
+        .D(\count_ticks_reg[3]_i_2_n_0 ),
+        .Q(count_ticks_reg[3]),
+        .R(1'b0));
+  LUT5 #(
+    .INIT(32'hFF4F4F4F)) 
+    \current_state[0]_i_1 
+       (.I0(\current_state[4]_i_2_n_0 ),
+        .I1(current_state[4]),
+        .I2(\current_state[4]_i_3_n_0 ),
+        .I3(tx_start_IBUF),
+        .I4(current_state[0]),
+        .O(next_state[0]));
+  LUT5 #(
+    .INIT(32'hAA080808)) 
+    \current_state[1]_i_1 
+       (.I0(\current_state[4]_i_3_n_0 ),
+        .I1(current_state[0]),
+        .I2(tx_start_IBUF),
+        .I3(current_state[1]),
+        .I4(\current_state[4]_i_2_n_0 ),
+        .O(next_state[1]));
+  LUT6 #(
+    .INIT(64'hAA08AAAA08080808)) 
+    \current_state[2]_i_1 
+       (.I0(\current_state[4]_i_3_n_0 ),
+        .I1(current_state[1]),
+        .I2(\current_state[4]_i_2_n_0 ),
+        .I3(\current_state[3]_i_2_n_0 ),
+        .I4(\current_state[3]_i_3_n_0 ),
+        .I5(current_state[2]),
+        .O(next_state[2]));
+  LUT6 #(
+    .INIT(64'hAAAA200020002000)) 
     \current_state[3]_i_1 
+       (.I0(\current_state[4]_i_3_n_0 ),
+        .I1(\current_state[3]_i_2_n_0 ),
+        .I2(\current_state[3]_i_3_n_0 ),
+        .I3(current_state[2]),
+        .I4(current_state[3]),
+        .I5(\current_state[4]_i_2_n_0 ),
+        .O(next_state[3]));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT3 #(
+    .INIT(8'h7F)) 
+    \current_state[3]_i_2 
+       (.I0(count_ticks_reg[0]),
+        .I1(count_ticks_reg[1]),
+        .I2(count_ticks_reg[2]),
+        .O(\current_state[3]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \current_state[3]_i_3 
+       (.I0(count_data_reg[1]),
+        .I1(count_data_reg[0]),
+        .I2(count_data_reg[2]),
+        .I3(count_ticks_reg[3]),
+        .O(\current_state[3]_i_3_n_0 ));
+  LUT4 #(
+    .INIT(16'hE200)) 
+    \current_state[4]_i_1 
+       (.I0(current_state[3]),
+        .I1(\current_state[4]_i_2_n_0 ),
+        .I2(current_state[4]),
+        .I3(\current_state[4]_i_3_n_0 ),
+        .O(\current_state[4]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \current_state[4]_i_2 
+       (.I0(count_ticks_reg[3]),
+        .I1(count_ticks_reg[1]),
+        .I2(count_ticks_reg[0]),
+        .I3(count_ticks_reg[2]),
+        .O(\current_state[4]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h00010116)) 
+    \current_state[4]_i_3 
        (.I0(current_state[0]),
         .I1(current_state[1]),
         .I2(current_state[2]),
         .I3(current_state[3]),
-        .O(\current_state[3]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h8F88)) 
-    \current_state[3]_i_2 
-       (.I0(next_state1),
-        .I1(current_state[2]),
-        .I2(rd_IBUF),
-        .I3(current_state[3]),
-        .O(next_state[3]));
-  LUT4 #(
-    .INIT(16'hAAA8)) 
-    \current_state[3]_i_3 
-       (.I0(wr_IBUF),
-        .I1(\current_state[3]_i_4_n_0 ),
-        .I2(\current_state[3]_i_5_n_0 ),
-        .I3(\current_state[3]_i_6_n_0 ),
-        .O(next_state1));
-  LUT6 #(
-    .INIT(64'h6FF6FFFFFFFF6FF6)) 
-    \current_state[3]_i_4 
-       (.I0(o_data_B_OBUF[0]),
-        .I1(in_rx_IBUF[0]),
-        .I2(in_rx_IBUF[2]),
-        .I3(o_data_B_OBUF[2]),
-        .I4(in_rx_IBUF[1]),
-        .I5(o_data_B_OBUF[1]),
-        .O(\current_state[3]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h6FF6FFFFFFFF6FF6)) 
-    \current_state[3]_i_5 
-       (.I0(o_data_B_OBUF[3]),
-        .I1(in_rx_IBUF[3]),
-        .I2(in_rx_IBUF[5]),
-        .I3(o_data_B_OBUF[5]),
-        .I4(in_rx_IBUF[4]),
-        .I5(o_data_B_OBUF[4]),
-        .O(\current_state[3]_i_5_n_0 ));
-  LUT4 #(
-    .INIT(16'h6FF6)) 
-    \current_state[3]_i_6 
-       (.I0(o_data_B_OBUF[6]),
-        .I1(in_rx_IBUF[6]),
-        .I2(o_data_B_OBUF[7]),
-        .I3(in_rx_IBUF[7]),
-        .O(\current_state[3]_i_6_n_0 ));
-  (* FSM_ENCODED_STATES = "STATE_DATA_B:0010,STATE_DATA_OP:0100,STATE_TX:1000,STATE_DATA_A:0001" *) 
+        .I4(current_state[4]),
+        .O(\current_state[4]_i_3_n_0 ));
+  (* FSM_ENCODED_STATES = "STATE_START:00010,STATE_DATA:00100,STATE_PAR:01000,STATE_STOP:10000,STATE_IDLE:00001" *) 
   FDRE #(
     .INIT(1'b1)) 
     \current_state_reg[0] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\current_state[3]_i_1_n_0 ),
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
         .D(next_state[0]),
         .Q(current_state[0]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "STATE_DATA_B:0010,STATE_DATA_OP:0100,STATE_TX:1000,STATE_DATA_A:0001" *) 
+  (* FSM_ENCODED_STATES = "STATE_START:00010,STATE_DATA:00100,STATE_PAR:01000,STATE_STOP:10000,STATE_IDLE:00001" *) 
   FDRE #(
     .INIT(1'b0)) 
     \current_state_reg[1] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\current_state[3]_i_1_n_0 ),
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
         .D(next_state[1]),
         .Q(current_state[1]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "STATE_DATA_B:0010,STATE_DATA_OP:0100,STATE_TX:1000,STATE_DATA_A:0001" *) 
+  (* FSM_ENCODED_STATES = "STATE_START:00010,STATE_DATA:00100,STATE_PAR:01000,STATE_STOP:10000,STATE_IDLE:00001" *) 
   FDRE #(
     .INIT(1'b0)) 
     \current_state_reg[2] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\current_state[3]_i_1_n_0 ),
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
         .D(next_state[2]),
         .Q(current_state[2]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "STATE_DATA_B:0010,STATE_DATA_OP:0100,STATE_TX:1000,STATE_DATA_A:0001" *) 
+  (* FSM_ENCODED_STATES = "STATE_START:00010,STATE_DATA:00100,STATE_PAR:01000,STATE_STOP:10000,STATE_IDLE:00001" *) 
   FDRE #(
     .INIT(1'b0)) 
     \current_state_reg[3] 
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(\current_state[3]_i_1_n_0 ),
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
         .D(next_state[3]),
         .Q(current_state[3]),
         .R(1'b0));
-  OBUF empty_OBUF_inst
-       (.I(empty_OBUF),
-        .O(empty));
-  LUT4 #(
-    .INIT(16'h0010)) 
-    empty_reg_i_1
-       (.I0(current_state[0]),
+  (* FSM_ENCODED_STATES = "STATE_START:00010,STATE_DATA:00100,STATE_PAR:01000,STATE_STOP:10000,STATE_IDLE:00001" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \current_state_reg[4] 
+       (.C(clock_IBUF_BUFG),
+        .CE(1'b1),
+        .D(\current_state[4]_i_1_n_0 ),
+        .Q(current_state[4]),
+        .R(1'b0));
+  IBUF \din_IBUF[0]_inst 
+       (.I(din[0]),
+        .O(din_IBUF[0]));
+  IBUF \din_IBUF[1]_inst 
+       (.I(din[1]),
+        .O(din_IBUF[1]));
+  IBUF \din_IBUF[2]_inst 
+       (.I(din[2]),
+        .O(din_IBUF[2]));
+  IBUF \din_IBUF[3]_inst 
+       (.I(din[3]),
+        .O(din_IBUF[3]));
+  IBUF \din_IBUF[4]_inst 
+       (.I(din[4]),
+        .O(din_IBUF[4]));
+  IBUF \din_IBUF[5]_inst 
+       (.I(din[5]),
+        .O(din_IBUF[5]));
+  IBUF \din_IBUF[6]_inst 
+       (.I(din[6]),
+        .O(din_IBUF[6]));
+  IBUF \din_IBUF[7]_inst 
+       (.I(din[7]),
+        .O(din_IBUF[7]));
+  LUT6 #(
+    .INIT(64'h0000000000010000)) 
+    \din_reg[7]_i_1 
+       (.I0(current_state[1]),
         .I1(current_state[2]),
-        .I2(current_state[3]),
-        .I3(current_state[1]),
-        .O(empty_reg_i_1_n_0));
+        .I2(current_state[4]),
+        .I3(current_state[3]),
+        .I4(current_state[0]),
+        .I5(tx_start_IBUF),
+        .O(\din_reg[7]_i_1_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[0] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[0]),
+        .Q(din_reg[0]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[1] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[1]),
+        .Q(din_reg[1]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[2] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[2]),
+        .Q(din_reg[2]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[3] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[3]),
+        .Q(din_reg[3]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[4] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[4]),
+        .Q(din_reg[4]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[5] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[5]),
+        .Q(din_reg[5]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[6] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[6]),
+        .Q(din_reg[6]),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \din_reg_reg[7] 
+       (.C(clock_IBUF_BUFG),
+        .CE(\din_reg[7]_i_1_n_0 ),
+        .D(din_IBUF[7]),
+        .Q(din_reg[7]),
+        .R(1'b0));
+  IBUF s_tick_IBUF_inst
+       (.I(s_tick),
+        .O(s_tick_IBUF));
+  OBUF tx_OBUF_inst
+       (.I(tx_OBUF),
+        .O(tx));
+  LUT5 #(
+    .INIT(32'h00010116)) 
+    tx_reg_i_1
+       (.I0(current_state[0]),
+        .I1(current_state[1]),
+        .I2(current_state[2]),
+        .I3(current_state[4]),
+        .I4(current_state[3]),
+        .O(tx_reg_i_1_n_0));
+  LUT6 #(
+    .INIT(64'h000000000000DFD5)) 
+    tx_reg_i_2
+       (.I0(current_state[2]),
+        .I1(tx_reg_i_3_n_0),
+        .I2(count_data_reg[2]),
+        .I3(tx_reg_i_4_n_0),
+        .I4(current_state[3]),
+        .I5(current_state[1]),
+        .O(tx_next));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    tx_reg_i_3
+       (.I0(din_reg[7]),
+        .I1(din_reg[6]),
+        .I2(count_data_reg[1]),
+        .I3(din_reg[5]),
+        .I4(count_data_reg[0]),
+        .I5(din_reg[4]),
+        .O(tx_reg_i_3_n_0));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    tx_reg_i_4
+       (.I0(din_reg[3]),
+        .I1(din_reg[2]),
+        .I2(count_data_reg[1]),
+        .I3(din_reg[1]),
+        .I4(count_data_reg[0]),
+        .I5(din_reg[0]),
+        .O(tx_reg_i_4_n_0));
   FDRE #(
     .INIT(1'b1)) 
-    empty_reg_reg
-       (.C(CLOCK_IBUF_BUFG),
-        .CE(empty_reg_i_1_n_0),
-        .D(rd_IBUF),
-        .Q(empty_OBUF),
+    tx_reg_reg
+       (.C(clock_IBUF_BUFG),
+        .CE(tx_reg_i_1_n_0),
+        .D(tx_next),
+        .Q(tx_OBUF),
         .R(1'b0));
-  IBUF \in_alu_IBUF[0]_inst 
-       (.I(in_alu[0]),
-        .O(in_alu_IBUF[0]));
-  IBUF \in_alu_IBUF[1]_inst 
-       (.I(in_alu[1]),
-        .O(in_alu_IBUF[1]));
-  IBUF \in_alu_IBUF[2]_inst 
-       (.I(in_alu[2]),
-        .O(in_alu_IBUF[2]));
-  IBUF \in_alu_IBUF[3]_inst 
-       (.I(in_alu[3]),
-        .O(in_alu_IBUF[3]));
-  IBUF \in_alu_IBUF[4]_inst 
-       (.I(in_alu[4]),
-        .O(in_alu_IBUF[4]));
-  IBUF \in_alu_IBUF[5]_inst 
-       (.I(in_alu[5]),
-        .O(in_alu_IBUF[5]));
-  IBUF \in_alu_IBUF[6]_inst 
-       (.I(in_alu[6]),
-        .O(in_alu_IBUF[6]));
-  IBUF \in_alu_IBUF[7]_inst 
-       (.I(in_alu[7]),
-        .O(in_alu_IBUF[7]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[0] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[0]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[0]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[1] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[1]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[1]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[2] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[2]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[2]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[3] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[3]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[3]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[4] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[4]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[4]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[5] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[5]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[5]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[6] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[6]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[6]));
-  (* XILINX_LEGACY_PRIM = "LD" *) 
-  LDCE #(
-    .INIT(1'b0)) 
-    \in_alu_reg_reg[7] 
-       (.CLR(1'b0),
-        .D(in_alu_IBUF[7]),
-        .G(\in_alu_reg_reg[7]_i_1_n_0 ),
-        .GE(1'b1),
-        .Q(o_tx_OBUF[7]));
-  LUT5 #(
-    .INIT(32'h00000020)) 
-    \in_alu_reg_reg[7]_i_1 
-       (.I0(current_state[2]),
-        .I1(current_state[0]),
-        .I2(next_state1),
-        .I3(current_state[3]),
-        .I4(current_state[1]),
-        .O(\in_alu_reg_reg[7]_i_1_n_0 ));
-  IBUF \in_rx_IBUF[0]_inst 
-       (.I(in_rx[0]),
-        .O(in_rx_IBUF[0]));
-  IBUF \in_rx_IBUF[1]_inst 
-       (.I(in_rx[1]),
-        .O(in_rx_IBUF[1]));
-  IBUF \in_rx_IBUF[2]_inst 
-       (.I(in_rx[2]),
-        .O(in_rx_IBUF[2]));
-  IBUF \in_rx_IBUF[3]_inst 
-       (.I(in_rx[3]),
-        .O(in_rx_IBUF[3]));
-  IBUF \in_rx_IBUF[4]_inst 
-       (.I(in_rx[4]),
-        .O(in_rx_IBUF[4]));
-  IBUF \in_rx_IBUF[5]_inst 
-       (.I(in_rx[5]),
-        .O(in_rx_IBUF[5]));
-  IBUF \in_rx_IBUF[6]_inst 
-       (.I(in_rx[6]),
-        .O(in_rx_IBUF[6]));
-  IBUF \in_rx_IBUF[7]_inst 
-       (.I(in_rx[7]),
-        .O(in_rx_IBUF[7]));
-  OBUF \o_data_A_OBUF[0]_inst 
-       (.I(o_data_A_OBUF[0]),
-        .O(o_data_A[0]));
-  OBUF \o_data_A_OBUF[1]_inst 
-       (.I(o_data_A_OBUF[1]),
-        .O(o_data_A[1]));
-  OBUF \o_data_A_OBUF[2]_inst 
-       (.I(o_data_A_OBUF[2]),
-        .O(o_data_A[2]));
-  OBUF \o_data_A_OBUF[3]_inst 
-       (.I(o_data_A_OBUF[3]),
-        .O(o_data_A[3]));
-  OBUF \o_data_A_OBUF[4]_inst 
-       (.I(o_data_A_OBUF[4]),
-        .O(o_data_A[4]));
-  OBUF \o_data_A_OBUF[5]_inst 
-       (.I(o_data_A_OBUF[5]),
-        .O(o_data_A[5]));
-  OBUF \o_data_A_OBUF[6]_inst 
-       (.I(o_data_A_OBUF[6]),
-        .O(o_data_A[6]));
-  OBUF \o_data_A_OBUF[7]_inst 
-       (.I(o_data_A_OBUF[7]),
-        .O(o_data_A[7]));
-  OBUF \o_data_B_OBUF[0]_inst 
-       (.I(o_data_B_OBUF[0]),
-        .O(o_data_B[0]));
-  OBUF \o_data_B_OBUF[1]_inst 
-       (.I(o_data_B_OBUF[1]),
-        .O(o_data_B[1]));
-  OBUF \o_data_B_OBUF[2]_inst 
-       (.I(o_data_B_OBUF[2]),
-        .O(o_data_B[2]));
-  OBUF \o_data_B_OBUF[3]_inst 
-       (.I(o_data_B_OBUF[3]),
-        .O(o_data_B[3]));
-  OBUF \o_data_B_OBUF[4]_inst 
-       (.I(o_data_B_OBUF[4]),
-        .O(o_data_B[4]));
-  OBUF \o_data_B_OBUF[5]_inst 
-       (.I(o_data_B_OBUF[5]),
-        .O(o_data_B[5]));
-  OBUF \o_data_B_OBUF[6]_inst 
-       (.I(o_data_B_OBUF[6]),
-        .O(o_data_B[6]));
-  OBUF \o_data_B_OBUF[7]_inst 
-       (.I(o_data_B_OBUF[7]),
-        .O(o_data_B[7]));
-  OBUF \o_data_Op_OBUF[0]_inst 
-       (.I(o_data_Op_OBUF[0]),
-        .O(o_data_Op[0]));
-  OBUF \o_data_Op_OBUF[1]_inst 
-       (.I(o_data_Op_OBUF[1]),
-        .O(o_data_Op[1]));
-  OBUF \o_data_Op_OBUF[2]_inst 
-       (.I(o_data_Op_OBUF[2]),
-        .O(o_data_Op[2]));
-  OBUF \o_data_Op_OBUF[3]_inst 
-       (.I(o_data_Op_OBUF[3]),
-        .O(o_data_Op[3]));
-  OBUF \o_data_Op_OBUF[4]_inst 
-       (.I(o_data_Op_OBUF[4]),
-        .O(o_data_Op[4]));
-  OBUF \o_data_Op_OBUF[5]_inst 
-       (.I(o_data_Op_OBUF[5]),
-        .O(o_data_Op[5]));
-  OBUF \o_data_Op_OBUF[6]_inst 
-       (.I(1'b0),
-        .O(o_data_Op[6]));
-  OBUF \o_data_Op_OBUF[7]_inst 
-       (.I(1'b0),
-        .O(o_data_Op[7]));
-  OBUF \o_tx_OBUF[0]_inst 
-       (.I(o_tx_OBUF[0]),
-        .O(o_tx[0]));
-  OBUF \o_tx_OBUF[1]_inst 
-       (.I(o_tx_OBUF[1]),
-        .O(o_tx[1]));
-  OBUF \o_tx_OBUF[2]_inst 
-       (.I(o_tx_OBUF[2]),
-        .O(o_tx[2]));
-  OBUF \o_tx_OBUF[3]_inst 
-       (.I(o_tx_OBUF[3]),
-        .O(o_tx[3]));
-  OBUF \o_tx_OBUF[4]_inst 
-       (.I(o_tx_OBUF[4]),
-        .O(o_tx[4]));
-  OBUF \o_tx_OBUF[5]_inst 
-       (.I(o_tx_OBUF[5]),
-        .O(o_tx[5]));
-  OBUF \o_tx_OBUF[6]_inst 
-       (.I(o_tx_OBUF[6]),
-        .O(o_tx[6]));
-  OBUF \o_tx_OBUF[7]_inst 
-       (.I(o_tx_OBUF[7]),
-        .O(o_tx[7]));
-  IBUF rd_IBUF_inst
-       (.I(rd),
-        .O(rd_IBUF));
-  IBUF wr_IBUF_inst
-       (.I(wr),
-        .O(wr_IBUF));
+  IBUF tx_start_IBUF_inst
+       (.I(tx_start),
+        .O(tx_start_IBUF));
 endmodule
 `ifndef GLBL
 `define GLBL

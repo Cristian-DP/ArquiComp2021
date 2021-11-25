@@ -2,7 +2,7 @@
 
 
 module testSystem;
-    parameter           PERIOD  = 20; // debe dar 50 Mh
+    parameter           PERIOD  = 40; // debe dar 50 Mh
     parameter           N_CLOCK = 163;
     parameter           CHANGE_RX = (N_CLOCK*3)/4; // 122
     
@@ -12,7 +12,6 @@ module testSystem;
     parameter   bit_start               = 1'b0;
     parameter   bit_stop                = 1'b1;
     parameter   bit_par                 = 1'b1;
-    //parameter   bit_par                 = 1'b1;
     parameter   STARTS_TICKS            = 7;    // cantidad de bit para colcarse al centro del bit de start
     parameter   DATA_TICKS              = 15;   // cantidad de bit para colcarse al centro del bit de dato
     
@@ -27,17 +26,18 @@ module testSystem;
     wire                 [7 : 0] o_data_B ;
     wire                 [7 : 0] o_data_Op;
     wire                 [7 : 0] o_alu;
-    // ____________________ Rx   ____________________ //
-    //reg         s_tick;
+    
     reg         rx;
     wire        rx_done_tick;
     wire [7:0]  dout;
     wire [7:0]  o_tx;
-    //reg         tick;
+   
     wire         empty;
     wire         tick;
     reg          clock;
     reg   [2:0] counter_t;
+    wire tx_done_tick; 
+    wire tx;
     
     // ______________________ BRG ____________ //
     BaudRateGenerator myBRG (
@@ -54,24 +54,22 @@ module testSystem;
     );
     // ______________________ interface  ____________ //
     interface_uart myinterface_uart (
-        .in_rx(dout), 
-        .wr(rx_done_tick), 
-        .CLOCK(clock), 
-        .in_alu(o_alu),
-        .o_data_A (o_data_A), 
-        .o_data_B(o_data_B), 
-        .o_data_Op(o_data_Op),
-        .o_tx(o_tx),
-        .empty (empty),
-        .rd(tx_done_tick)
+        .in_rx      (dout), 
+        .wr         (rx_done_tick), 
+        .CLOCK      (clock), 
+        .in_alu     (o_alu),
+        .o_data_A   (o_data_A), 
+        .o_data_B   (o_data_B), 
+        .o_data_Op  (o_data_Op),
+        .o_tx       (o_tx),
+        .empty      (empty),
+        .rd         (tx_done_tick)
         
     );
     // ______________________ alu   ____________ //
     alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu));
     
     // ______________________ Tx ____________ //
-    wire tx_done_tick; 
-    wire tx;
     
     tx_uart mytx_uart(
         .s_tick(tick), 

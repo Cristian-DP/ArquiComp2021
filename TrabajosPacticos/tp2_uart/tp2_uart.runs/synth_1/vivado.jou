@@ -2,11 +2,11 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Thu Nov 25 13:39:58 2021
-# Process ID: 6552
+# Start of session at: Thu Nov 25 17:01:12 2021
+# Process ID: 9060
 # Current directory: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.runs/synth_1
-# Command line: vivado.exe -log interface_uart.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source interface_uart.tcl
-# Log file: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.runs/synth_1/interface_uart.vds
+# Command line: vivado.exe -log tx_uart.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source tx_uart.tcl
+# Log file: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.runs/synth_1/tx_uart.vds
 # Journal file: C:/Users/CR/Desktop/arqui/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source interface_uart.tcl -notrace
+source tx_uart.tcl -notrace

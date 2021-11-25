@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1637858394">
-  <File Type="PA-TCL" Name="interface_uart.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="interface_uart_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="interface_uart_reports.tcl"/>
-  <File Type="RDS-RDS" Name="interface_uart.vds"/>
-  <File Type="RDS-UTIL" Name="interface_uart_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="interface_uart_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="interface_uart.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="interface_uart_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="interface_uart_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1637870469">
+  <File Type="PA-TCL" Name="tx_uart.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="tx_uart_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="tx_uart_reports.tcl"/>
+  <File Type="RDS-RDS" Name="tx_uart.vds"/>
+  <File Type="RDS-UTIL" Name="tx_uart_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="tx_uart_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="tx_uart.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="tx_uart_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="tx_uart_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/interface_uart.v">
+    <File Path="$PSRCDIR/sources_1/new/tx_uart.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/BaudRateGenerator.v">
+    <File Path="$PSRCDIR/sources_1/new/interface_uart.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -26,7 +26,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/rx_uart.v">
+    <File Path="$PSRCDIR/sources_1/new/BaudRateGenerator.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -42,7 +42,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/tx_uart.v">
+    <File Path="$PSRCDIR/sources_1/new/rx_uart.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -52,7 +52,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="interface_uart"/>
+      <Option Name="TopModule" Val="tx_uart"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
