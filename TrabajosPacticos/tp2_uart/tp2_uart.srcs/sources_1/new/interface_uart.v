@@ -1,5 +1,15 @@
 `timescale 1ns / 1ps
 
+<<<<<<< HEAD
+=======
+/**
+    a Fixear:
+    
+    a Reveer:
+        posible agregado de estado nuevo entre A-B y B-OP debido a que wr dura un ciclo 
+*/
+
+>>>>>>> TP2-UART
 module interface_uart
 #(
     /** numero de bits - datos*/
@@ -30,6 +40,7 @@ module interface_uart
   
   reg    [5          :0] OP_reg      = 0;           // registro del dato OP
   reg    [5          :0] OP_reg_next = 0;           // para evitar pisar el dato OP
+<<<<<<< HEAD
 
   reg    [NB_DATA - 1:0] in_alu_reg  = 0;           // registro del dato provisto por la salidad de la alu
   
@@ -38,6 +49,15 @@ module interface_uart
   reg                    empty_reg    = 1;            // registro de aviso para que rx lea el dato 
   reg                    empty_next    = 1;            // registro de aviso para que rx lea el dato 
 
+=======
+
+  reg    [NB_DATA - 1:0] in_alu_reg  = 0;           // registro del dato provisto por la salidad de la alu
+  
+//  reg    [2:0]           count_data  = 0;            // registro del contador de datos
+//  reg                    read_alu    = 0;            // registro del contador de datos
+  reg                    empty_reg   = 1;            // registro de aviso para que rx lea el dato 
+
+>>>>>>> TP2-UART
   // estados de la fsm
   localparam [NB_STATE-1 :0]
         STATE_DATA_A    = 4'b00001,
@@ -55,7 +75,12 @@ module interface_uart
         DA_reg          <= DA_reg_next;
         DB_reg          <= DB_reg_next;
         OP_reg          <= OP_reg_next;
+<<<<<<< HEAD
         empty_reg       <= empty_next;
+=======
+        if (empty_reg == 0) empty_reg = 1;
+        else  empty_reg = 1;
+>>>>>>> TP2-UART
    end
    
    always @(*)
@@ -64,7 +89,10 @@ module interface_uart
         DA_reg_next = DA_reg;
         DB_reg_next = DB_reg;
         OP_reg_next = OP_reg;
+<<<<<<< HEAD
         empty_next  = empty_reg;
+=======
+>>>>>>> TP2-UART
         case (current_state)
             STATE_DATA_A:
                 begin
@@ -102,6 +130,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_TX:
             begin
+<<<<<<< HEAD
                 empty_next       = 0;
                 case (rd)
                     1'b1:begin
@@ -110,6 +139,10 @@ module interface_uart
                     end
                     default: next_state    = STATE_TX;
                 endcase
+=======
+                empty_reg       = 0;
+                next_state  = STATE_DATA_A;
+>>>>>>> TP2-UART
             end  
             
         endcase
