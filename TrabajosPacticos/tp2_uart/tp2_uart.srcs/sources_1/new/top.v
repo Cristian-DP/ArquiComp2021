@@ -17,6 +17,7 @@ module top
     wire        empty;
     wire        tick;
     wire        rx_done_tick;
+    wire        read_tx;
     wire [NB_DATA - 1:0]  dout;
    
     wire  [NB_DATA - 1:0]   o_tx;
@@ -50,6 +51,7 @@ module top
         .tx(tx),
         .tx_done_tick(tx_done_tick), 
         .tx_start(empty),
+        .read_tx(read_tx),
         .din(o_tx),
         .clock(clock),
         .reset(reset)
@@ -66,8 +68,8 @@ module top
         .o_tx       (o_tx),
         .empty      (empty),
         .rd         (tx_done_tick),
+        .read_tx    (read_tx),
         .reset(reset)
-        
     );
     // ______________________ alu   ____________ //
     alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu));

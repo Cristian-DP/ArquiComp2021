@@ -2,9 +2,6 @@
 2020.2
 Jun 10 2021
 20:04:57
-,,,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v,,alu,,,,,,,,
-C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testSystem_time_synth.v,1637951770,verilog,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v,,BaudRateGenerator;glbl,,,,,,,,
+,,,,,,,,,,,,,,
 C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,1637891131,verilog,,,,testSystem,,,,,,,,
-,,,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/rx_uart.v,,interface_uart,,,,,,,,
-,,,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/tx_uart.v,,rx_uart,,,,,,,,
-,,,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,,tx_uart,,,,,,,,
+,,,,C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v,,BaudRateGenerator,,,,,,,,

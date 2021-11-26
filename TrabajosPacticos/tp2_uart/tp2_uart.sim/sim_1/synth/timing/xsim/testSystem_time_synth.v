@@ -1,11 +1,11 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-// Date        : Fri Nov 26 15:36:10 2021
+// Date        : Fri Nov 26 17:07:22 2021
 // Host        : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testSystem_time_synth.v
-// Design      : BaudRateGenerator
+// Design      : top
 // Purpose     : This verilog netlist is a timing simulation representation of the design and should not be modified or
 //               synthesized. Please ensure that this netlist is used with the corresponding SDF file.
 // Device      : xc7a35tcpg236-1
@@ -13,261 +13,27 @@
 `timescale 1 ps / 1 ps
 `define XIL_TIMING
 
-(* BAUD_RATE = "19200" *) (* CLOCK_FREQ = "50000000" *) (* DIVISION = "16" *) 
-(* N_CLOCKS = "162" *) 
+(* DATA_TICKS = "15" *) (* NB_DATA = "8" *) (* NB_STATE = "5" *) 
+(* START_VALUE = "0" *) (* STOP_VALUE = "1" *) 
 (* NotValidForBitStream *)
-module BaudRateGenerator
-   (tick,
+module top
+   (tx,
+    rx,
     clock,
     reset);
-  output tick;
+  output tx;
+  input rx;
   input clock;
   input reset;
 
-  wire clock;
-  wire clock_IBUF;
-  wire clock_IBUF_BUFG;
-  wire [7:1]counTicks;
-  wire \counTicks[0]_i_1_n_0 ;
-  wire \counTicks[0]_i_2_n_0 ;
-  wire \counTicks[5]_i_2_n_0 ;
-  wire \counTicks[7]_i_2_n_0 ;
-  wire \counTicks[7]_i_3_n_0 ;
-  wire \counTicks_reg_n_0_[0] ;
-  wire \counTicks_reg_n_0_[1] ;
-  wire \counTicks_reg_n_0_[2] ;
-  wire \counTicks_reg_n_0_[3] ;
-  wire \counTicks_reg_n_0_[4] ;
-  wire \counTicks_reg_n_0_[5] ;
-  wire \counTicks_reg_n_0_[6] ;
-  wire \counTicks_reg_n_0_[7] ;
-  wire reset;
-  wire reset_IBUF;
-  wire tick;
-  wire tick_OBUF;
-  wire tick_i_1_n_0;
-  wire tick_i_2_n_0;
+  wire tx;
 
 initial begin
  $sdf_annotate("testSystem_time_synth.sdf",,,,"tool_control");
 end
-  BUFG clock_IBUF_BUFG_inst
-       (.I(clock_IBUF),
-        .O(clock_IBUF_BUFG));
-  IBUF clock_IBUF_inst
-       (.I(clock),
-        .O(clock_IBUF));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT5 #(
-    .INIT(32'h0000FFFE)) 
-    \counTicks[0]_i_1 
-       (.I0(\counTicks_reg_n_0_[2] ),
-        .I1(\counTicks_reg_n_0_[3] ),
-        .I2(\counTicks_reg_n_0_[4] ),
-        .I3(\counTicks[0]_i_2_n_0 ),
-        .I4(\counTicks_reg_n_0_[0] ),
-        .O(\counTicks[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'hFF7F)) 
-    \counTicks[0]_i_2 
-       (.I0(\counTicks_reg_n_0_[7] ),
-        .I1(\counTicks_reg_n_0_[1] ),
-        .I2(\counTicks_reg_n_0_[5] ),
-        .I3(\counTicks_reg_n_0_[6] ),
-        .O(\counTicks[0]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h55AA55AA45AA55AA)) 
-    \counTicks[1]_i_1 
-       (.I0(\counTicks_reg_n_0_[0] ),
-        .I1(\counTicks[7]_i_3_n_0 ),
-        .I2(\counTicks_reg_n_0_[7] ),
-        .I3(\counTicks_reg_n_0_[1] ),
-        .I4(\counTicks_reg_n_0_[5] ),
-        .I5(\counTicks_reg_n_0_[6] ),
-        .O(counTicks[1]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT3 #(
-    .INIT(8'h6C)) 
-    \counTicks[2]_i_1 
-       (.I0(\counTicks_reg_n_0_[1] ),
-        .I1(\counTicks_reg_n_0_[2] ),
-        .I2(\counTicks_reg_n_0_[0] ),
-        .O(counTicks[2]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT4 #(
-    .INIT(16'h78F0)) 
-    \counTicks[3]_i_1 
-       (.I0(\counTicks_reg_n_0_[1] ),
-        .I1(\counTicks_reg_n_0_[2] ),
-        .I2(\counTicks_reg_n_0_[3] ),
-        .I3(\counTicks_reg_n_0_[0] ),
-        .O(counTicks[3]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h7FFF8000)) 
-    \counTicks[4]_i_1 
-       (.I0(\counTicks_reg_n_0_[1] ),
-        .I1(\counTicks_reg_n_0_[2] ),
-        .I2(\counTicks_reg_n_0_[3] ),
-        .I3(\counTicks_reg_n_0_[0] ),
-        .I4(\counTicks_reg_n_0_[4] ),
-        .O(counTicks[4]));
-  LUT6 #(
-    .INIT(64'h5555AAAA4555AAAA)) 
-    \counTicks[5]_i_1 
-       (.I0(\counTicks[5]_i_2_n_0 ),
-        .I1(\counTicks[7]_i_3_n_0 ),
-        .I2(\counTicks_reg_n_0_[7] ),
-        .I3(\counTicks_reg_n_0_[1] ),
-        .I4(\counTicks_reg_n_0_[5] ),
-        .I5(\counTicks_reg_n_0_[6] ),
-        .O(counTicks[5]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT5 #(
-    .INIT(32'h80000000)) 
-    \counTicks[5]_i_2 
-       (.I0(\counTicks_reg_n_0_[4] ),
-        .I1(\counTicks_reg_n_0_[2] ),
-        .I2(\counTicks_reg_n_0_[0] ),
-        .I3(\counTicks_reg_n_0_[1] ),
-        .I4(\counTicks_reg_n_0_[3] ),
-        .O(\counTicks[5]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h555555558AAAAAAA)) 
-    \counTicks[6]_i_1 
-       (.I0(\counTicks[7]_i_2_n_0 ),
-        .I1(\counTicks[7]_i_3_n_0 ),
-        .I2(\counTicks_reg_n_0_[7] ),
-        .I3(\counTicks_reg_n_0_[1] ),
-        .I4(\counTicks_reg_n_0_[5] ),
-        .I5(\counTicks_reg_n_0_[6] ),
-        .O(counTicks[6]));
-  LUT6 #(
-    .INIT(64'h5A5A5A5AC0F0F0F0)) 
-    \counTicks[7]_i_1 
-       (.I0(\counTicks[7]_i_2_n_0 ),
-        .I1(\counTicks[7]_i_3_n_0 ),
-        .I2(\counTicks_reg_n_0_[7] ),
-        .I3(\counTicks_reg_n_0_[1] ),
-        .I4(\counTicks_reg_n_0_[5] ),
-        .I5(\counTicks_reg_n_0_[6] ),
-        .O(counTicks[7]));
-  LUT6 #(
-    .INIT(64'h8000000000000000)) 
-    \counTicks[7]_i_2 
-       (.I0(\counTicks_reg_n_0_[5] ),
-        .I1(\counTicks_reg_n_0_[3] ),
-        .I2(\counTicks_reg_n_0_[1] ),
-        .I3(\counTicks_reg_n_0_[0] ),
-        .I4(\counTicks_reg_n_0_[2] ),
-        .I5(\counTicks_reg_n_0_[4] ),
-        .O(\counTicks[7]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \counTicks[7]_i_3 
-       (.I0(\counTicks_reg_n_0_[2] ),
-        .I1(\counTicks_reg_n_0_[3] ),
-        .I2(\counTicks_reg_n_0_[0] ),
-        .I3(\counTicks_reg_n_0_[4] ),
-        .O(\counTicks[7]_i_3_n_0 ));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[0] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\counTicks[0]_i_1_n_0 ),
-        .Q(\counTicks_reg_n_0_[0] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[1] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[1]),
-        .Q(\counTicks_reg_n_0_[1] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[2] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[2]),
-        .Q(\counTicks_reg_n_0_[2] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[3] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[3]),
-        .Q(\counTicks_reg_n_0_[3] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[4] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[4]),
-        .Q(\counTicks_reg_n_0_[4] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[5] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[5]),
-        .Q(\counTicks_reg_n_0_[5] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[6] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[6]),
-        .Q(\counTicks_reg_n_0_[6] ),
-        .R(reset_IBUF));
-  FDRE #(
-    .INIT(1'b0)) 
-    \counTicks_reg[7] 
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(counTicks[7]),
-        .Q(\counTicks_reg_n_0_[7] ),
-        .R(reset_IBUF));
-  IBUF reset_IBUF_inst
-       (.I(reset),
-        .O(reset_IBUF));
-  OBUF tick_OBUF_inst
-       (.I(tick_OBUF),
-        .O(tick));
-  LUT5 #(
-    .INIT(32'h00000001)) 
-    tick_i_1
-       (.I0(\counTicks_reg_n_0_[0] ),
-        .I1(\counTicks_reg_n_0_[4] ),
-        .I2(\counTicks_reg_n_0_[6] ),
-        .I3(\counTicks_reg_n_0_[2] ),
-        .I4(tick_i_2_n_0),
-        .O(tick_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'hDFFF)) 
-    tick_i_2
-       (.I0(\counTicks_reg_n_0_[7] ),
-        .I1(\counTicks_reg_n_0_[3] ),
-        .I2(\counTicks_reg_n_0_[5] ),
-        .I3(\counTicks_reg_n_0_[1] ),
-        .O(tick_i_2_n_0));
-  FDRE #(
-    .INIT(1'b0)) 
-    tick_reg
-       (.C(clock_IBUF_BUFG),
-        .CE(1'b1),
-        .D(tick_i_1_n_0),
-        .Q(tick_OBUF),
-        .R(reset_IBUF));
+  OBUF tx_OBUF_inst
+       (.I(1'b1),
+        .O(tx));
 endmodule
 `ifndef GLBL
 `define GLBL

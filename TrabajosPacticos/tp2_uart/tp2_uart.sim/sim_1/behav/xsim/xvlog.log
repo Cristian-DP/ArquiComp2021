@@ -6,9 +6,9 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/Arqu
 INFO: [VRFC 10-311] analyzing module interface_uart
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/rx_uart.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module rx_uart
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/tx_uart.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module tx_uart
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module testSystem
-WARNING: [VRFC 10-3248] data object 'tick' is already declared [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v:48]
-WARNING: [VRFC 10-3703] second declaration of 'tick' ignored [C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sim_1/new/testSystem.v:48]
