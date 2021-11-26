@@ -3,7 +3,7 @@
 module top
 #(
     parameter   NB_STATE        = 5,    // estados de la FSM
-    parameter   N_DATA          = 8,    // cantidad de datos a recibir
+    parameter   NB_DATA          = 8,    // cantidad de datos a recibir
     parameter   START_VALUE     = 0,    // Bit de start
     parameter   STOP_VALUE      = 1,     // Bit de stop
     parameter   DATA_TICKS      = 15    // cantidad de bit para colcarse al centro del bit de dato // agrege
@@ -12,18 +12,18 @@ module top
     output  wire    tx,
     input   wire    rx,                 
     input   wire    clock,
-    input   wire    reset,
+    input   wire    reset
 );
     wire        empty;
     wire        tick;
     wire        rx_done_tick;
-    wire [N_DATA - 1:0]  dout;
+    wire [NB_DATA - 1:0]  dout;
    
-    wire     o_tx;
+    wire  [NB_DATA - 1:0]   o_tx;
     reg   [2:0] counter_t;
     wire        tx_done_tick; 
     
-    wire    [N_DATA -1 : 0] 
+    wire    [NB_DATA -1 : 0] 
              o_data_A, 
              o_data_B, 
              o_data_Op, 

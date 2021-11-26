@@ -9,27 +9,32 @@ module tx_uart
     parameter   DATA_TICKS         = 15    // cantidad de bit para colcarse al centro del bit de dato // agrege
 )
 (
-    output  wire                tx,      
-    input   wire        [7:0]   din,
+    input   wire        [N_DATA - 1:0]   din,
     input   wire                tx_start , s_tick,
-    output  wire                tx_done_tick,                   
     input   wire                clock,
-    input   wire                reset
+    input   wire                reset,
+    output  wire                tx,
+    output  wire                read_tx,      
+    output  wire                tx_done_tick                
+
 );
     reg     tx_done_tick_reg ;               //cambie
     reg     tx_done_tick_next;              //cambie
     // contador de tick
-    reg [3:0]           count_ticks_reg     ;
-    reg [3:0]           count_ticks_next    ;    //cambie
+    reg [3:0]           count_ticks_reg;
+    reg [3:0]           count_ticks_next;    //cambie
     // registro conteo de los datos de envio 
-    reg [3:0]           count_data_reg      ;
-    reg [3:0]           count_data_next     ;    //cambie
+    reg [3:0]           count_data_reg;
+    reg [3:0]           count_data_next;    //cambie
     // registro de guardado de la operacion de la alu
-    reg [N_DATA - 1:0]           din_reg      ;
-    reg [N_DATA - 1:0]           din_next      ;
+    reg [N_DATA - 1:0]           din_reg;
+    reg [N_DATA - 1:0]           din_next;
     // registro asociado a la salida
-    reg                 tx_reg         ;
-    reg                 tx_next        ;
+    reg                 tx_reg;
+    reg                 tx_next;
+    // registro asociado al cable de lectura
+    reg                 read_tx_reg;
+    reg                 read_tx_next;
     
     // estados de la fsm
     localparam [ NB_STATE -1:0]
@@ -58,6 +63,7 @@ module tx_uart
                 tx_done_tick_next   <= 0;
                 tx_reg              <= 1;
                 tx_next             <= 1;
+                read_tx_reg         <= 0;
                 current_state       <= STATE_IDLE; 
                 next_state          <= STATE_IDLE;
             end
@@ -67,6 +73,7 @@ module tx_uart
                 count_ticks_reg  <= count_ticks_next;
                 tx_done_tick_reg <= tx_done_tick_next;
                 tx_reg           <= tx_next;
+                read_tx_reg      <= read_tx_next;
                 current_state    <= next_state;
             end
         end
@@ -78,6 +85,7 @@ module tx_uart
          tx_done_tick_next  = 0;
          tx_next            = tx_reg;
          din_next           = din_reg;
+         read_tx_next       = 0;
          case (current_state)
             STATE_IDLE : begin
                 tx_next = 1'b1;             // bit de conexion activa
@@ -86,6 +94,7 @@ module tx_uart
                     begin
                         din_next            = din;
                         count_ticks_next    = 0;
+                        read_tx_next        = 1;
                         next_state          = STATE_START;
                     end
                     default: next_state = STATE_IDLE;
@@ -174,6 +183,7 @@ module tx_uart
     end
 
    assign tx            = tx_reg;
+   assign read_tx       = read_tx_reg;
    assign tx_done_tick  = tx_done_tick_reg;//cambie
    
 endmodule

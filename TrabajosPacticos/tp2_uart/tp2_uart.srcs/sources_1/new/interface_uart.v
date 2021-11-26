@@ -12,6 +12,7 @@ module interface_uart
     input   wire                    rd,             // habilitador para saber que se ha realizado la transmision correctamente
     input   wire    [NB_DATA - 1:0] in_rx,          // Se presenta los bit provistos por rx uart
     input   wire    [NB_DATA - 1:0] in_alu,         // Se presenta los bits provistos por la salida de la ALU (resultado de la alu)
+    input   wire                    read_tx,
     /* SALIDA*/
     output  wire    [NB_DATA - 1:0] o_data_A,       // Se presenta el dato A a la alu
     output  wire    [NB_DATA - 1:0] o_data_B,       // Se presenta el dato B a la Alu
@@ -40,10 +41,11 @@ module interface_uart
 
   // estados de la fsm
   localparam [NB_STATE-1 :0]
-        STATE_DATA_A    = 4'b00001,
-        STATE_DATA_B    = 4'b00010,
-        STATE_DATA_OP   = 4'b00100,
-        STATE_TX        = 4'b01000;
+        STATE_DATA_A    = 5'b00001,
+        STATE_DATA_B    = 5'b00010,
+        STATE_DATA_OP   = 5'b00100,
+        STATE_READ_TX   = 5'b01000,
+        STATE_TX        = 5'b10000;
 
     reg [NB_STATE - 1:0] current_state  ;
     reg [NB_STATE - 1:0] next_state     ;
@@ -112,22 +114,34 @@ module interface_uart
                 case(wr)
                     1'b1: begin
                         OP_reg_next = in_rx[5:0];
-                        next_state = STATE_TX;
+                        next_state = STATE_READ_TX;
                     end 
                     default: next_state = STATE_DATA_OP;
                 endcase
             end
             // -------------------------------------------------------------------------- //
-            STATE_TX:
+            STATE_READ_TX:
             begin
                 in_alu_next     = in_alu;
-                empty_next      = 0;
-                case (rd)
-                    1'b1:begin
-                        empty_next = 1;
-                        next_state      = STATE_DATA_A;
+                case(read_tx)
+                    1'b1: begin
+                        empty_next = 1'b1;
+                        next_state = STATE_TX;
                     end
-                    default: next_state    = STATE_TX;
+                    default: begin
+                        next_state = STATE_READ_TX;
+                        empty_next = 1'b0;
+                    end
+                endcase        
+            end
+            // -------------------------------------------------------------------------- //
+            STATE_TX:
+            begin
+                case (rd)
+                    1'b1: begin
+                        next_state = STATE_DATA_A;
+                    end
+                    default: next_state = STATE_TX;
                 endcase
             end  
             

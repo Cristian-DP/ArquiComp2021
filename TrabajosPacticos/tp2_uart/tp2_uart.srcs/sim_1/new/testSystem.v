@@ -7,6 +7,8 @@ module testSystem;
     parameter           CHANGE_RX = (N_CLOCK*3)/4; // 122
     parameter           N_DATA = 8;
     
+    parameter           NB_DATA = 8;
+    
     parameter   [7:0]  data_rx          = 8'b00001010;
     parameter   [7:0]  data_rx_b        = 8'b00000001;
     parameter   [7:0]  data_rx_op       = 8'b00100000;
@@ -24,6 +26,22 @@ module testSystem;
     reg     [2:0]   sel_data;
     
     
+    wire        empty;
+    wire        read_tx;
+    wire        tick;
+    wire        rx_done_tick;
+    wire [NB_DATA - 1:0]  dout;
+   
+    wire  [NB_DATA - 1:0]   o_tx;
+    reg   [2:0] counter_t;
+    wire        tx_done_tick; 
+    
+    wire    [NB_DATA -1 : 0] 
+             o_data_A, 
+             o_data_B, 
+             o_data_Op, 
+             o_alu  ;    
+    
     // _________________________________ TOP _______________________________________ //
     wire    tx;
     reg     rx;                 
@@ -31,18 +49,54 @@ module testSystem;
     wire    tick;
     reg    reset;
     
-    top mytop(
-                .tx(tx),
-                .rx(rx),
-                .clock(clock),
-                .reset(reset)
-    );
-    // ______________________ BRG ____________ //
-    BaudRateGenerator myBRGTest (
+    
+    
+ // ______________________ BRG ____________ //
+    BaudRateGenerator myBRG (
         .tick(tick),
         .clock (clock),
-        .reset (reset)
+        .reset(reset)
     );
+    // ____________________ Rx   ____________________ //
+    rx_uart myrx_uart(
+        .s_tick(tick), 
+        .rx(rx),
+        .rx_done_tick(rx_done_tick), 
+        .dout(dout),
+        .clock(clock),
+        .reset(reset)
+    );
+    // ______________________ Tx ____________ //
+    tx_uart mytx_uart(
+        .s_tick(tick), 
+        .tx(tx),
+        .tx_done_tick(tx_done_tick), 
+        .tx_start(empty),
+        .read_tx(read_tx),
+        .din(o_tx),
+        .clock(clock),
+        .reset(reset)
+    );
+    // ______________________ interface  ____________ //
+    interface_uart myinterface_uart (
+        .in_rx      (dout), 
+        .wr         (rx_done_tick), 
+        .CLOCK      (clock), 
+        .in_alu     (o_alu),
+        .o_data_A   (o_data_A), 
+        .o_data_B   (o_data_B), 
+        .o_data_Op  (o_data_Op),
+        .o_tx       (o_tx),
+        .empty      (empty),
+        .rd         (tx_done_tick),
+        .read_tx    (read_tx),
+        .reset(reset)
+        
+    );
+    // ______________________ alu   ____________ //
+    alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu));
+    
+    
     
     initial
         begin

@@ -8,9 +8,9 @@ var WshShell = new ActiveXObject( "WScript.Shell" );
 var ProcEnv = WshShell.Environment( "Process" );
 var PathVal = ProcEnv("PATH");
 if ( PathVal.length == 0 ) {
-  PathVal = "F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/bin/nt64;F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/lib/nt64;F:/Vivado2021.1/Vivado/2021.1/bin;";
+  PathVal = "C:/xiling/Vivado/2021.1/ids_lite/ISE/bin/nt64;C:/xiling/Vivado/2021.1/ids_lite/ISE/lib/nt64;C:/xiling/Vivado/2021.1/bin;";
 } else {
-  PathVal = "F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/bin/nt64;F:/Vivado2021.1/Vivado/2021.1/ids_lite/ISE/lib/nt64;F:/Vivado2021.1/Vivado/2021.1/bin;" + PathVal;
+  PathVal = "C:/xiling/Vivado/2021.1/ids_lite/ISE/bin/nt64;C:/xiling/Vivado/2021.1/ids_lite/ISE/lib/nt64;C:/xiling/Vivado/2021.1/bin;" + PathVal;
 }
 
 ProcEnv("PATH") = PathVal;
@@ -25,7 +25,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace" );
+         "-log BaudRateGenerator.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source BaudRateGenerator.tcl -notrace" );
 
 
 
