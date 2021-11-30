@@ -19,7 +19,7 @@ module top
     wire        rx_done_tick;
     wire        read_tx;
     wire [NB_DATA - 1:0]  dout;
-   
+
     wire  [NB_DATA - 1:0]   o_tx;
     reg   [2:0] counter_t;
     wire        tx_done_tick; 
