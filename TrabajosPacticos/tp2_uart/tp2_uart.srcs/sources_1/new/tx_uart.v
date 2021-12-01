@@ -9,7 +9,7 @@ module tx_uart
     parameter   DATA_TICKS         = 15    // cantidad de bit para colcarse al centro del bit de dato // agrege
 )
 (
-    input   wire        [N_DATA - 1:0]   din,
+    input   wire  [N_DATA - 1:0]   din,
     input   wire                tx_start , s_tick,
     input   wire                clock,
     input   wire                reset,
@@ -54,18 +54,12 @@ module tx_uart
         begin
             if (reset) begin
                 din_reg             <= 0; 
-                din_next            <= 0;
                 count_data_reg      <= 0;
-                count_data_next     <= 0;
                 count_ticks_reg     <= 0;
-                count_ticks_next    <= 0;
                 tx_done_tick_reg    <= 0;
-                tx_done_tick_next   <= 0;
                 tx_reg              <= 1;
-                tx_next             <= 1;
                 read_tx_reg         <= 0;
                 current_state       <= STATE_IDLE; 
-                next_state          <= STATE_IDLE;
             end
             else begin
                 din_reg          <= din_next; 
