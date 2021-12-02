@@ -14,7 +14,7 @@ module interface_uart
     input   wire    [NB_DATA - 1:0] in_alu,         // Se presenta los bits provistos por la salida de la ALU (resultado de la alu)
     input   wire                    read_tx,
     /* SALIDA*/
-    output  reg    [NB_DATA - 1:0] o_data_A,       // Se presenta el dato A a la alu
+    output  reg   [NB_DATA - 1:0] o_data_A,       // Se presenta el dato A a la alu
     output  reg    [NB_DATA - 1:0] o_data_B,       // Se presenta el dato B a la Alu
     output  reg    [NB_DATA - 1:0] o_data_Op,      // Se presenta el dato OP a la Alu
     output  reg    [NB_DATA - 1:0] o_tx,           // Se presenta el resutlado a tx
@@ -34,21 +34,34 @@ module interface_uart
 
     reg [NB_STATE - 1:0] current_state  ;
     reg [NB_STATE - 1:0] next_state     ;
-   
+    reg [NB_DATA - 1:0]  data_A_reg;         // Se presenta el dato OP a la Alu
+    reg [NB_DATA - 1:0]  data_A_next;         // Se presenta el dato OP a la Alu
+
+    reg empty_next  ;
+//    reg empty_reg     ;
    
    always @(posedge clock) 
    begin
         if (reset) begin
             current_state   <= STATE_DATA_A; 
+            empty           <= 1;
+            o_data_A        <= 0;
+            o_data_B        <= 0;
+            o_data_Op       <= 0;
         end
         else begin
             current_state   <= next_state;
+            empty           <= empty_next;
+            o_data_A        <= o_data_A;
+            o_data_B        <= o_data_B;
+            o_data_Op        <= o_data_Op;
         end
    end
    
    always @(*)
    begin
         next_state  = current_state;
+        data_A_next = data_A_reg;
         case (current_state)
             STATE_DATA_A:
                 begin
@@ -59,6 +72,8 @@ module interface_uart
                         end
                         default: next_state = STATE_DATA_A;
                     endcase 
+            
+                empty_next = 1;
                 end
             // -------------------------------------------------------------------------- //
             STATE_DATA_B:
@@ -70,6 +85,7 @@ module interface_uart
                     end
                     default: next_state = STATE_DATA_B;
                 endcase 
+                empty_next = 1;
             end
             // -------------------------------------------------------------------------- //
             STATE_DATA_OP:
@@ -81,6 +97,7 @@ module interface_uart
                     end 
                     default: next_state = STATE_DATA_OP;
                 endcase
+                empty_next = 1;
             end
             // -------------------------------------------------------------------------- //
             STATE_READ_TX:
@@ -88,12 +105,12 @@ module interface_uart
                 o_tx     = in_alu;
                 case(read_tx)
                     1'b1: begin
-                        empty = 1'b1;
+                        empty_next = 1'b1;
                         next_state = STATE_TX;
                     end
                     default: begin
                         next_state = STATE_READ_TX;
-                        empty = 1'b0;
+                        empty_next = 1'b0;
                     end
                 endcase        
             end
@@ -106,10 +123,11 @@ module interface_uart
                     end
                     default: next_state = STATE_TX;
                 endcase
+            empty_next = 1;
             end  
-            
         endcase
    
    end
-
+   
+//   assign o_data_A  = data_A_reg;
 endmodule
