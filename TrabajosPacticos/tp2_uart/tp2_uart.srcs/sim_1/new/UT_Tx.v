@@ -23,7 +23,7 @@ module UT_Tx;
         .tick(s_tick)
     );
     
-    topTx   topTx (
+    topTx  topTx (
         .reset(reset),                  .clock(clock),
         .din(din),                      .s_tick(s_tick), 
         .tx_start(tx_start),            .read_tx(read_tx),
