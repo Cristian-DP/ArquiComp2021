@@ -18,7 +18,7 @@ module IT_TxBrg;
     wire              tx_done_tick;
     wire              tx; 
         
-    topBrgTx   topTx (
+    topBrgTx   topTxBrg (
         .reset(reset),          .clock(clock),
         .din(din),              .tx_done_tick(tx_done_tick),    
         .tx_start(tx_start),    .read_tx(read_tx),
