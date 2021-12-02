@@ -11,17 +11,7 @@ module testSystem;
     
     parameter   [7:0]  data_rx          = 8'b00001010;
     parameter   [7:0]  data_rx_b        = 8'b00000001;
-    //reg         [5:0]  D_Op_sw[7:0]; //=   {8'b00100000,
-//                                         8'b00100010,
-//                                         8'b00100100,
-//                                         8'b00100101,
-//                                         8'b00100110,
-//                                         8'b00000011,
-//                                         8'b00000010,
-//                                         8'b00100111};
-            
-//    reg         [7:0]data_rx_op  = 8'b00100000;
-    parameter   [7:0]data_rx_op  = 8'b00100000;
+    parameter   [7:0]   data_rx_op      = 8'b00100000;
     
     parameter   bit_start               = 1'b0;
     parameter   bit_stop                = 1'b1;

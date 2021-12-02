@@ -1,8 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  \
-"testSystem_func_synth.v" \
-"../../../../../tp2_uart.srcs/sources_1/new/BaudRateGenerator.v" \
-"../../../../../tp2_uart.srcs/sim_1/new/testSystem.v" \
-
-# Do not sort compile order
-nosort
