@@ -6,7 +6,7 @@ module tx_uart
     parameter   N_DATA          = 8,    // cantidad de datos a recibir
     parameter   START_VALUE     = 0,    // Bit de start
     parameter   STOP_VALUE      = 1,     // Bit de stop
-    parameter   DATA_TICKS         = 15    // cantidad de bit para colcarse al centro del bit de dato // agrege
+    parameter   DATA_TICKS      = 15    // cantidad de bit para colcarse al centro del bit de dato // agrege
 )
 (
     input   wire        [N_DATA - 1:0]   din,

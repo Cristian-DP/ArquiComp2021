@@ -1,7 +1,7 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-// Date        : Fri Nov 26 17:07:22 2021
+// Date        : Tue Nov 30 14:22:24 2021
 // Host        : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.sim/sim_1/synth/timing/xsim/testSystem_time_synth.v
@@ -20,11 +20,13 @@ module top
    (tx,
     rx,
     clock,
-    reset);
+    reset,
+    tick);
   output tx;
   input rx;
   input clock;
   input reset;
+  input tick;
 
   wire tx;
 

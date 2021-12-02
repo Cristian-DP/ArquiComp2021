@@ -64,7 +64,7 @@ module rx_uart
         begin
             if (reset) begin
                 rx_done_tick_reg    <= 0;//cambie
-                current_state       <= 0;
+                current_state       <= STATE_IDLE;
                 count_ticks_reg     <= 0;
                 count_data          <= 0;
                 reg_data            <= 0;   
