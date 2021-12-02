@@ -18,7 +18,7 @@ module IT_TxBrg;
     wire              tx_done_tick;
     wire              tx; 
         
-    topTx   topTx (
+    topBrgTx   topTx (
         .reset(reset),          .clock(clock),
         .din(din),              .tx_done_tick(tx_done_tick),    
         .tx_start(tx_start),    .read_tx(read_tx),
@@ -68,5 +68,16 @@ module IT_TxBrg;
         
         endcase
     end
+    
+//        always @(posedge clock) begin
+//        count_clocks = count_clocks + 1;
+//        if(count_clocks == N_CLOCKS) begin
+//            count_ticks = count_ticks + 1;
+//            if(count_ticks == N_TICKS) begin
+//                count_clocks = 0;
+//                count_ticks = 0;
+//            end
+//        end
+//    end
     
 endmodule

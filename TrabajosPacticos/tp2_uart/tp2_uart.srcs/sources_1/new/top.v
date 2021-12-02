@@ -60,7 +60,7 @@ module top
     interface_uart myinterface_uart (
         .in_rx      (dout), 
         .wr         (rx_done_tick), 
-        .CLOCK      (clock), 
+        .clock      (clock), 
         .in_alu     (o_alu),
         .o_data_A   (o_data_A), 
         .o_data_B   (o_data_B), 
