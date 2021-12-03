@@ -1,0 +1,4 @@
+Running: xsim.dir/IT_InterAluTx_behav/xsimk.exe -simmode gui -wdb IT_InterAluTx_behav.wdb -simrunnum 0 -socket 56865
+Design successfully loaded
+Design Loading Memory Usage: 6696 KB (Peak: 6696 KB)
+Design Loading CPU Usage: 61 ms

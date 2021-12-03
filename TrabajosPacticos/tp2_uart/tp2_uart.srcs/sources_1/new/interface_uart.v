@@ -16,7 +16,7 @@ module interface_uart
     /* SALIDA*/
     output  reg   [NB_DATA - 1:0] o_data_A,       // Se presenta el dato A a la alu
     output  reg    [NB_DATA - 1:0] o_data_B,       // Se presenta el dato B a la Alu
-    output  reg    [NB_DATA - 1:0] o_data_Op,      // Se presenta el dato OP a la Alu
+    output  reg    [NB_DATA - 3:0] o_data_Op,      // Se presenta el dato OP a la Alu
     output  reg    [NB_DATA - 1:0] o_tx,           // Se presenta el resutlado a tx
     output  reg                    empty,           // bit para avisar a tx que puede leer
     /* CLOCK */
@@ -34,40 +34,65 @@ module interface_uart
 
     reg [NB_STATE - 1:0] current_state  ;
     reg [NB_STATE - 1:0] next_state     ;
+    reg [NB_STATE - 1:0] o_tx_reg;
+    reg [NB_STATE - 1:0] o_tx_next;
     reg [NB_DATA - 1:0]  data_A_reg;         // Se presenta el dato OP a la Alu
-    reg [NB_DATA - 1:0]  data_A_next;         // Se presenta el dato OP a la Alu
+    reg [NB_DATA - 1:0]  data_A_next;         // Se presenta el dato OP a la Alu    reg [NB_DATA - 1:0]  data_A_reg;         // Se presenta el dato OP a la Alu
+    reg [NB_DATA - 1:0]  data_B_reg;          
+    reg [NB_DATA - 1:0]  data_B_next;         
+    reg [NB_DATA - 3:0]  data_Op_reg;             
+    reg [NB_DATA - 3:0]  data_Op_next;       
 
     reg empty_next  ;
-//    reg empty_reg     ;
+    reg empty_reg     ;
    
    always @(posedge clock) 
    begin
         if (reset) begin
             current_state   <= STATE_DATA_A; 
             empty           <= 1;
+            o_tx            <= 0;
+            o_tx_reg        <= 0;
             o_data_A        <= 0;
             o_data_B        <= 0;
             o_data_Op       <= 0;
+            data_A_reg      <= 0;
+            data_B_reg      <= 0;
+            data_Op_reg     <= 0;
         end
         else begin
             current_state   <= next_state;
+            empty_reg       <= empty_next;
             empty           <= empty_next;
-            o_data_A        <= o_data_A;
-            o_data_B        <= o_data_B;
-            o_data_Op        <= o_data_Op;
+            
+            o_tx            <= o_tx_next;
+            o_tx_reg        <= o_tx_next;
+            
+            data_A_reg      <= data_A_next;
+            data_B_reg      <= data_B_next;
+            data_Op_reg     <= data_Op_next;
+    
+            o_data_A        <= data_A_next;
+            o_data_B        <= data_B_next;
+            o_data_Op       <= data_Op_next;
         end
    end
    
    always @(*)
    begin
         next_state  = current_state;
+        empty_next  = empty_reg;
+        o_tx_next   = o_tx_reg;
         data_A_next = data_A_reg;
+        data_B_next = data_B_reg;
+        data_Op_next= data_Op_reg;
+        
         case (current_state)
             STATE_DATA_A:
                 begin
                     case(wr)
                         1'b1: begin
-                            o_data_A = in_rx;
+                            data_A_next = in_rx;
                             next_state = STATE_DATA_B;
                         end
                         default: next_state = STATE_DATA_A;
@@ -80,7 +105,7 @@ module interface_uart
             begin
                 case(wr)
                     1'b1: begin
-                        o_data_B = in_rx;
+                        data_B_next = in_rx;
                         next_state = STATE_DATA_OP;
                     end
                     default: next_state = STATE_DATA_B;
@@ -92,7 +117,7 @@ module interface_uart
             begin
                 case(wr)
                     1'b1: begin
-                        o_data_Op = in_rx;
+                        data_Op_next = in_rx[5:0];
                         next_state = STATE_READ_TX;
                     end 
                     default: next_state = STATE_DATA_OP;
@@ -102,7 +127,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_READ_TX:
             begin
-                o_tx     = in_alu;
+                o_tx_next     = in_alu;
                 case(read_tx)
                     1'b1: begin
                         empty_next = 1'b1;

@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 
 module IT_InterAluTx;
- parameter              NB_DATA = 8;
+    parameter           NB_DATA = 8;
     parameter           PERIOD  = 20; // debe dar 50 Mh
-    parameter           N_TICKS  = 15; 
+    parameter           TOTAL_TICKS  = 15 * 11; 
     parameter           BR      = 163; 
     parameter           [NB_DATA-1 : 0] da  = 8'b00000011;
     parameter           [NB_DATA-1 : 0] db  = 8'b00000010;
@@ -11,22 +11,24 @@ module IT_InterAluTx;
     parameter           [NB_DATA-1 : 0] dop1 = 8'b00100100;
     
     reg                                 flags;
+    reg                                 wr_flag;
     //____________________TOP_____________________________________// 
     reg                  [NB_DATA-1 : 0] DATO;
-    wire                  [NB_DATA-1 : 0] o_alu;
+    wire                 [NB_DATA-1 : 0] o_alu;
     wire                                 tx;
     reg                                  wr;
     reg                                  clock;
-    reg                                  reset;
-    reg                  [7:0]                count_tick;
-    reg                  [7:0]                count_clk;
+    reg                  [7:0]           count_tick;
+    reg                  [7:0]           count_clk;
     reg                  [5:0]           count;
     reg                                  reset;
+    wire [NB_DATA - 1:0] o_tx;
     
+    wire [ 5 : 0 ] salida_operacion;
     top topInterfaceAluTx (
         .din(DATO),     .wr(wr),
         .clock(clock),  .reset(reset),
-        .tx(tx),        .o_alu(o_alu)
+        .o_tx(o_tx),        .o_alu(o_alu), .salida_operacion(salida_operacion)
     );
     //____________________________________________________________// 
     
@@ -40,6 +42,7 @@ module IT_InterAluTx;
             DATO    = 0;
             flags   = 0;
             reset   = 1;
+            wr_flag = 0;
             #PERIOD  reset   = 0;
         end
         
@@ -50,93 +53,42 @@ module IT_InterAluTx;
     
     always @(posedge clock)
     begin
+        wr <= 0;
+        if(wr_flag) begin
+            wr      <= 1'b1;
+            wr_flag <= 1'b0;
+        end
         case (count_clk) 
             BR: begin
                 case (count_tick)
-                    N_TICKS: begin
+                    TOTAL_TICKS: begin
                         case (count)
-                            3'b000:
-                            begin
-                                count   <= count +1;
-                            end
-                            3'b001:
-                            begin
-                                count   <= count +1;
-                            end
-                            3'b010:
-                            begin
+                            5'b00000: begin
                                 DATO    <= da;
-                                count   <= count +1;
+                                wr_flag <= 1'b1;
+                                count   <= count +1;   
                             end
-                            3'b011:
-                            begin
-                                wr      <= 1;
-                                count   <= count +1;
-                            end
-                            3'b100:
-                            begin
-                                wr      <= 0;
-                                count   <= count +1;
-                            end
-                            3'b101:
-                            begin
-                                DATO      <= db;
-                                count   <= count +1;
-                            end
-                            3'b110:
-                            begin
-                                wr      <= 1;
-                                count   <= count +1;
-                            end
-                            3'b111:
-                            begin
-                                wr      <= 0;
-                                count   <= count +1;
-                            end
-                            4'b1000:
-                            begin
-                                if (flags) begin
-                                    DATO    <= dop;
-                                    flags   <= 0;
-                                end
-                                else begin
-                                    DATO    <= dop1;
-                                    flags   <= 1;
-                                end
-                                count   <= count +1;
-                            end
-                            4'b1001:
-                            begin
-                                wr      <= 1;
-                                count   <= count +1;
-                            end
-                            4'b1010:
-                            begin
-                                wr      <= 0;
-                                count   <= count +1;
-                            end
-                            4'b1011:
-                            begin
-                                case (count)
-                                
-                                endcase
-                                wr      <= 0;
-                                count <= count +1;
-                            end
-                            4'b1100:
-                            begin
-                                wr      <= 0;
-                                count <= 0;
-                            end
-                            default: count <= count +1;
+                            5'b00001: begin
+                                DATO    <= db;
+                                wr_flag <= 1'b1;
+                                count   <= count +1;   
+                            end 
+                            5'b00010: begin
+                                DATO    <= dop;
+                                wr_flag <= 1'b1;
+                                count   <= count + 1;   
+                            end      
+//                            default: count <= count +1;
                         endcase
-                        count_tick = 0;
+                        count_tick <= 0;
                     end
-                   default: count_tick = count_tick + 1;
-                   endcase
-           count_clk = 0;
-           end
-           default: count_clk = count_clk + 1;
-       endcase
+                    default: count_tick = count_tick + 1;
+                endcase
+            count_clk <= 0;
+            end
+            default: count_clk = count_clk + 1;
+        endcase
     end
+    
+    
 endmodule

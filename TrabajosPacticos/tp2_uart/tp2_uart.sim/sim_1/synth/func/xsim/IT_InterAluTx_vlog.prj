@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"IT_InterAluTx_func_synth.v" \
+"../../../../../tp2_uart.srcs/sim_1/new/IT_InterAluTx.v" \
+
+# Do not sort compile order
+nosort
