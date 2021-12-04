@@ -21,7 +21,10 @@ module interface_uart
     output  reg                    empty,           // bit para avisar a tx que puede leer
     /* CLOCK */
     input wire                      clock,                                // clock que alimenta el sistema,
-    input   wire                    reset
+    input   wire                    reset,
+
+    /* DE PRUEBA */
+    output reg [NB_STATE-1 :0] VER_ESTADOS
 );
 
   // estados de la fsm
@@ -46,6 +49,23 @@ module interface_uart
     reg empty_next  ;
     reg empty_reg     ;
    
+   reg  write;
+   reg  entrada;
+   always @(posedge clock) 
+   begin
+        if (reset) begin
+            write <= 0;
+            entrada <= 0;
+        end
+        else if(wr)begin
+            write <= 1'b1;
+            entrada <= in_rx; 
+        end
+        else begin
+            write <= 0;
+        end
+   end
+   
    always @(posedge clock) 
    begin
         if (reset) begin
@@ -59,22 +79,25 @@ module interface_uart
             data_A_reg      <= 0;
             data_B_reg      <= 0;
             data_Op_reg     <= 0;
+            
+            VER_ESTADOS<=STATE_DATA_A;
         end
         else begin
             current_state   <= next_state;
+            VER_ESTADOS<=current_state;
             empty_reg       <= empty_next;
-            empty           <= empty_next;
-            
-            o_tx            <= o_tx_next;
+            empty           <= empty_reg;
+         
             o_tx_reg        <= o_tx_next;
+            o_tx            <= o_tx_reg;
             
             data_A_reg      <= data_A_next;
             data_B_reg      <= data_B_next;
             data_Op_reg     <= data_Op_next;
     
-            o_data_A        <= data_A_next;
-            o_data_B        <= data_B_next;
-            o_data_Op       <= data_Op_next;
+            o_data_A        <= data_A_reg;
+            o_data_B        <= data_B_reg;
+            o_data_Op       <= data_Op_reg;
         end
    end
    
@@ -90,7 +113,7 @@ module interface_uart
         case (current_state)
             STATE_DATA_A:
                 begin
-                    case(wr)
+                    case(write)
                         1'b1: begin
                             data_A_next = in_rx;
                             next_state = STATE_DATA_B;
@@ -103,7 +126,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_DATA_B:
             begin
-                case(wr)
+                case(write)
                     1'b1: begin
                         data_B_next = in_rx;
                         next_state = STATE_DATA_OP;
@@ -115,7 +138,7 @@ module interface_uart
             // -------------------------------------------------------------------------- //
             STATE_DATA_OP:
             begin
-                case(wr)
+                case(write)
                     1'b1: begin
                         data_Op_next = in_rx[5:0];
                         next_state = STATE_READ_TX;

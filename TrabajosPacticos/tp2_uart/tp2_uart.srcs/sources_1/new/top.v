@@ -10,6 +10,9 @@ module top
 )
 (
 output wire [ 5 : 0 ] salida_operacion,
+output wire [ NB_DATA - 1 : 0 ] salida_A,
+output wire [ NB_DATA - 1 : 0 ] salida_B,
+output wire [ 4 : 0 ] VER_ESTADOS,
 //    output  wire    tx,
 //    input   wire    rx,
     input   wire            wr,  
@@ -30,8 +33,8 @@ output wire [ 5 : 0 ] salida_operacion,
     
     wire    [NB_DATA -1 : 0] 
              o_data_A, 
-             o_data_B, 
-             o_data_Op;
+             o_data_B; 
+    wire    [NB_DATA - 3 : 0]  o_data_Op;
 //             o_alu  ;
              
     // ______________________ BRG ____________ //
@@ -53,10 +56,10 @@ output wire [ 5 : 0 ] salida_operacion,
         .empty      (empty),
         .rd         (tx_done_tick),
         .read_tx    (read_tx),
-        .reset      (reset)
+        .reset      (reset), .VER_ESTADOS(VER_ESTADOS)
     );
     // ______________________ alu   ____________ //
-    alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu), .salida_operacion(salida_operacion));
+    alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu), .salida_operacion(salida_operacion), .salida_A(salida_A), .salida_B(salida_B));
     
     // ______________________ Tx ____________ //
 //    tx_uart mytx_uart(

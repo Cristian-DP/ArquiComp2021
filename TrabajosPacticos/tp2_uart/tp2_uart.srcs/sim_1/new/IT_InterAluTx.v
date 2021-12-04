@@ -25,10 +25,13 @@ module IT_InterAluTx;
     wire [NB_DATA - 1:0] o_tx;
     
     wire [ 5 : 0 ] salida_operacion;
+    wire [ 7 : 0 ] salida_A;
+    wire [ 7 : 0 ] salida_B;
+    wire [ 4 : 0 ] VER_ESTADOS;
     top topInterfaceAluTx (
         .din(DATO),     .wr(wr),
         .clock(clock),  .reset(reset),
-        .o_tx(o_tx),        .o_alu(o_alu), .salida_operacion(salida_operacion)
+        .o_tx(o_tx),    .o_alu(o_alu), .salida_operacion(salida_operacion), .VER_ESTADOS(VER_ESTADOS), .salida_A(salida_A), .salida_B(salida_B)
     );
     //____________________________________________________________// 
     
