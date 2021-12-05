@@ -11,6 +11,7 @@ Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.BaudRateGenerator_default
 Compiling module xil_defaultlib.interface_uart
 Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.tx_uart
 Compiling module xil_defaultlib.top
 Compiling module xil_defaultlib.IT_InterAluTx
 Compiling module xil_defaultlib.glbl

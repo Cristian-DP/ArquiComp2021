@@ -15,7 +15,9 @@ module tx_uart
     input   wire                reset,
     output  wire                tx,
     output  wire                read_tx,      
-    output  wire                tx_done_tick                
+    output  wire                tx_done_tick,
+                    
+    output  wire [N_DATA - 1:0] CHECK_ENTRADA_TX
 
 );
     reg     tx_done_tick_reg ;               //cambie
@@ -47,6 +49,9 @@ module tx_uart
     reg [NB_STATE - 1:0] current_state  ;
     reg [NB_STATE - 1:0] next_state     ;
     
+    
+    assign CHECK_ENTRADA_TX  = din;
+    
     /**
         Logica de cambio de estado
     **/
@@ -57,7 +62,7 @@ module tx_uart
                 count_data_reg      <= 0;
                 count_ticks_reg     <= 0;
                 tx_done_tick_reg    <= 0;
-                tx_reg              <= 1;
+                tx_reg              <= 1'b1;
                 read_tx_reg         <= 0;
                 current_state       <= STATE_IDLE; 
             end
@@ -99,7 +104,7 @@ module tx_uart
                 tx_next = 1'b0;             // bit de start
                 case(count_ticks_reg)
                     DATA_TICKS:   
-                    begin 
+                    begin
                         count_ticks_next    = 0;
                         count_data_next     = 0;
                         next_state          = STATE_DATA;                                                    

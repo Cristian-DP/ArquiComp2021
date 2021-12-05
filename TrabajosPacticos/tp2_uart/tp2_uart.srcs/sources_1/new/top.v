@@ -13,7 +13,7 @@ output wire [ 5 : 0 ] salida_operacion,
 output wire [ NB_DATA - 1 : 0 ] salida_A,
 output wire [ NB_DATA - 1 : 0 ] salida_B,
 output wire [ 4 : 0 ] VER_ESTADOS,
-//    output  wire    tx,
+    output  wire    tx,
 //    input   wire    rx,
     input   wire            wr,  
     input   wire    [7:0]   din, 
@@ -22,12 +22,13 @@ output wire [ 4 : 0 ] VER_ESTADOS,
     input   wire    clock,
     input   wire    reset,
     
-    output wire    [NB_DATA - 1:0] o_tx
+    output  wire [7:0] CHECK_ENTRADA_TX
+//    output wire    [NB_DATA - 1:0] o_tx
 );
     wire                    empty;
-//    wire                    tick;
+    wire                    tick;
 //    wire    [NB_DATA - 1:0] dout;
-//    wire    [NB_DATA - 1:0] o_tx;
+    wire    [NB_DATA - 1:0] o_tx;
     wire                    read_tx;
     wire                    tx_done_tick; 
     
@@ -62,16 +63,17 @@ output wire [ 4 : 0 ] VER_ESTADOS,
     alu myAlu (.i_a(o_data_A), .i_b(o_data_B), .i_op(o_data_Op[5:0]), .o_o(o_alu), .salida_operacion(salida_operacion), .salida_A(salida_A), .salida_B(salida_B));
     
     // ______________________ Tx ____________ //
-//    tx_uart mytx_uart(
-//        .s_tick(tick), 
-//        .tx(tx),
-//        .tx_done_tick(tx_done_tick), 
-//        .tx_start(empty),
-//        .read_tx(read_tx),
-//        .din(o_tx),
-//        .clock(clock),
-//        .reset(reset)
-//    );
+    tx_uart mytx_uart(
+        .s_tick(tick), 
+        .tx(tx),
+        .tx_done_tick(tx_done_tick), 
+        .tx_start(empty),
+        .read_tx(read_tx),
+        .din(o_tx),
+        .clock(clock),
+        .reset(reset),
+        .CHECK_ENTRADA_TX(CHECK_ENTRADA_TX)
+    );
 //    // ____________________ Rx   ____________________ //
 //    rx_uart myrx_uart(
 //        .s_tick(tick), 

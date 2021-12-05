@@ -22,7 +22,8 @@ module IT_InterAluTx;
     reg                  [7:0]           count_clk;
     reg                  [5:0]           count;
     reg                                  reset;
-    wire [NB_DATA - 1:0] o_tx;
+//    wire [NB_DATA - 1:0] o_tx;
+wire [7:0] CHECK_ENTRADA_TX;
     
     wire [ 5 : 0 ] salida_operacion;
     wire [ 7 : 0 ] salida_A;
@@ -31,7 +32,8 @@ module IT_InterAluTx;
     top topInterfaceAluTx (
         .din(DATO),     .wr(wr),
         .clock(clock),  .reset(reset),
-        .o_tx(o_tx),    .o_alu(o_alu), .salida_operacion(salida_operacion), .VER_ESTADOS(VER_ESTADOS), .salida_A(salida_A), .salida_B(salida_B)
+        .tx(tx), .o_alu(o_alu), .salida_operacion(salida_operacion), .VER_ESTADOS(VER_ESTADOS), .salida_A(salida_A), .salida_B(salida_B)
+        ,.CHECK_ENTRADA_TX(CHECK_ENTRADA_TX)
     );
     //____________________________________________________________// 
     

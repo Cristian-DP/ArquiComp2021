@@ -17,7 +17,7 @@ module interface_uart
     output  reg   [NB_DATA - 1:0] o_data_A,       // Se presenta el dato A a la alu
     output  reg    [NB_DATA - 1:0] o_data_B,       // Se presenta el dato B a la Alu
     output  reg    [NB_DATA - 3:0] o_data_Op,      // Se presenta el dato OP a la Alu
-    output  reg    [NB_DATA - 1:0] o_tx,           // Se presenta el resutlado a tx
+    output  wire    [NB_DATA - 1:0] o_tx,           // Se presenta el resutlado a tx
     output  reg                    empty,           // bit para avisar a tx que puede leer
     /* CLOCK */
     input wire                      clock,                                // clock que alimenta el sistema,
@@ -71,7 +71,7 @@ module interface_uart
         if (reset) begin
             current_state   <= STATE_DATA_A; 
             empty           <= 1;
-            o_tx            <= 0;
+            empty_reg       <= 1;
             o_tx_reg        <= 0;
             o_data_A        <= 0;
             o_data_B        <= 0;
@@ -89,7 +89,6 @@ module interface_uart
             empty           <= empty_reg;
          
             o_tx_reg        <= o_tx_next;
-            o_tx            <= o_tx_reg;
             
             data_A_reg      <= data_A_next;
             data_B_reg      <= data_B_next;
@@ -121,7 +120,7 @@ module interface_uart
                         default: next_state = STATE_DATA_A;
                     endcase 
             
-                empty_next = 1;
+                empty_next = 1'b1;
                 end
             // -------------------------------------------------------------------------- //
             STATE_DATA_B:
@@ -133,7 +132,7 @@ module interface_uart
                     end
                     default: next_state = STATE_DATA_B;
                 endcase 
-                empty_next = 1;
+                empty_next = 1'b1;
             end
             // -------------------------------------------------------------------------- //
             STATE_DATA_OP:
@@ -145,7 +144,7 @@ module interface_uart
                     end 
                     default: next_state = STATE_DATA_OP;
                 endcase
-                empty_next = 1;
+                empty_next = 1'b1;
             end
             // -------------------------------------------------------------------------- //
             STATE_READ_TX:
@@ -171,11 +170,11 @@ module interface_uart
                     end
                     default: next_state = STATE_TX;
                 endcase
-            empty_next = 1;
+            empty_next = 1'b1;
             end  
         endcase
    
    end
-   
+   assign o_tx = o_tx_reg;
 //   assign o_data_A  = data_A_reg;
 endmodule
