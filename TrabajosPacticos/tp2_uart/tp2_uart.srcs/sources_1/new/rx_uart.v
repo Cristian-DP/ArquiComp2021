@@ -119,10 +119,11 @@ module rx_uart
                             //   0       0   0 0 0 0 0 0
                             // rx(i)     0   0 0 0 0 0 0 
                             // rx(i+1) rx(i) 0 0 0 0 0 0
-                            if(count_data == 4'b0000) begin
-                                ptro_next       = {rx, ptro[7:0]};
-                            end
-                            else ptro_next       = {rx, ptro[7:1]};
+//                            if(count_data == 4'b0000) begin
+//                                ptro_next       = {rx, ptro[7:0]};
+//                            end
+//                            else 
+                            ptro_next       = {rx, ptro[7:1]};
 //                            dout [ptro]     = rx;
 //                            ptro_next       = ptro + 1;
                             count_data_next  = count_data + 1;

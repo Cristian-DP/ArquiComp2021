@@ -144,7 +144,7 @@ module testSystem;
        
     always @(posedge tick) begin
         if(count_data == 2'b00 && start)begin
-            o_tx    <= 8'b10101010;
+            o_tx    <= 8'b01010101;
             empty   <= 0;
             #(PERIOD*3);
             empty   <= 1'b1;
@@ -162,94 +162,7 @@ module testSystem;
             count_data <= count_data + 1; 
         end 
     end
-//    always @(posedge tick) begin
-//        case (state)
-//            3'b000: begin
-//                rx                  = bit_start;
-//                count_tick          = count_tick + 1;
-//                case(count_tick) begin
-////                        data_rx_op          = D_Op_sw[$urandom_range(7,0)];
-//                    state               = 1;
-//                endcase
-//            end
-                
-//            3'b001: begin
-//                rx                  = bit_start;
-//                ctick_change_data   = ctick_change_data + 1;
-//                if (ctick_change_data == DATA_TICKS) begin
-//                    case(sel_data)
-//                        2'b00: rx = data_rx[ptr_data];
-//                        2'b01: rx = data_rx_b[ptr_data];
-//                        2'b10: rx = data_rx_op[ptr_data];
-//                    endcase
-//                        state               = 2'b010;
-//                        ctick_change_data   = 0;
-//                end
-//            end
-            
-//            3'b010: begin
-//                case(sel_data)
-//                    2'b00: rx = data_rx[ptr_data];
-//                    2'b01: rx = data_rx_b[ptr_data];
-//                    2'b10: rx = data_rx_op[ptr_data];
-//                endcase
-                
-//                ctick_change_data   = ctick_change_data + 1;
-                
-//                if (ctick_change_data == DATA_TICKS) begin
-//                        ptr_data            = ptr_data + 1;
-//                        case(sel_data)
-//                            2'b00: rx = data_rx[ptr_data];
-//                            2'b01: rx = data_rx_b[ptr_data];
-//                            2'b10: rx = data_rx_op[ptr_data];
-//                        endcase
-//                        ctick_change_data   = 0;
-//                        counter_data        = counter_data +1;
-//                        // 0 1 2 3 4 5 6 7
-//                        if (counter_data == 8)begin
-//                            rx      = bit_par;
-//                            state   = state + 1;
-//                        end
-//                end
-//            end
-//            3'b011: begin
-//                rx                  = bit_par;
-//                ctick_change_data   = ctick_change_data + 1;
-                
-//                if (ctick_change_data == DATA_TICKS) begin
-//                        rx      = bit_stop;
-//                        state   = state + 1;
-//                end
-//            end
-//            3'b100: begin
-//                rx                  = bit_stop;
-//                ctick_change_data   = ctick_change_data + 1;
-             
-//                if (ctick_change_data == DATA_TICKS) begin
-//                        ptr_data            = 0;
-//                        rx                  = 1;
-//                        ctick_change_data   = 0;
-//                        state               = 0;
-//                        counter_data       = 0;
-//                        sel_data            = sel_data + 1;
-                        
-//                        if (sel_data == 2'b11) sel_data = 0;
-//                end
-                
-//          end
-//          default: begin
-//                 ctick_change_data   = 0;
-//                 rx                  = 1;
-//                 state               = 0;
-//                 counter_data        = 0;
-//                 ptr_data            = 0;
-//                 sel_data            = 0;
-//          end
-            
-//        endcase
-//   end
-   
-//    initial $monitor(tick, rx, rx_done_tick, dout);
+    
 endmodule 
 
 
