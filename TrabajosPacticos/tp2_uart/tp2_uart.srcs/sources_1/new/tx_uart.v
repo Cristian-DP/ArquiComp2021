@@ -15,9 +15,9 @@ module tx_uart
     input   wire                reset,
     output  wire                tx,
     output  wire                read_tx,      
-    output  wire                tx_done_tick,
+    output  wire                tx_done_tick
                     
-    output  wire [N_DATA - 1:0] CHECK_ENTRADA_TX
+//    output  wire [N_DATA - 1:0] CHECK_ENTRADA_TX
 
 );
     reg     tx_done_tick_reg ;               //cambie
@@ -50,7 +50,7 @@ module tx_uart
     reg [NB_STATE - 1:0] next_state     ;
     
     
-    assign CHECK_ENTRADA_TX  = din;
+//    assign CHECK_ENTRADA_TX  = din;
     
     /**
         Logica de cambio de estado

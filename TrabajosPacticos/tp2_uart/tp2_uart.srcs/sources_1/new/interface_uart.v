@@ -21,10 +21,10 @@ module interface_uart
     output  reg                    empty,           // bit para avisar a tx que puede leer
     /* CLOCK */
     input wire                      clock,                                // clock que alimenta el sistema,
-    input   wire                    reset,
+    input   wire                    reset
 
     /* DE PRUEBA */
-    output reg [NB_STATE-1 :0] VER_ESTADOS
+//    output reg [NB_STATE-1 :0] VER_ESTADOS
 );
 
   // estados de la fsm
@@ -37,8 +37,8 @@ module interface_uart
 
     reg [NB_STATE - 1:0] current_state  ;
     reg [NB_STATE - 1:0] next_state     ;
-    reg [NB_STATE - 1:0] o_tx_reg;
-    reg [NB_STATE - 1:0] o_tx_next;
+    reg [NB_DATA - 1:0] o_tx_reg;
+    reg [NB_DATA - 1:0] o_tx_next;
     reg [NB_DATA - 1:0]  data_A_reg;         // Se presenta el dato OP a la Alu
     reg [NB_DATA - 1:0]  data_A_next;         // Se presenta el dato OP a la Alu    reg [NB_DATA - 1:0]  data_A_reg;         // Se presenta el dato OP a la Alu
     reg [NB_DATA - 1:0]  data_B_reg;          
@@ -80,11 +80,11 @@ module interface_uart
             data_B_reg      <= 0;
             data_Op_reg     <= 0;
             
-            VER_ESTADOS<=STATE_DATA_A;
+//            VER_ESTADOS<=STATE_DATA_A;
         end
         else begin
             current_state   <= next_state;
-            VER_ESTADOS<=current_state;
+//            VER_ESTADOS<=current_state;
             empty_reg       <= empty_next;
             empty           <= empty_reg;
          

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1638740617">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1639086951">
   <File Type="ROUTE-PWR" Name="top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="top.tcl"/>
   <File Type="BITSTR-MMI" Name="top.mmi"/>
@@ -98,6 +98,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/rx_uart.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/tx_uart.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -113,14 +120,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/topBrgTx.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/rx_uart.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -161,6 +160,22 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/topTx.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/transmisor_test.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/baudrate_test.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>

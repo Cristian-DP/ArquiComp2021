@@ -70,10 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 2
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -94,6 +92,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/BaudRateGenerator.v
   C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp1_input/inpu.srcs/sources_1/imports/TP1/alu.v
   C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/interface_uart.v
+  C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/rx_uart.v
   C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/tx_uart.v
   C:/Users/Laudi/vivado_projects/ArquiComp2021/TrabajosPacticos/tp2_uart/tp2_uart.srcs/sources_1/new/top.v
 }

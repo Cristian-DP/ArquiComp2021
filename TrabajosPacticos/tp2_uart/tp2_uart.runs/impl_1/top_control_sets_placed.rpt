@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Sun Dec  5 18:44:11 2021
+| Date         : Thu Dec  9 18:57:00 2021
 | Host         : LAPTOP-DJ46CPRC running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     9 |
-|    Minimum number of control sets                        |     9 |
+| Total control sets                                       |    11 |
+|    Minimum number of control sets                        |    11 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    26 |
+| Unused register locations in slices containing registers |    23 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,12 +39,12 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     9 |
+| Total control sets |    11 |
 | >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     2 |
 | >= 6 to < 8        |     2 |
-| >= 8 to < 10       |     2 |
-| >= 10 to < 12      |     1 |
+| >= 8 to < 10       |     5 |
+| >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     1 |
@@ -60,10 +60,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              70 |           22 |
+| No           | Yes                   | No                     |              52 |           15 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              48 |           12 |
+| Yes          | Yes                   | No                     |              61 |           22 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -75,13 +75,15 @@ Table of Contents
 +------------------+----------------------------------+------------------+------------------+----------------+--------------+
 |  clock_IBUF_BUFG | mytx_uart/tx_next                | reset_IBUF       |                1 |              1 |         1.00 |
 |  clock_IBUF_BUFG | mytx_uart/count_ticks_next       | reset_IBUF       |                1 |              4 |         4.00 |
-|  clock_IBUF_BUFG | mytx_uart/din_next               | reset_IBUF       |                1 |              5 |         5.00 |
+|  clock_IBUF_BUFG | myrx_uart/count_ticks_next       | reset_IBUF       |                1 |              4 |         4.00 |
 |  clock_IBUF_BUFG | myinterface_uart/next_state__0   | reset_IBUF       |                2 |              6 |         3.00 |
-|  clock_IBUF_BUFG | myinterface_uart/data_Op_next__0 | reset_IBUF       |                1 |              6 |         6.00 |
-|  clock_IBUF_BUFG | myinterface_uart/data_B_next__0  | reset_IBUF       |                1 |              8 |         8.00 |
-|  clock_IBUF_BUFG | myinterface_uart/data_A_next__0  | reset_IBUF       |                1 |              8 |         8.00 |
-|  clock_IBUF_BUFG | myinterface_uart/o_tx_next__0    | reset_IBUF       |                4 |             10 |         2.50 |
-|  clock_IBUF_BUFG |                                  | reset_IBUF       |               22 |             70 |         3.18 |
+|  clock_IBUF_BUFG | myinterface_uart/data_Op_next__0 | reset_IBUF       |                3 |              6 |         2.00 |
+|  clock_IBUF_BUFG | myrx_uart/ptro_next              | reset_IBUF       |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | mytx_uart/din_next               | reset_IBUF       |                2 |              8 |         4.00 |
+|  clock_IBUF_BUFG | myinterface_uart/o_tx_next__0    | reset_IBUF       |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | myinterface_uart/data_B_next__0  | reset_IBUF       |                3 |              8 |         2.67 |
+|  clock_IBUF_BUFG | myinterface_uart/data_A_next__0  | reset_IBUF       |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG |                                  | reset_IBUF       |               15 |             52 |         3.47 |
 +------------------+----------------------------------+------------------+------------------+----------------+--------------+
 
 
